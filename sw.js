@@ -1,7 +1,5 @@
 var cacheName = 'ArteRupestre.';
 var filesToCache = [
-  '.',
-  '/',
   'https://okoktext.herokuapp.com/index.html',
 ];
 
