@@ -1,6 +1,6 @@
 const version = 6;
 const preCacheName = `static-${version}`;
-const preCache = ['https://okoktext.herokuapp.com/', 'https://okoktext.herokuapp.com/index.html'];
+const preCache = ['/', '/index.html'];
 
 self.addEventListener('install', (ev) => {
   //installed
