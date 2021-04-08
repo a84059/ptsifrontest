@@ -3,10 +3,6 @@ var filesToCache = [
   '.',
   '/',
   'https://okoktext.herokuapp.com/index.html',
-  'https://okoktext.herokuapp.com/manifest.json',
-  'https://okoktext.herokuapp.com/sw-register.js',
-  'https://okoktext.herokuapp.com/favicon.ico',
-  'https://okoktext.herokuapp.com/images/icons/icon-192x192.png',
 ];
 
 self.addEventListener('install', function(e) {
