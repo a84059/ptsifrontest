@@ -1,6 +1,6 @@
 const version = 6;
 const preCacheName = `static-${version}`;
-const preCache = ['/', '/index.html'];
+const preCache = ['/'];
 
 self.addEventListener('install', (ev) => {
   //installed
