@@ -5,8 +5,8 @@
   "background_color": "#293241",
   "display": "fullScreen",
   "description": "Awesome application that will help you achieve your dreams.",
-  "start_url":"https://okoktext.herokuapp.com/index.html",
-  "Scope":"/",
+  "start_url":".",
+  "Scope":".",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
