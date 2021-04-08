@@ -1,0 +1,22 @@
+{
+  "name": "exemplo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NunoReis84314/PTSI_front.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NunoReis84314/PTSI_front/issues"
+  },
+  "homepage": "https://github.com/NunoReis84314/PTSI_front#readme",
+  "dependencies": {
+    "sweetalert2": "^10.15.6"
+  }
+}

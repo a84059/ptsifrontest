@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Arte Rupestre</title>
+	<link rel="icon" href="images/cave-painting.png" type="image/png">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="theme-color" content="#98c1d9" />
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<script src="node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+	<link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.min.css">
+	<link rel="manifest" href="manifest.json">
+	<link rel="apple-touch-icon" href="images/icons/icon-192x192.png">
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<script src="./sw-register.js"></script>
+
+
+	<style>
+		#map {
+			height: 100vh;
+			max-width: none;
+		}
+
+		* {
+			box-sizing: border-box
+		}
+
+		body {
+			font-family: Verdana, sans-serif;
+			margin: 0
+		}
+
+		.mySlides {
+			display: none
+		}
+
+		img {
+			vertical-align: middle;
+		}
+	</style>
+</head>
+
+<body class="landing is-preload">
+
+	<!-- Page Wrapper -->
+	<div id="page-wrapper">
+
+
+		<!-- Header -->
+		<header id="header" class="alt">
+			<nav id="nav">
+				<input type="radio" name="slide" id="menu-btn">
+				<input type="radio" name="slide" id="cancel-btn">
+				<ul>
+
+					<label for="cancel-btn" class="btn cancel-btn"><i class="fas fa-times"></i></label>
+
+					<li class="li-normal"><a href="semregisto.html">Home</a></li>
+
+					<li class="li-normal"><a href="#" class="desktop-item">Sobre Nós</a>
+						<!--	<input type="checkbox" id="showDrop"> -->
+						<label for="showDrop" class="mobile-item">Sobre Nós</label>
+						<ul class="drop-menu">
+							<li><a href="#">Projeto</a></li>
+							<li><a href="#">Equipas</a></li>
+							<li><a href="#">Grupo de Trabalho</a></li>
+							<li><a href="#">Pesquisa do Projeto</a></li>
+						</ul>
+					</li>
+
+					<li class="li-normal"><a href="#">Arte Rupestre</a>
+						<ul>
+							<li><a href="#">O que é?</a></li>
+							<li><a href="#">Vale do Côa</a></li>
+							<li><a href="#">Idade da Pedra</a></li>
+						</ul>
+					</li>
+
+					<li class="li-normal"><a href="#">Galeria</a>
+						<ul class="rockArt">
+							<li><a href="#">Imagens</a></li>
+							<li><a href="#">Modelos 3D</a></li>
+						</ul>
+
+					</li>
+					<li class="li-normal"><a href="#">Recursos</a>
+						<ul class="rockArt">
+							<li><a href="#">DataRepositóriUM</a></li>
+							<li><a href="#">Publicações do Projeto</a></li>
+							<li><a href="#">Websites</a></li>
+							<li><a href="#">Downloads</a></li>
+						</ul>
+					</li>
+					<li class="li-normal"><a href="login.html">Log In</a></li>
+				</ul>
+
+				<label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+			</nav>
+		</header>
+
+		<!-- Banner -->
+		<section id="banner">
+			<div class="inner">
+				<h2>Arte Rupestre da Idade do Ferro</h2>
+				<p>Projeto COA/OVD/0097/2019</p>
+				<!--	<ul class="actions special">
+								<li><a href="#" class="button primary">Activate</a></li>
+							</ul> -->
+			</div>
+			<!--	<a href="#one" class="more scrolly">Learn More</a> -->
+		</section>
+
+
+
+
+
+
+
+		<!--	<section id="two" class="wrapper alt style2">
+			<section class="spotlight">
+				<div class="content">
+					<h2>Magna primis lobortis<br />
+						sed ullamcorper</h2>
+					<p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla
+						nullam aenean mi ligula.</p>
+				</div>
+			</section>
+
+			 <section class="spotlight">
+							<div class="image"><img src="images/pic02.jpg" alt="" /></div><div class="content">
+								<h2>Tortor dolore feugiat<br />
+								elementum magna</h2>
+								<p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
+							</div>
+						</section>
+						<section class="spotlight">
+							<div class="image"><img src="images/pic03.jpg" alt="" /></div><div class="content">
+								<h2>Augue eleifend aliquet<br />
+								sed condimentum</h2>
+								<p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
+							</div>
+						</section> 
+		</section>
+
+	-->
+		<section id="three" class="wrapper style3 special">
+			<div class="inner">
+				<header class="major">
+					<h2>Sobre Nós</h2>
+
+				</header>
+				<ul class="features">
+					<li class="icon solid fa-tasks">
+						<h3>Projeto</h3>
+						<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+					</li>
+					<li class="icon solid fa-laptop">
+						<h3>Investigação</h3>
+						<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+					</li>
+					<li class="icon solid fa-users">
+						<h3>Equipa</h3>
+						<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+					</li>
+					<li class="icon solid fa-headphones-alt">
+						<h3>Grupo de trabalho</h3>
+						<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+					</li>
+					<!--<li class="icon fa-heart">
+						<h3>Investigação</h3>
+						<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo
+							Aenean ligula consequat consequat.</p>
+					</li>
+					<li class="icon fa-flag">
+									<h3>Tortor Ut</h3>
+									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+								</li> -->
+				</ul>
+			</div>
+		</section>
+
+
+
+
+
+		<section class="wrapper style5">
+			<div class="inner">
+				<div class="container">
+					<header class="major">
+						<h2>Galeria</h2>
+
+					</header>
+
+					<!--			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+					<ol class="carousel-indicators">
+						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+						<li data-target="#myCarousel" data-slide-to="1"></li>
+						<li data-target="#myCarousel" data-slide-to="2"></li>
+						<li data-target="#myCarousel" data-slide-to="3"></li>
+					</ol>
+
+
+					<div class="carousel-inner">
+						<div class="item active">
+							<img src="images/arte1.jpg" alt="Los Angeles" style="width:100%;">
+						</div>
+
+						<div class="item">
+							<img src="images/arte2.jpg" alt="Chicago" style="width:100%;">
+						</div>
+
+						<div class="item">
+							<img src="images/arte3.jpg" alt="New york" style="width:100%;">
+						</div>
+						<div class="item">
+							<img src="images/arte4.jpg" alt="New york" style="width:100%;">
+						</div>
+					</div>
+
+
+					<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+							<span class="glyphicon glyphicon-chevron-left"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+					<a class="right carousel-control" href="#myCarousel" data-slide="next">
+							<span class="glyphicon glyphicon-chevron-right"></span>
+							<span class="sr-only">Next</span>
+						</a>
+				</div> -->
+
+
+				</div>
+
+			</div>
+
+		</section>
+
+
+
+
+
+	</div>
+
+
+	<!--
+				
+					<section id="cta" class="wrapper style4">
+						<div class="inner">
+							<header>
+								<h2>Arcue ut vel commodo</h2>
+								<p>Aliquam ut ex ut augue consectetur interdum endrerit imperdiet amet eleifend fringilla.</p>
+							</header>
+							<ul class="actions stacked">
+								<li><a href="#" class="button fit primary">Activate</a></li>
+								<li><a href="#" class="button fit">Learn More</a></li>
+							</ul>
+						</div>
+					</section>
+
+				-->
+	<!--	<section id="two" class="wrapper alt style2">
+
+
+		<section class="spotlight">
+			<div class="content topo">
+				<h2>
+					<font size="4">
+						Partes Envolvidas no Projeto
+					</font>
+				</h2>
+				<p class="mb10">
+					<font size="2">
+						Estas são as principais entidades que se encontram envolvidas com o projeto:
+					</font>
+				</p>
+				<br />
+				<div class="espaco">
+					<img src="images/uminho_arq.png" width="20%" style="margin-right: 40px">
+					<img src="images/fct.png" width="30%" style="margin-right: 40px">
+					<img src="images/lab2pt.png" width="15%">
+				</div>
+			</div>
+			<div class="content">
+				<h2>
+					<font size="4">
+						Contactos
+					</font>
+				</h2>
+				<p class="mb10">
+					<font size="2">
+						Para mais informações por favor entre em contacto:
+					</font>
+				</p>
+				<p><i class="fa fa-location-arrow"></i>
+					<font size="2">
+						Rua da Imaginação Fertil <br />
+						1234-567 Cidade Imaginária
+					</font>
+				</p>
+				<p><i class="fa fa-phone"></i>
+					<font size="2">
+						++ 351 (123) 456789
+					</font>
+				</p>
+				<p><i class="fa fa fa-envelope"></i>
+					<font size="2">
+						info@raraa.pt
+					</font>
+				</p>
+			</div>
+		</section>
+	</section>
+	-->
+
+
+
+	<footer class="site-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-6">
+					<h6>Contactos</h6>
+					<p class="mb10">
+						<font size="2" color="#293241">
+							Para mais informações por favor entre em contacto:
+						</font>
+					</p>
+					<p><i class="fa fa-location-arrow cor-letras"></i>
+						<font size="2" color="#293241">
+							Rua da Imaginação Fertil <br /> 1234-567 Cidade Imaginária
+						</font>
+					</p>
+					<p><i class="fa fa-phone cor-letras"></i>
+						<font size="2" color="#293241">
+							++ 351 (123) 456789
+						</font>
+					</p>
+					<p><i class="fa fa fa-envelope cor-letras"></i>
+						<font size="2" color="#293241">
+							info@raraa.pt
+						</font>
+					</p>
+				</div>
+
+			<!--	<div class="col-xs-6 col-md-3">
+					<h6>Categories</h6>
+					<ul class="footer-links">
+						<li><a href="http://scanfcode.com/category/c-language/">C</a></li>
+						<li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
+						<li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
+						<li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
+						<li><a href="http://scanfcode.com/category/android/">Android</a></li>
+						<li><a href="http://scanfcode.com/category/templates/">Templates</a></li>
+					</ul>
+				</div> -->
+
+				<div class="col-xs-6">
+					<h6>Quick Links</h6>
+					<ul class="footer-links grid-list">
+						<li><a href="">Home</a></li>
+						<li><a href="">Sobre Nós</a></li>
+						<li><a href="">Arte Rupestre</a></li> 
+						<li><a href="">Galeria</a></li>
+						<li><a href="">Recursos</a></li>
+						<li><a href="">Log In</a></li>
+					</ul>
+				</div>
+			</div>
+			<hr>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-sm-6 col-xs-12">
+					<p class="copyright-text">technos &copy; 2021 
+					<!--	<a href="#">technos</a>. -->
+					</p>
+				</div>
+
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<img src="images/uminho_arq.png" width="20%" style="margin-right: 40px">
+					<img src="images/fct.png" width="30%" style="margin-right: 40px">
+					<img src="images/lab2pt.png" width="15%">
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!--	<section class="spotlight">
+			<div class="content topo">
+				<h2 style="color: #293241">
+					<font size="4">
+						Partes Envolvidas no Projeto
+					</font>
+				</h2>
+				<p class="mb10">
+					<font size="2" color="#293241">
+						Principais entidades que se encontram envolvidas com o projeto:
+					</font>
+				</p>
+				<br />
+				<div class="espaco">
+					<img src="images/uminho_arq.png" width="20%" style="margin-right: 40px">
+					<img src="images/fct.png" width="30%" style="margin-right: 40px">
+					<img src="images/lab2pt.png" width="15%">
+				</div>
+			</div>
+			<div class="content">
+				<h2 style="color: #293241;">
+					<font size="4" color="#293241">
+						Contactos
+					</font>
+				</h2>
+				<p class="mb10">
+					<font size="2"  color="#293241">
+						Para mais informações, por favor, entre em contacto!
+					</font>
+				</p>
+				<p><i class="fa fa-location-arrow cor-letras"></i>
+					<font size="2" color="#293241">
+						Edifício dos Congregados <br /> Avenida Central, 100
+						<br /> 4710-229 Braga
+					</font>
+				</p>
+				<p><i class="fa fa-phone cor-letras"></i>
+					<font size="2" color="#293241">
+						253 601 270
+					</font>
+				</p>
+				<p><i class="fa fa fa-envelope cor-letras"></i>
+					<font size="2" color="#293241">
+						sec@uaum.uminho.pt
+					</font>
+				</p>
+			</div>
+
+		</section> 
+
+
+		<!--	<ul class="copyright">
+			<li><a href="http://raraa.pt">raraa.pt</a></li>
+			<li><a href="http://html5up.net">Termos e condições</a></li>
+		</ul>
+
+
+		<ul class="icons">
+			<li>
+				<p></p>
+			</li>
+			<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+			<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+			<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+			<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+		</ul>
+
+-->
+
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.9/sweetalert2.all.min.js"></script>
+	<script src="assets/js/credentials.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+	<script src="assets/js/carousel.js"></script>
+	<script src="assets/js/imageHandler.js"></script>
+	
+	<script type='text/javascript' data-cfasync='false'>
+		window.purechatApi = { l: [], t: [], on: function() { this.l.push(arguments); } };
+		(function() {
+			var done = false;
+			var script = document.createElement('script');
+			script.async = true;
+			script.type = 'text/javascript';
+			script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript';
+			document.getElementsByTagName('HEAD').item(0).appendChild(script);
+			script.onreadystatechange = script.onload = function(e) {
+				if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
+					var w = new PCWidget({ c: 'fa26d373-47b7-4ece-baad-0022d1be3e05', f: true });
+					done = true;
+				}
+			};
+		})();
+	</script>
+
+</body>
+
+</html>
