@@ -6,7 +6,7 @@ const APP = {
       navigator.serviceWorker
         .register('/sw.js', {
           updateViaCache: 'none',
-          scope: '/',
+          scope: '.',
         })
         .then(() => {
           //finished registering
@@ -14,6 +14,7 @@ const APP = {
         .catch((err) => {
           console.warn('Failed to register', err.message);
         });
+
       //listen for messages
       navigator.serviceWorker.addEventListener('message', ({ data }) => {
         //received a message from the service worker
