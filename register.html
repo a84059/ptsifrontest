@@ -28,65 +28,64 @@
 				<h2>Register Account</h2>
 				<div class="form-row">
 					<label for="full-name">Full Name</label>
-					<input type="text" name="full-name" id="full-name" class="input-text" placeholder="Your Name" >
+					<input type="text" name="full-name" id="full-name" class="input-text" placeholder="Your Name" required>
 					<i class="fas fa-user"></i>
 				</div>
 				<div class="form-row">
 					<label for="username">Username</label>
-					<input type="text" name="username" id="username" class="input-text" placeholder="Username" >
+					<input type="text" name="username" id="username" class="input-text" placeholder="Username" required>
 					<i class="fas fa-user"></i>
 				</div>
 				<div class="form-row">
 					<label for="your-email">Your Email</label>
-					<input type="email" name="your-email" id="your-email" class="input-text" placeholder="Your Email" >
+					<input type="email" name="your-email" id="your-email" class="input-text" placeholder="Your Email" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
 					<i class="fas fa-envelope"></i>
 				</div>
 				<div class="form-row">
 					<label for="morada">Your Adress</label>
-					<input type="text" name="morada" id="morada" class="input-text" placeholder="Your Adress" >
+					<input type="text" name="morada" id="morada" class="input-text" placeholder="Your Adress" required>
 					<i class="fas fa-location-arrow"></i>
 				</div>
 				<div class="form-row">
 					<label for="codigopostal">Post Code</label>
-					<input type="text" name="codigopostal" id="codigopostal" class="input-text" placeholder="Post Code" >
+					<input type="text" name="codigopostal" id="codigopostal" class="input-text" placeholder="Post Code" required>
 					<i class="fas fa-location-arrow"></i>
 				</div>
 				<div class="form-row">
 					<label for="localidade">City</label>
-					<input type="text" name="localidade" id="localidade" class="input-text" placeholder="City" >
+					<input type="text" name="localidade" id="localidade" class="input-text" placeholder="City" required>
 					<i class="fas fa-location-arrow"></i>
 				</div>
 				<div class="form-row">
 					<label for="pais">Country</label>
-					<input type="text" name="pais" id="pais" class="input-text" placeholder="Country" >
+					<input type="text" name="pais" id="pais" class="input-text" placeholder="Country" required>
 					<i class="fas fa-globe"></i>
 				</div>
 				<div class="form-row">
 					<label for="telefone">Telephone</label>
-					<input type="tel" name="telefone" id="telefone" class="input-text" placeholder="Telephone" >
+					<input type="tel" name="telefone" id="telefone" class="input-text" placeholder="Telephone" required>
 					<i class="fas fa-phone"></i>
 				</div>
 				<div class="form-row">
 					<label for="telefone">NIF</label>
-					<input type="tel" name="nif" id="nif" class="input-text" placeholder="NIF" >
+					<input type="tel" name="nif" id="nif" class="input-text" placeholder="NIF" required>
 					<i class="fas fa-id-card"></i>
 				</div>
 				<div class="form-row">
 					<label for="password">Password</label>
-					<input type="password" name="password" id="password" class="input-text" placeholder="Your Password" >
+					<input type="password" name="password" id="password" class="input-text" placeholder="Your Password" required>
 
 					<i class="fas fa-lock"></i>
 
 				</div>
 				<div class="form-row">
 					<label for="password">Confirm Password</label>
-					<input type="password" name="password" id="confirm_pwd" class="input-text" placeholder="Confirm Password" >
+					<input type="password" name="password" id="confirm_pwd" class="input-text" placeholder="Confirm Password" required>
 
 					<i class="fas fa-lock"></i>
 				</div>
 				<div class="form-row-last">
-					<button type="" name="register" class="register" value="Register" onclick="requestRegister()">Criar conta</button>
-				</div>
+					<input type="button" name="register" class="register" value="Register" onclick="requestRegister()">
 
 			</form>
 		</div>

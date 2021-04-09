@@ -23,6 +23,7 @@ async function requestLogin() {
         showConfirmButton: false,
         timer: 1500
       })
+      sessionStorage.setItem('email', email);
        window.setTimeout(function(){ window.location.replace("semregisto.html") } ,1700);
     }
     else {
