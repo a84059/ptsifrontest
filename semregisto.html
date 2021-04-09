@@ -1,92 +1,57 @@
 <!DOCTYPE HTML>
 <html>
-        <head>
-            <title>Área Geral</title>
-            <meta charset="utf-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-            <link rel="stylesheet" href="assets/css/main.css" />
-            <link rel="stylesheet" href="css/style.css" />
-            <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-            <style>
-                @import url(fontawesome-all.min.css);
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,800,800italic");
-    #map{
-        height:100vh;
-        max-width:none;
-    }
 
+<head>
+    <title>Área Geral</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        @import url(fontawesome-all.min.css);
+        @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,800,800italic");
+        #map {
+            height: 100vh;
+            max-width: none;
+        }
+    </style>
+</head>
 
-    
-            </style>
-        </head>
-        <body class="landing is-preload">
+<body class="landing is-preload">
 
-            <header id="head" class="alt">
-                <nav id="nav">
-                    
-                            <a href="index.html" class="icon-block" ><i class="fas fa-2x fa-home"></i></a>
-                            
-                </nav>
-        
-            </header>
+    <header id="head" class="alt">
+        <nav id="nav">
 
+            <a href="index.html" class="icon-block"><i class="fas fa-2x fa-home"></i></a>
 
+        </nav>
+    </header>
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
 
-<!-- Page Wrapper -->
-<div id="page-wrapper">
+        <section id="one" class="wrapper style1 special">
+            <div id="map"></div>
 
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrlpgDFoZm0L07_NUk5aZeP-ittxX2xow&callback=initMap&libraries=&v=weekly" async></script>
+            <script src="assets/js/maps.js"></script>
 
+        </section>
 
-    <section id="one" class="wrapper style1 special">
-        <div id="map"></div>
-    
-            
-            
-     
+    </div>
 
-           
-        
-        <script
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrlpgDFoZm0L07_NUk5aZeP-ittxX2xow&callback=initMap&libraries=&v=weekly"
-async></script>
-<script src="assets/js/maps.js"></script>
-
-    </section>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
 
 
 
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-       
-
-       <!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script> 
-
-
-
-        </body>
+</body>
 
 
 </html>

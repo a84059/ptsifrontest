@@ -17,16 +17,31 @@ async function requestLogin() {
   }).then(result => {
     console.log(result)
     if (result.status == 200) {
-      window.location.replace("semregisto.html")
+      Swal.fire({
+        icon: 'success',
+        title: 'Login Efetuado com sucesso!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+       window.setTimeout(function(){ window.location.replace("semregisto.html") } ,1700);
     }
     else {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Erro ao efetuar o login, verifique as suas credenciais e tente de novo!',
+        icon: 'error',
+        confirmButtonText: 'Close'
+      })
       console.log("Erro!")
     }
     return result.json();
   })
 }
 
-async function requestRegister() {
+
+
+function requestRegister() {
+
   var name = document.getElementById('full-name').value;
   var username = document.getElementById('username').value;
   var email = document.getElementById('your-email').value;
@@ -37,8 +52,7 @@ async function requestRegister() {
   var telefone = document.getElementById('telefone').value;
   var nif = document.getElementById('nif').value;
   var password = document.getElementById('password').value;
-  var conf_pwd = document.getElementById('confirm_pwd').value;
-  
+
 
 
   fetch('https://ptsibackend.herokuapp.com/register', {
@@ -57,19 +71,23 @@ async function requestRegister() {
       pais: pais,
       telefone: telefone,
       nif: nif,
-      password: password,
-      conf_pwd: conf_pwd
+      password: password
+
     })
   }).then(result => {
     console.log(result)
     if (result.status == 200) {
-      window.location.replace("semregisto.html")
+      swal({ title: "Autenticação feita com sucesso!" })
+      window.location.replace("login.html")
     }
     else {
+
       console.log("Erro!")
     }
     return result.json();
   })
+
+
 }
 
 /*

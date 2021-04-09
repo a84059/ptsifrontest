@@ -40,7 +40,7 @@ const APP = {
       });
 
       let btn = document.getElementById('btnInstall');
-      btn?.addEventListener('click', APP.startChromeInstall);
+      btn ? .addEventListener('click', APP.startChromeInstall);
     }
   },
   startChromeInstall() {
@@ -51,7 +51,8 @@ const APP = {
         if (choice.outcome == 'accepted') {
           //they installed
           console.log('installed');
-        } else {
+        }
+        else {
           console.log('cancel');
         }
       });
