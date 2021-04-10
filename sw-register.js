@@ -40,7 +40,7 @@ const APP = {
       });
 
       let btn = document.getElementById('btnInstall');
-      btn ? .addEventListener('click', APP.startChromeInstall);
+      btn?.addEventListener('click', APP.startChromeInstall);
     }
   },
   startChromeInstall() {

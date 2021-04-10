@@ -1,3 +1,5 @@
+
+
 async function requestLogin() {
   var email = document.getElementById('your-email').value;
   var password = document.getElementById('password').value;
@@ -24,7 +26,7 @@ async function requestLogin() {
         timer: 1500
       })
       sessionStorage.setItem('email', email);
-       window.setTimeout(function(){ window.location.replace("semregisto.html") } ,1700);
+      window.setTimeout(function() { window.location.replace("semregisto.html") }, 1700);
     }
     else {
       Swal.fire({
@@ -78,11 +80,22 @@ function requestRegister() {
   }).then(result => {
     console.log(result)
     if (result.status == 200) {
-      swal({ title: "Autenticação feita com sucesso!" })
-      window.location.replace("login.html")
+      Swal.fire({
+        icon: 'success',
+        title: 'Registo efetuado com sucesso!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      sessionStorage.setItem('email', email);
+      window.setTimeout(function() { window.location.replace("login.html") }, 1700);
     }
     else {
-
+      Swal.fire({
+        title: 'Error!',
+        text: 'Erro, tente novamente!',
+        icon: 'error',
+        confirmButtonText: 'Close'
+      })
       console.log("Erro!")
     }
     return result.json();
