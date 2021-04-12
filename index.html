@@ -60,9 +60,9 @@
 
 					<label for="cancel-btn" class="btn cancel-btn"><i class="fas fa-times"></i></label>
 
-					<li class="li-normal"><a href="semregisto.html">Home</a></li>
+					<li class="li-normal"><a href="index.html">Home</a></li>
 
-					<li class="li-normal"><a href="#" class="desktop-item">Sobre Nós</a>
+					<li class="li-normal"><a href="#sobrenos" class="desktop-item">Sobre Nós</a>
 						<!--	<input type="checkbox" id="showDrop"> -->
 						<label for="showDrop" class="mobile-item">Sobre Nós</label>
 						<ul class="drop-menu">
@@ -81,7 +81,7 @@
 						</ul>
 					</li>
 
-					<li class="li-normal"><a href="#">Galeria</a>
+					<li class="li-normal"><a href="#galeria">Galeria</a>
 						<ul class="rockArt">
 							<li><a href="#">Imagens</a></li>
 							<li><a href="#">Modelos 3D</a></li>
@@ -107,7 +107,7 @@
 		<section id="banner">
 			<div class="inner">
 				<h2>Arte Rupestre da Idade do Ferro</h2>
-				<p>Projeto COA/OVD/0097/2019</p>
+				<p style="color: #fff">Projeto COA/OVD/0097/2019</p>
 				<!--	<ul class="actions special">
 								<li><a href="#" class="button primary">Activate</a></li>
 							</ul> -->
@@ -149,7 +149,7 @@
 
 	-->
 		<section id="three" class="wrapper style3 special">
-			<div class="inner">
+			<div class="inner" id="sobrenos">
 				<header class="major">
 					<h2>Sobre Nós</h2>
 
@@ -190,12 +190,56 @@
 
 		<section class="wrapper style5">
 			<div class="inner">
-				<div class="container">
+				<div class="containergallery" id="galeria">
 					<header class="major">
 						<h2>Galeria</h2>
-
 					</header>
 
+						<div class="feature">
+							<figure class="featured-item image-holder r-3-2 transition"></figure>
+						</div>
+
+						<div class="gallery-wrapper">
+							<div class="gallery">
+								<div class="item-wrapper">
+									<figure class="gallery-item image-holder r-3-2 active transition"></figure>
+								</div>
+								<div class="item-wrapper">
+									<figure class="gallery-item image-holder r-3-2 transition"></figure>
+								</div>
+								<div class="item-wrapper">
+									<figure class="gallery-item image-holder r-3-2 transition"></figure>
+								</div>
+								<div class="item-wrapper">
+									<figure class="gallery-item image-holder r-3-2 transition"></figure>
+								</div>
+								<div class="item-wrapper">
+									<figure class="gallery-item image-holder r-3-2"></figure>
+								</div>
+								<div class="item-wrapper">
+									<figure class="gallery-item image-holder r-3-2 transition"></figure>
+								</div>
+								<div class="item-wrapper">
+									<figure class="gallery-item image-holder r-3-2 transition"></figure>
+								</div>
+								<div class="item-wrapper">
+									<figure class="gallery-item image-holder r-3-2 transition"></figure>
+								</div>
+								<div class="item-wrapper">
+									<figure class="gallery-item image-holder r-3-2 transition"></figure>
+								</div>
+								<div class="item-wrapper">
+									<figure class="gallery-item image-holder r-3-2 transition"></figure>
+								</div>
+							</div>
+						</div>
+
+						<div class="controls">
+							<button class="move-btn left">&larr;</button>
+							<button class="move-btn right">&rarr;</button>
+						</div>
+
+				
 					<!--			<div id="myCarousel" class="carousel slide" data-ride="carousel">
 
 					<ol class="carousel-indicators">
@@ -494,8 +538,8 @@
 			};
 		})();
 	</script>
-<script type="text/javascript">
-	sessionStorage.setItem('email', "");
+	<script type="text/javascript">
+		sessionStorage.setItem('email', "");
 	</script>
 </body>
 
