@@ -7,6 +7,11 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<meta name="theme-color" content="#98c1d9" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -43,6 +48,10 @@
 		img {
 			vertical-align: middle;
 		}
+
+		html {
+			scroll-behavior: smooth;
+		}
 	</style>
 </head>
 
@@ -63,14 +72,14 @@
 
 					<li class="li-normal"><a href="index.html">Home</a></li>
 
-					<li class="li-normal"><a href="#sobrenos" class="desktop-item">Sobre Nós</a>
+					<li class="li-normal"><a href="#three" class="desktop-item">Sobre Nós</a>
 						<!--	<input type="checkbox" id="showDrop"> -->
 						<label for="showDrop" class="mobile-item">Sobre Nós</label>
 						<ul class="drop-menu">
-							<li><a href="#">Projeto</a></li>
-							<li><a href="#">Equipas</a></li>
-							<li><a href="#">Grupo de Trabalho</a></li>
-							<li><a href="#">Pesquisa do Projeto</a></li>
+							<li><a href="#" id="nav">Projeto</a></li>
+							<li><a href="#" id="nav">Equipas</a></li>
+							<li><a href="#" id="nav">Grupo de Trabalho</a></li>
+							<li><a href="#" id="nav">Pesquisa do Projeto</a></li>
 						</ul>
 					</li>
 
@@ -84,8 +93,8 @@
 
 					<li class="li-normal"><a href="#galeria">Galeria</a>
 						<ul class="rockArt">
-							<li><a href="#">Imagens</a></li>
-							<li><a href="#">Modelos 3D</a></li>
+							<li><a href="imagens.html">Imagens</a></li>
+							<li><a href="teste.html">Modelos 3D</a></li>
 						</ul>
 
 					</li>
@@ -97,7 +106,7 @@
 							<li><a href="#">Downloads</a></li>
 						</ul>
 					</li>
-					<li class="li-normal"><a href="login.html">Log In</a></li>
+					<button class="btn_login"><a href="login.html" style="color: #ffffff">Log In</a></button>
 				</ul>
 
 				<label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
@@ -109,359 +118,139 @@
 			<div class="inner">
 				<h2>Arte Rupestre da Idade do Ferro</h2>
 				<p style="color: #fff">Projeto COA/OVD/0097/2019</p>
-				<!--	<ul class="actions special">
-								<li><a href="#" class="button primary">Activate</a></li>
-							</ul> -->
 			</div>
-			<!--	<a href="#one" class="more scrolly">Learn More</a> -->
 		</section>
 
 
-
-
-
-
-
-		<!--	<section id="two" class="wrapper alt style2">
-			<section class="spotlight">
-				<div class="content">
-					<h2>Magna primis lobortis<br />
-						sed ullamcorper</h2>
-					<p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla
-						nullam aenean mi ligula.</p>
-				</div>
-			</section>
-
-			 <section class="spotlight">
-							<div class="image"><img src="images/pic02.jpg" alt="" /></div><div class="content">
-								<h2>Tortor dolore feugiat<br />
-								elementum magna</h2>
-								<p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
-							</div>
-						</section>
-						<section class="spotlight">
-							<div class="image"><img src="images/pic03.jpg" alt="" /></div><div class="content">
-								<h2>Augue eleifend aliquet<br />
-								sed condimentum</h2>
-								<p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
-							</div>
-						</section> 
-		</section>
-
-	-->
 		<section id="three" class="wrapper style3 special">
 			<div class="inner" id="sobrenos">
 				<header class="major">
 					<h2>Sobre Nós</h2>
-
 				</header>
-				
+
 				<ul class="features">
 					<li class="icon solid fa-tasks">
 						<h3>Projeto</h3>
-						<p>RARAA – Rock Art Repository Open Access (COA/OVD/0097/2019) intends to create the first Portuguese Rock Art platform, which will give visibility to rock art data, metadata, images and 3D models, and make them available in open access, key to encouraging their reuse in further studies and also offering the possibility of analysis in the scope of new technologies. This national Rock Art data service has considerable benefits, as it will allow digital rock art data to be safeguarded, accessible, reusable and connected to international repositories. The first RARAA project aims to increase our knowledge of Iron Age rock art and the societies that created it in the Côa valley.   The Côa valley has been well-known for its amazing Paleolithic rock art, and classified as World Heritage in 1998. Since its discovery, over 1000 decorated rocks have been identified, with chronologies ranging from prehistory to contemporary times. The impressive number of Iron Age engravings in the Côa Valley, with no parallels in the Iberian Peninsula, make them into one of the most important sites in the world regarding this chronology. Nevertheless, and despite the Iron Age being the second most important artistic phase of the Côa valley with an impressive number of engraved rocks, in 20 years only 8 have been the object of archaeological recording, and only 4 have had the complete survey published.   Therefore, with this project we aim to develop a real quantitative and qualitative leap regarding the last two decades. In order to do so, we propose the integral study of 4 sites and the archaeological intervention of 3 sites with proto-historical occupation in the Côa valley region. The recorded data will take into account FAIR principles (Findable Accessible Interoperable and Reusable) and CIDOC CRM ontology, implementing an innovative methodology.   Through workshops and dissemination in seminars and digital networks, we will encourage the use of this repository to host more Rock Art data.</p>
+						<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+						<button id="btn1" class="btn_vermais">Ver Mais</button>
 					</li>
 					<li class="icon solid fa-laptop">
 						<h3>Investigação</h3>
 						<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+						<button id="btn2" class="btn_vermais">Ver Mais</button>
 					</li>
 					<li class="icon solid fa-users">
 						<h3>Equipa</h3>
-						<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?</p>
+						<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+						<button id="btn3" class="btn_vermais">Ver Mais</button>
 					</li>
 					<li class="icon solid fa-headphones-alt">
 						<h3>Grupo de trabalho</h3>
 						<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+						<button id="btn4" class="btn_vermais">Ver Mais</button>
 					</li>
-					<!--<li class="icon fa-heart">
-						<h3>Investigação</h3>
-						<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo
-							Aenean ligula consequat consequat.</p>
-					</li>
-					<li class="icon fa-flag">
-									<h3>Tortor Ut</h3>
-									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-								</li> -->
 				</ul>
+				<hr>
 			</div>
 		</section>
 
 
+		<!-- GALERIA -->
 
-
-
-		<section class="wrapper style5">
+		<section id="galeria" class="wrapper style5">
 			<div class="inner">
-				<div class="containergallery" id="galeria">
+				<div class="container">
 					<header class="major">
 						<h2>Galeria</h2>
 					</header>
-
-
-
-
-
-				
-					<!--			<div id="myCarousel" class="carousel slide" data-ride="carousel">
-
-					<ol class="carousel-indicators">
-						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-						<li data-target="#myCarousel" data-slide-to="1"></li>
-						<li data-target="#myCarousel" data-slide-to="2"></li>
-						<li data-target="#myCarousel" data-slide-to="3"></li>
-					</ol>
-
-
-					<div class="carousel-inner">
-						<div class="item active">
-							<img src="images/arte1.jpg" alt="Los Angeles" style="width:100%;">
-						</div>
-
-						<div class="item">
-							<img src="images/arte2.jpg" alt="Chicago" style="width:100%;">
-						</div>
-
-						<div class="item">
-							<img src="images/arte3.jpg" alt="New york" style="width:100%;">
-						</div>
-						<div class="item">
-							<img src="images/arte4.jpg" alt="New york" style="width:100%;">
+				</div>
+				<div class="card-deck">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title" style="color: #293241; font-size: 110%">Imagens</h5>
+							<img class="card-img-top" src="images/imagens.jpg" alt="Card image cap" style="height: 70%; width:70%; margin: 0 auto; display: block">
+							<button  onclick="window.location.href='imagens.html';" id="btn_imagens" class="btn_vermais" style="float: left; margin-top: 15%; margin-left: 5%">Ver Tudo</button>
+							<button  onclick="window.location.href='sitioimagens.html';" id="btn_imagens_sitio" class="btn_vermais" style="float: right; margin-top: 15%; margin-right: 5%">Ver Sítio</button>
 						</div>
 					</div>
-
-
-					<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-							<span class="glyphicon glyphicon-chevron-left"></span>
-							<span class="sr-only">Previous</span>
-						</a>
-					<a class="right carousel-control" href="#myCarousel" data-slide="next">
-							<span class="glyphicon glyphicon-chevron-right"></span>
-							<span class="sr-only">Next</span>
-						</a>
-				</div> -->
-
-
-				</div>
-
-			</div>
-
-		</section>
-
-
-
-
-	<!--
-				
-					<section id="cta" class="wrapper style4">
-						<div class="inner">
-							<header>
-								<h2>Arcue ut vel commodo</h2>
-								<p>Aliquam ut ex ut augue consectetur interdum endrerit imperdiet amet eleifend fringilla.</p>
-							</header>
-							<ul class="actions stacked">
-								<li><a href="#" class="button fit primary">Activate</a></li>
-								<li><a href="#" class="button fit">Learn More</a></li>
-							</ul>
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title" style="color: #293241; font-size: 110%">Rock Art Map</h5>
+							<img class="card-img-top" src="images/mapa.png" alt="Card image cap" style="height: 70%; width:70%; margin: 0 auto; display: block">
+							<button  onclick="window.location.href='semregisto.html';" id="btn_mapa" class="btn_vermais" style="margin: 0 auto; display: block; margin-top: 15%">Ver Mapa</button>
 						</div>
-					</section>
-
-				-->
-	<!--	<section id="two" class="wrapper alt style2">
-
-
-		<section class="spotlight">
-			<div class="content topo">
-				<h2>
-					<font size="4">
-						Partes Envolvidas no Projeto
-					</font>
-				</h2>
-				<p class="mb10">
-					<font size="2">
-						Estas são as principais entidades que se encontram envolvidas com o projeto:
-					</font>
-				</p>
-				<br />
-				<div class="espaco">
-					<img src="images/uminho_arq.png" width="20%" style="margin-right: 40px">
-					<img src="images/fct.png" width="30%" style="margin-right: 40px">
-					<img src="images/lab2pt.png" width="15%">
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title" style="color: #293241; font-size: 110%">Modelos 3D</h5>
+							<img class="card-img-top" src="images/modelos.jpg" alt="Card image cap" style="height: 70%; width:70%; margin: 0 auto; display: block">
+							<button  onclick="window.location.href='teste.html';" id="btn_modelos" class="btn_vermais" style="float: left; margin-top: 15%; margin-left: 5%">Ver Tudo</button>
+							<button  onclick="window.location.href='sitiomodelos.html';" id="btn_modelos_sitio" class="btn_vermais" style="float: right; margin-top: 15%; margin-right: 5%">Ver Sítio</button>
+					</div>
 				</div>
+
 			</div>
-			<div class="content">
-				<h2>
-					<font size="4">
-						Contactos
-					</font>
-				</h2>
-				<p class="mb10">
-					<font size="2">
-						Para mais informações por favor entre em contacto:
-					</font>
-				</p>
-				<p><i class="fa fa-location-arrow"></i>
-					<font size="2">
-						Rua da Imaginação Fertil <br />
-						1234-567 Cidade Imaginária
-					</font>
-				</p>
-				<p><i class="fa fa-phone"></i>
-					<font size="2">
-						++ 351 (123) 456789
-					</font>
-				</p>
-				<p><i class="fa fa fa-envelope"></i>
-					<font size="2">
-						info@raraa.pt
-					</font>
-				</p>
-			</div>
+
 		</section>
-	</section>
-	-->
 
 
+		<footer class="site-footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-md-6">
+						<h6>Contactos</h6>
+						<p class="mb10">
+							<font size="2" color="#293241">
+								Para mais informações por favor entre em contacto:
+							</font>
+						</p>
+						<p><i class="fa fa-location-arrow cor-letras"></i>
+							<font size="2" color="#293241">
+								Rua da Imaginação Fertil <br /> 1234-567 Cidade Imaginária
+							</font>
+						</p>
+						<p><i class="fa fa-phone cor-letras"></i>
+							<font size="2" color="#293241">
+								++ 351 (123) 456789
+							</font>
+						</p>
+						<p><i class="fa fa fa-envelope cor-letras"></i>
+							<font size="2" color="#293241">
+								info@raraa.pt
+							</font>
+						</p>
+					</div>
 
-	<footer class="site-footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12 col-md-6">
-					<h6>Contactos</h6>
-					<p class="mb10">
-						<font size="2" color="#293241">
-							Para mais informações por favor entre em contacto:
-						</font>
-					</p>
-					<p><i class="fa fa-location-arrow cor-letras"></i>
-						<font size="2" color="#293241">
-							Rua da Imaginação Fertil <br /> 1234-567 Cidade Imaginária
-						</font>
-					</p>
-					<p><i class="fa fa-phone cor-letras"></i>
-						<font size="2" color="#293241">
-							++ 351 (123) 456789
-						</font>
-					</p>
-					<p><i class="fa fa fa-envelope cor-letras"></i>
-						<font size="2" color="#293241">
-							info@raraa.pt
-						</font>
-					</p>
+					<div class="col-xs-6">
+						<h6>Quick Links</h6>
+						<ul class="footer-links grid-list">
+							<li><a href="">Home</a></li>
+							<li><a href="">Sobre Nós</a></li>
+							<li><a href="">Arte Rupestre</a></li>
+							<li><a href="">Galeria</a></li>
+							<li><a href="">Recursos</a></li>
+							<li><a href="">Log In</a></li>
+						</ul>
+					</div>
 				</div>
+				<hr>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-sm-6 col-xs-12">
+						<p class="copyright-text">technos &copy; 2021
+							<!--	<a href="#">technos</a>. -->
+						</p>
+					</div>
 
-				<!--	<div class="col-xs-6 col-md-3">
-					<h6>Categories</h6>
-					<ul class="footer-links">
-						<li><a href="http://scanfcode.com/category/c-language/">C</a></li>
-						<li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
-						<li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
-						<li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
-						<li><a href="http://scanfcode.com/category/android/">Android</a></li>
-						<li><a href="http://scanfcode.com/category/templates/">Templates</a></li>
-					</ul>
-				</div> -->
-
-				<div class="col-xs-6">
-					<h6>Quick Links</h6>
-					<ul class="footer-links grid-list">
-						<li><a href="">Home</a></li>
-						<li><a href="">Sobre Nós</a></li>
-						<li><a href="">Arte Rupestre</a></li>
-						<li><a href="">Galeria</a></li>
-						<li><a href="">Recursos</a></li>
-						<li><a href="">Log In</a></li>
-					</ul>
+					<div class="col-md-4 col-sm-6 col-xs-12">
+						<img src="images/uminho_arq.png" width="20%" style="margin-right: 40px">
+						<img src="images/fct.png" width="30%" style="margin-right: 40px">
+						<img src="images/lab2pt.png" width="15%">
+					</div>
 				</div>
 			</div>
-			<hr>
-		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-sm-6 col-xs-12">
-					<p class="copyright-text">technos &copy; 2021
-						<!--	<a href="#">technos</a>. -->
-					</p>
-				</div>
-
-				<div class="col-md-4 col-sm-6 col-xs-12">
-					<img src="images/uminho_arq.png" width="20%" style="margin-right: 40px">
-					<img src="images/fct.png" width="30%" style="margin-right: 40px">
-					<img src="images/lab2pt.png" width="15%">
-				</div>
-			</div>
-		</div>
-	</footer>
-
-	<!--	<section class="spotlight">
-			<div class="content topo">
-				<h2 style="color: #293241">
-					<font size="4">
-						Partes Envolvidas no Projeto
-					</font>
-				</h2>
-				<p class="mb10">
-					<font size="2" color="#293241">
-						Principais entidades que se encontram envolvidas com o projeto:
-					</font>
-				</p>
-				<br />
-				<div class="espaco">
-					<img src="images/uminho_arq.png" width="20%" style="margin-right: 40px">
-					<img src="images/fct.png" width="30%" style="margin-right: 40px">
-					<img src="images/lab2pt.png" width="15%">
-				</div>
-			</div>
-			<div class="content">
-				<h2 style="color: #293241;">
-					<font size="4" color="#293241">
-						Contactos
-					</font>
-				</h2>
-				<p class="mb10">
-					<font size="2"  color="#293241">
-						Para mais informações, por favor, entre em contacto!
-					</font>
-				</p>
-				<p><i class="fa fa-location-arrow cor-letras"></i>
-					<font size="2" color="#293241">
-						Edifício dos Congregados <br /> Avenida Central, 100
-						<br /> 4710-229 Braga
-					</font>
-				</p>
-				<p><i class="fa fa-phone cor-letras"></i>
-					<font size="2" color="#293241">
-						253 601 270
-					</font>
-				</p>
-				<p><i class="fa fa fa-envelope cor-letras"></i>
-					<font size="2" color="#293241">
-						sec@uaum.uminho.pt
-					</font>
-				</p>
-			</div>
-
-		</section> 
-
-
-		<!--	<ul class="copyright">
-			<li><a href="http://raraa.pt">raraa.pt</a></li>
-			<li><a href="http://html5up.net">Termos e condições</a></li>
-		</ul>
-
-
-		<ul class="icons">
-			<li>
-				<p></p>
-			</li>
-			<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-			<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-			<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-			<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-		</ul>
-
--->
-
-
+		</footer>
 	</div>
 
 	<!-- Scripts -->
@@ -499,6 +288,150 @@
 	<script type="text/javascript">
 		sessionStorage.setItem('email', "");
 	</script>
+
+
+	<!-- POP UPS -->
+
+	<!-- BOTÃO 1, PROJETO -->
+
+	<div id="txtProjeto" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close_btn" style="float:right">&times;</span>
+			<p style="color: #FAF9F6"><br>RARAA – Rock Art Repository Open Access (COA/OVD/0097/2019) intends to create the first Portuguese Rock Art platform, which will give visibility to rock art data, metadata, images and 3D models, and make them available in open access, key to encouraging
+				their reuse in further studies and also offering the possibility of analysis in the scope of new technologies. This national Rock Art data service has considerable benefits, as it will allow digital rock art data to be safeguarded, accessible, reusable
+				and connected to international repositories. The first RARAA project aims to increase our knowledge of Iron Age rock art and the societies that created it in the Côa valley. The Côa valley has been well-known for its amazing Paleolithic rock art,
+				and classified as World Heritage in 1998. Since its discovery, over 1000 decorated rocks have been identified, with chronologies ranging from prehistory to contemporary times. The impressive number of Iron Age engravings in the Côa Valley, with no
+				parallels in the Iberian Peninsula, make them into one of the most important sites in the world regarding this chronology. Nevertheless, and despite the Iron Age being the second most important artistic phase of the Côa valley with an impressive number
+				of engraved rocks, in 20 years only 8 have been the object of archaeological recording, and only 4 have had the complete survey published. Therefore, with this project we aim to develop a real quantitative and qualitative leap regarding the last two
+				decades. In order to do so, we propose the integral study of 4 sites and the archaeological intervention of 3 sites with proto-historical occupation in the Côa valley region. The recorded data will take into account FAIR principles (Findable Accessible
+				Interoperable and Reusable) and CIDOC CRM ontology, implementing an innovative methodology. Through workshops and dissemination in seminars and digital networks, we will encourage the use of this repository to host more Rock Art data.</p>
+		</div>
+
+	</div>
+
+	<!-- BOTÃO 2, INVESTIGAÇÃO -->
+
+	<div id="txtInvestigacao" class="modal">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<span class="close_btn">&times;</span>
+			<p style="color: #FAF9F6"><br>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt
+				mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas
+				assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut
+				aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+		</div>
+
+	</div>
+
+	<!-- BOTÃO 3, EQUIPA -->
+
+	<div id="txtEquipa" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close_btn">&times;</span>
+			<p style="color: #FAF9F6"><br>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder
+				of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves
+				or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical
+				exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?</p>
+		</div>
+
+	</div>
+
+
+	<!-- BOTÃO 4, GRUPO -->
+
+	<div id="txtGrupo" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close_btn">&times;</span>
+			<p style="color: #FAF9F6"><br>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt
+				mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas
+				assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut
+				aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+		</div>
+
+	</div>
+
+	<script>
+		// Get the modal
+		var modal1 = document.getElementById("txtProjeto");
+		var modal2 = document.getElementById("txtInvestigacao");
+		var modal3 = document.getElementById("txtEquipa");
+		var modal4 = document.getElementById("txtGrupo");
+
+		// Get the button that opens the modal
+		var btn1 = document.getElementById("btn1");
+		var btn2 = document.getElementById("btn2");
+		var btn3 = document.getElementById("btn3");
+		var btn4 = document.getElementById("btn4");
+
+
+		// Get the <span> element that closes the modal
+		var span1 = document.getElementsByClassName("close_btn")[0];
+		var span2 = document.getElementsByClassName("close_btn")[1];
+		var span3 = document.getElementsByClassName("close_btn")[2];
+		var span4 = document.getElementsByClassName("close_btn")[3];
+
+		// When the user clicks the button, open the modal 
+		btn1.onclick = function() {
+			modal1.style.display = "block";
+		}
+
+		// When the user clicks the button, open the modal 
+		btn2.onclick = function() {
+			modal2.style.display = "block";
+		}
+
+		btn3.onclick = function() {
+			modal3.style.display = "block";
+		}
+
+		// When the user clicks the button, open the modal 
+		btn4.onclick = function() {
+			modal4.style.display = "block";
+		}
+
+		// When the user clicks on <span> (x), close the modal
+		span1.onclick = function() {
+			modal1.style.display = "none";
+		}
+
+		span2.onclick = function() {
+			modal2.style.display = "none";
+		}
+		// When the user clicks on <span> (x), close the modal
+		span3.onclick = function() {
+			modal3.style.display = "none";
+		}
+
+		span4.onclick = function() {
+			modal4.style.display = "none";
+		}
+
+
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal1) {
+				modal1.style.display = "none";
+			}
+			if (event.target == modal2) {
+				modal2.style.display = "none";
+			}
+			if (event.target == modal3) {
+				modal3.style.display = "none";
+			}
+			if (event.target == modal4) {
+				modal4.style.display = "none";
+			}
+		}
+	</script>
+
 </body>
 
 </html>
