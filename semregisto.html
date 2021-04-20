@@ -27,15 +27,12 @@
     <style>
         @import url(fontawesome-all.min.css);
         @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,800,800italic");
-.wrapper {
-    padding: 6em 0 4em 0;
-}
+
         #map {
-            height: 61vh;
+            height: 82vh;
             /*visibility: hidden;*/
             max-width: none;
         }
-
     </style>
 </head>
 
@@ -99,7 +96,7 @@
 
         <!-- Main -->
 
-<section id="one" class="wrapper style1 special">
+        <section id="one" class="">
             <script>
                 let map;
                 var markers = [];
@@ -152,12 +149,13 @@
                                         lng: sitio.coord_Y
                                     },
                                     id: sitio.id_sitio,
-                                    content: '<h1 id="nome_info">' + sitio.nome + '</h1>' +
+                                    content: '<div id="iw-container">' + '<div class="iw-title">' + sitio.nome + '</div>' +
                                         '<p id="nome_info">' + '<span>Morada: </span>' + sitio.lugar +
                                         ',' + sitio.freguesia1 + ',' + sitio.freguesia2 + '</p>' +
                                         '<p id="nome_info">' + '<span>Descrição: </span>' + sitio
                                         .descricao + '</p>' +
-                                        '<a href=#escondido id="a_vermais"> <input type="button" id="nome_info" onclick="verMais(' + sitio.id_sitio + ')"  value="Ver mais"></input> </a>'
+                                        '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.verMais(' + sitio.id_sitio + ')"  value="Ver mais"></input> </a>' + '</div>'
+
                                 });
 
                                 console.log(sitio.coord_Y);
@@ -175,11 +173,11 @@
                                         lng: sitio.coord_Y
                                     },
                                     id: sitio.id_sitio,
-                                    content: '<h1 id="nome_info">' + sitio.nome + '</h1>' +
+                                    content: '<div id="iw-container">' + '<div class="iw-title">' + sitio.nome + '</div>' +
                                         '<p id="nome_info">' + '<span>Morada: </span>' + sitio.lugar +
                                         ',' + sitio.freguesia1 + ',' + sitio.freguesia2 + '</p>' +
                                         '<p id="nome_info">' + '<span>Descrição: </span>' + sitio
-                                        .descricao + '</p>'
+                                        .descricao + '</p>' + '</div>'
                                 });
 
                                 console.log(sitio.coord_Y);
