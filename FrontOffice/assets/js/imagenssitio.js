@@ -1,4 +1,7 @@
-const urlBase = "https://ptsibackend.herokuapp.com/imagens"
+var id = sessionStorage.getItem('id_sitio');
+
+const urlBase = "https://ptsibackend.herokuapp.com/imagens/sitio/" + id
+
 
 window.onload = () => {
     // References to HTML objects   
@@ -22,7 +25,7 @@ window.onload = () => {
         for (const imagem of imagens) {
             strHtml += `
                 <tr>
-                    <td><a href="#" class="pop"><img src="assets/ficheiros/imagens/thumb/${imagem.ficheiro}" width="300" height="200"></a></td>
+                    <td><a href="#" class="pop"><img src="../assets/ficheiros/imagens/thumb/${imagem.ficheiro}" width="300" height="200"></a></td>
                      <td>${imagem.descricao}</td>
                      <td>${imagem.n_inventario}</td>
                      <td>${imagem.autor}</td>
@@ -38,5 +41,4 @@ window.onload = () => {
 
     renderimagens()
     
-
 }

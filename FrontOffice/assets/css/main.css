@@ -4560,6 +4560,7 @@ body.is-mobile.landing #footer {
 	cursor: pointer;
 	border-color: #293241;
 	text-align: center;
+	display: inline-block;
 }
 
 .btn_vermais:hover {
