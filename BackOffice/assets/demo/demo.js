@@ -1,6 +1,7 @@
 demo = {
-  initPickColor: function () {
-    $('.pick-class-label').click(function () {
+  
+  initPickColor: function() {
+    $('.pick-class-label').click(function() {
       var new_class = $(this).attr('new-class');
       var old_class = $('#display-buttons').attr('data-class');
       var display_div = $('#display-buttons');
@@ -13,7 +14,7 @@ demo = {
     });
   },
 
-  initDocChart: function () {
+  initDocChart: function() {
     chartColor = "#FFFFFF";
 
     ctx = document.getElementById('chartHours').getContext("2d");
@@ -94,7 +95,7 @@ demo = {
 
   },
 
-  initChartsPages: function () {
+  initChartsPages: function() {
     chartColor = "#FFFFFF";
 
     ctx = document.getElementById('chartHours').getContext("2d");
@@ -284,14 +285,14 @@ demo = {
     });
   },
 
-  initMap: function () {
+  initMap: function() {
     let map;
     var markers = [];
     var sondagens_associadas;
     var ues_associadas;
     var infoWindow;
 
-    const rendermarkers = async () => {
+    const rendermarkers = async() => {
       const response = await fetch('https://ptsibackend.herokuapp.com/sitio');
       const sitios = await response.json();
       infoWindow = new google.maps.InfoWindow();
@@ -314,7 +315,7 @@ demo = {
         // Check content
 
         if (props.content) {
-          marker.addListener('click', function () {
+          marker.addListener('click', function() {
 
             infoWindow.setContent(props.content);
             infoWindow.open(map, marker);
@@ -338,7 +339,7 @@ demo = {
               ',' + sitio.freguesia1 + ',' + sitio.freguesia2 + '</p>' +
               '<p id="nome_info">' + '<span>Descrição: </span>' + sitio
               .descricao + '</p>' +
-              '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.verMais(' + sitio.id_sitio + ')"  value="Ver mais"></input> </a>' + '</div>'
+              '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.fetches(' + sitio.id_sitio + ')"  value="Ver mais"></input> </a>' + '</div>'
           });
 
           console.log(sitio.coord_Y);
@@ -346,7 +347,8 @@ demo = {
 
 
         }
-      } else {
+      }
+      else {
         for (const sitio of sitios) {
 
           addMarker({
@@ -387,55 +389,122 @@ demo = {
       addMarker(markers[i]);
       console.log(markers.length);
     }
-
-
-
-
-
-
-
+  },
+  
+  /*---------------------------------------------------------------------------------------*/
+  
+  fetchSondagens: function(id_sitio) {
+    var sondagens = {}
+    return fetch('https://ptsibackend.herokuapp.com/sitiosondagens/' + id_sitio, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).then(result => {
+      var response = result.json();
+      sondagens = response;
+      return sondagens;
+    }).catch((error) => { return error })
   },
 
+  fetchUEs: function(id_sitio) {
+    return fetch('https://ptsibackend.herokuapp.com/sitioUEIDsitio/' + id_sitio, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).then(result => {
+      var response = result.json();
+      if (response.length == 0) {
+        let vazio = "";
+        return vazio;
+      }
+      else {
+        return response;
+      }
+    }).catch((error) => { return error })
+  },
 
+  fetchContextoGeog: function(id_sitio) {
+    var geog = {};
+    return fetch('https://ptsibackend.herokuapp.com/sitioContextoIDsitio/' + id_sitio, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).then(result => {
+      var response = result.json();
+      geog = response;
+      return geog;
+    }).catch((error) => { return error })
+  },
 
-  verMais: function (id_sitio) {
-    fetchSondagens(id_sitio).then(result => {
+  fetchContextoGeol: function(id_sitio) {
+    var geol = {};
+    return fetch('https://ptsibackend.herokuapp.com/sitiocontextogeolIDsitio/' + id_sitio, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).then(result => {
+      var response = result.json();
+      geol = response;
+      return geol;
+    }).catch((error) => { return error })
+  },
+  
+  fetches: function(id_sitio) {
+    var geog;
+    var geol;
+    var sondagens_associadas;
+    var ues_associadas;
+    
+    demo.fetchSondagens(id_sitio).then(result => {
       if (result.status != 404) {
         sondagens_associadas = result;
-      } else {
+      }
+      else {
         sondagens_associadas = "";
       }
     });
-    fetchUEs(id_sitio).then(result => {
+    demo.fetchUEs(id_sitio).then(result => {
       if (result.status != 404) {
         ues_associadas = result;
-      } else {
+      }
+      else {
         ues_associadas = "";
       }
     });
-    fetchContextoGeog(id_sitio).then(result => {
-      var geog = "";
+    demo.fetchContextoGeog(id_sitio).then(result => {
       if (result.status != 404) {
         geog = result[0];
-      } else {
+      }
+      else {
         geog = "";
       }
     });
-    fetchContextoGeol(id_sitio).then(result => {
+    demo.fetchContextoGeol(id_sitio).then(result => {
       if (result.status != 404) {
         geol = result[0];
-      } else {
+      }
+      else {
         geol = "";
       }
     });
-
-    console.log('Fetch das sondagens ainda não funciona, é necessário fazer push para o heroku')
-
+    
+    demo.verMais(geog, geol, sondagens_associadas, ues_associadas);
+    
+  },
+  
+  /*---------------------------------------------------------------------------------------*/
+  
+  verMais: function(geog, geol, sondagens_associadas, ues_associadas) {
     var x = document.getElementById("escondido");
     var txt = "<p>";
     if (geog == null || geog == "") {
       txt += "Contexto geográfico: --- </p>";
-    } else {
+    }
+    else {
       txt += " Contexto geográfico </p>";
       txt += "</br>"
       txt += "Relevo Geral: " + geog.relevo_geral;
@@ -447,7 +516,8 @@ demo = {
     }
     if (geol == null || geol == "") {
       txt += "<p>Contexto geológico: ---<br /></p>";
-    } else {
+    }
+    else {
       txt += "</br>";
       txt += "<p> Contexto geológico </p>";
       txt += "</br>"
@@ -459,7 +529,8 @@ demo = {
     txt += '<div class="dropdown">'
     if (ues_associadas == null || ues_associadas == "") {
       txt += '<button class="dropbtn"> Nenhuma UE</button>'
-    } else {
+    }
+    else {
       txt += '<button class="dropbtn"> Selecione uma UE...</button>'
       txt += '<div class="dropdown-content">'
       for (let i in ues_associadas) {
@@ -485,16 +556,15 @@ demo = {
       if (x.style.display === "none") {
 
         x.style.display = "block";
-      } else {
+      }
+      else {
         x.style.display = "none";
       }
 
     }
-  }, 
-
-
-
-  showNotification: function (from, align) {
+  },
+  
+  showNotification: function(from, align) {
     color = 'primary';
 
     $.notify({
