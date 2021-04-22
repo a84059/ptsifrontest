@@ -3639,7 +3639,7 @@ body.is-menu-visible #menu {
 	-ms-transition: background-color 0.2s ease;
 	transition: background-color 0.2s ease;
 	background-color: rgba(46, 56, 66, 1);
-	height: 3em;
+	height: 3.2em;
 	left: 0;
 	line-height: 3em;
 	position: fixed;
@@ -3674,6 +3674,8 @@ body.is-menu-visible #menu {
 	#header h1 a {
 		font-size: 0.8em;
 	}
+	
+	
 
 }
 
@@ -3788,8 +3790,9 @@ body.is-menu-visible #menu {
 
 
 
-@media screen and (max-width: 800px) {
-
+@media screen and (max-width: 900px) {
+	
+	
 	#header .btn {
 		display: block;
 	}
@@ -4709,3 +4712,9 @@ background-color: #3d5a80;
 }
 /* GALERIA */
 
+
+.transparent-style{
+
+background-color: #ffffff;
+
+}

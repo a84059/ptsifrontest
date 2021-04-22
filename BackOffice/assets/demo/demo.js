@@ -1,5 +1,5 @@
 demo = {
-  
+
   initPickColor: function() {
     $('.pick-class-label').click(function() {
       var new_class = $(this).attr('new-class');
@@ -94,7 +94,8 @@ demo = {
     });
 
   },
-
+  
+  
   initChartsPages: function() {
     chartColor = "#FFFFFF";
 
@@ -339,13 +340,8 @@ demo = {
               ',' + sitio.freguesia1 + ',' + sitio.freguesia2 + '</p>' +
               '<p id="nome_info">' + '<span>Descrição: </span>' + sitio
               .descricao + '</p>' +
-              '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.fetches(' + sitio.id_sitio + ')"  value="Ver mais"></input> </a>' + '</div>'
+              '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.fetches(' + sitio.id_sitio + ',`' + sitio.nome +'`)" value="Ver mais"></input> </a>' + '</div>'
           });
-
-          console.log(sitio.coord_Y);
-          //console.log(markers.length);
-
-
         }
       }
       else {
@@ -390,9 +386,9 @@ demo = {
       console.log(markers.length);
     }
   },
-  
+
   /*---------------------------------------------------------------------------------------*/
-  
+
   fetchSondagens: function(id_sitio) {
     var sondagens = {}
     return fetch('https://ptsibackend.herokuapp.com/sitiosondagens/' + id_sitio, {
@@ -408,6 +404,7 @@ demo = {
   },
 
   fetchUEs: function(id_sitio) {
+    var ues = {};
     return fetch('https://ptsibackend.herokuapp.com/sitioUEIDsitio/' + id_sitio, {
       method: 'GET',
       headers: {
@@ -415,13 +412,8 @@ demo = {
       },
     }).then(result => {
       var response = result.json();
-      if (response.length == 0) {
-        let vazio = "";
-        return vazio;
-      }
-      else {
-        return response;
-      }
+      ues = response;
+      return ues;
     }).catch((error) => { return error })
   },
 
@@ -436,7 +428,8 @@ demo = {
       var response = result.json();
       geog = response;
       return geog;
-    }).catch((error) => { return error })
+      
+    }).catch((error) => { return geog })
   },
 
   fetchContextoGeol: function(id_sitio) {
@@ -450,89 +443,74 @@ demo = {
       var response = result.json();
       geol = response;
       return geol;
-    }).catch((error) => { return error })
+    }).catch((error) => { return geol })
   },
-  
-  fetches: function(id_sitio) {
-    var geog;
-    var geol;
-    var sondagens_associadas;
-    var ues_associadas;
-    
-    demo.fetchSondagens(id_sitio).then(result => {
-      if (result.status != 404) {
-        sondagens_associadas = result;
-      }
-      else {
-        sondagens_associadas = "";
-      }
-    });
-    demo.fetchUEs(id_sitio).then(result => {
-      if (result.status != 404) {
-        ues_associadas = result;
-      }
-      else {
-        ues_associadas = "";
-      }
-    });
-    demo.fetchContextoGeog(id_sitio).then(result => {
-      if (result.status != 404) {
-        geog = result[0];
-      }
-      else {
-        geog = "";
-      }
-    });
-    demo.fetchContextoGeol(id_sitio).then(result => {
-      if (result.status != 404) {
-        geol = result[0];
-      }
-      else {
-        geol = "";
-      }
-    });
-    
-    demo.verMais(geog, geol, sondagens_associadas, ues_associadas);
-    
+
+  fetches: async function(id_sitio, nome) {
+    var nome = nome;
+    var geog = await (demo.fetchContextoGeog(id_sitio));
+    var geol = await (demo.fetchContextoGeol(id_sitio));
+    var sondagens_associadas = await (demo.fetchSondagens(id_sitio));
+    var ues_associadas = await (demo.fetchUEs(id_sitio));
+
+
+    demo.verMais(geog, geol, sondagens_associadas, ues_associadas, nome);
   },
-  
+
   /*---------------------------------------------------------------------------------------*/
-  
-  verMais: function(geog, geol, sondagens_associadas, ues_associadas) {
+
+  verMais: function(geog, geol, sondagens_associadas, ues_associadas, nome) {
     var x = document.getElementById("escondido");
-    var txt = "<p>";
-    if (geog == null || geog == "") {
-      txt += "Contexto geográfico: --- </p>";
+    //x.addEventListener("click", fetches);
+    var txt = "<div class='row'>";
+    txt += "<div class='col-md-12'>";
+    txt += "<div class='card'>";
+    txt += "<div class='card-header'> <h3> " + nome ;
+    txt += "</h3> </div>";
+    txt += "<div class='card-body'>"
+    if (geog.status == 404) {
+      txt += "<p>Contexto geográfico: --- </p>";
+    } else {
+      txt += " Contexto geográfico: </p>";
+      txt += "</br>"
+      txt += "Relevo Geral: " + geog[0].relevo_geral;
+      txt += "</br>"
+      txt += "Unidade de Relevo: " + geog[0].unidade_relevo;
+      txt += "</br>"
+      txt += "Local de Implantação: " + geog[0].local_implantacao;
+      txt += "</br>"
     }
-    else {
-      txt += " Contexto geográfico </p>";
-      txt += "</br>"
-      txt += "Relevo Geral: " + geog.relevo_geral;
-      txt += "</br>"
-      txt += "Unidade de Relevo: " + geog.unidade_relevo;
-      txt += "</br>"
-      txt += "Local de Implantação: " + geog.local_implantacao;
-      txt += "</br>"
-    }
-    if (geol == null || geol == "") {
+    
+    if (geol.status == 404) {
       txt += "<p>Contexto geológico: ---<br /></p>";
-    }
-    else {
+    } else {
       txt += "</br>";
-      txt += "<p> Contexto geológico </p>";
+      txt += "<p> Contexto geológico: </p>";
       txt += "</br>"
-      txt += "Substrato Geológico: " + geol.substrato_geol;
+      txt += "Substrato Geológico: " + geol[0].substrato_geol;
     }
     txt += '<div class="inner">'
     txt += '<br />'
-    txt += '<p>Sondagens associadas: ' + sondagens_associadas + '</p>'
+    if (sondagens_associadas.status == 404) {
+      txt += '<p>Sondagens associadas: --- </p>'
+    }
+    else {
+      var len = sondagens_associadas.length;
+      txt += '<p>Sondagens associadas: ';
+      for (let j = 0; j < len - 1; j++) {
+        txt += sondagens_associadas[j].designacao + ', ';
+      }
+
+      txt += sondagens_associadas[len - 1].designacao;
+      txt += '</p>';
+    }
     txt += '<div class="dropdown">'
-    if (ues_associadas == null || ues_associadas == "") {
+    if (ues_associadas.status == 404) {
       txt += '<button class="dropbtn"> Nenhuma UE</button>'
     }
     else {
-      txt += '<button class="dropbtn"> Selecione uma UE...</button>'
-      txt += '<div class="dropdown-content">'
+      txt += '<button  class="dropbtn" onclick="showDropdown()"> Selecione uma UE...</button>'
+      txt += '<div id="drop" class="dropdown-content">'
       for (let i in ues_associadas) {
 
         txt += '<a style="cursor:pointer" onclick="verMais2(' + ues_associadas[i].id_ue + ')">' + ues_associadas[i].identificacao + '</a>'
@@ -541,29 +519,18 @@ demo = {
 
       }
     }
-
     txt += '</div>'
     txt += '</div>'
-    txt += '<br />'
-    txt += '<br />'
-    txt += '<br />'
-
+    txt += "</div>";
+    txt += "</div>";
+    txt += "</div>";
+    txt += "</div>";
+    
     x.innerHTML = txt;
 
-
-    if (x.style.display == 'none' || x.style.display == '') {
-
-      if (x.style.display === "none") {
-
-        x.style.display = "block";
-      }
-      else {
-        x.style.display = "none";
-      }
-
-    }
+    x.style.display = 'block';
   },
-  
+
   showNotification: function(from, align) {
     color = 'primary';
 

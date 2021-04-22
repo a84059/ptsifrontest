@@ -3343,9 +3343,14 @@ License - nucleoapp.com/license/
   background-color: #f4f3ef;
   transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1); }
   .main-panel > .content {
-    padding: 0 30px 30px;
+    padding: 10px 10px 10px 10px;
     min-height: calc(100vh - px);
-    margin-top: 93px; }
+    margin-top: 60px; }
+  .main-panel > .content2 {
+    padding: 10px 10px 10px 10px;
+    min-height: calc(100vh - px);
+    margin-top: 60px;
+  }
   .main-panel > .navbar {
     margin-bottom: 0; }
   .main-panel .header {
