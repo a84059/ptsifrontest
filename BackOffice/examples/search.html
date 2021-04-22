@@ -95,24 +95,24 @@ Coded by www.creative-tim.com
                                     <h4>Simple Search</h4>
                                 </div>
                                 <div class="card-body ">
-                                    <form>
+                                    <form id="simpleSearchForm">
                                         <div class='row'>
                                             <div class="col-md-6 pr-1">
                                                 <div class='form-group'>
                                                     <label>Nome</label>
-                                                    <input type="text" class="form-control" placeholder="Nome">
+                                                    <input id='nome' type="text" class="form-control" placeholder="Nome">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 ">
                                                 <div class='form-group'>
                                                     <label>Freguesia</label>
-                                                    <input type="text" class="form-control" placeholder="Freguesia">
+                                                    <input id='freguesia' type="text" class="form-control" placeholder="Freguesia">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="update ml-auto mr-auto">
-                                                <button type="submit" class="btn btn-primary btn-round">Pesquisar</button>
+                                                <button onclick="simpleSearch()" class="btn btn-primary btn-round">Pesquisar</button>
                                             </div>
                                         </div>
                                     </form>
@@ -136,9 +136,8 @@ Coded by www.creative-tim.com
 
             </div>
 
-            <div class="content2" id="escondido">
+            <div class="content2" id="escondidinho"></div>
 
-            </div>
             <footer class="footer footer-black  footer-white ">
                 <div class="container-fluid">
                     <div class="row">
@@ -178,6 +177,7 @@ Coded by www.creative-tim.com
     <script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
     <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
     <script src="../assets/demo/demo.js"></script>
+    <script src="../assets/demo/search.js"></script>
     <script>
         $(document).ready(function() {
             demo.initMap();
@@ -188,6 +188,11 @@ Coded by www.creative-tim.com
         function showDropdown() {
             document.getElementById("drop").classList.toggle("show");
         }
+    </script>
+    <script>
+        $("#simpleSearchForm").submit(function(e) {
+            e.preventDefault();
+        });
     </script>
 </body>
 
