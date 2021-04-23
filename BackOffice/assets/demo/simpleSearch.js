@@ -14,7 +14,7 @@ function fetchDataPorFreguesia(freguesia) {
 
 function fetchDataPorNome(nome) {
     var data = {}
-    return fetch('https://ptsibackend.herokuapp.com/sitioPoNome/' + nome, {
+    return fetch('https://ptsibackend.herokuapp.com/sitioPorNome/' + nome, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -26,124 +26,97 @@ function fetchDataPorNome(nome) {
     }).catch((error) => { return data })
 }
 
+function verMapa(id_sitio) {
+    console.log('verMapa')
+}
+
+function isIterable(obj) {
+    if (obj == null) {
+        return false;
+    }
+    return typeof obj[Symbol.iterator] === 'function';
+}
+
+function renderTable(data) {
+    var div = document.getElementById("escondidinho");
+    var txt = `
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class='card'>
+                    <div class='card-header'> 
+                        <h4> Resultados </h4> 
+                    </div>
+                    <div class="row">
+                        <div class="col-md-11 tab">
+                            <table class="tab">
+                                <thead>
+                                    <tr>
+                                        <th> Nome </th>
+                                        <th> Ver </th>
+                                    </tr>
+                                </thead>
+                                <tbody>`
+    if (isIterable(data)) {
+        for (let result of data) {
+            txt +=
+                `<tr>
+                <td>${result.nome}</td>
+                <td><button onclick=verMapa(${result.id_sitio})></td>
+            </tr>`
+        }
+    }
+    else {
+        txt +=
+            `<tr>
+                <td>Não existem resultados para apresentar.</td>
+            </tr>`
+    }
+    txt += `</tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>`
+    div.innerHTML = txt;
+}
+
 async function simpleSearch() {
     var nome = document.getElementById("nome").value;
     var freguesia = document.getElementById("freguesia").value;
 
     if (nome == "" && freguesia == "") {
         alert("Pelo menos um dos campos da pesquisa simples tem de estar preenchido.");
+        console.log('1')
         return false;
     }
     else if (nome == "" && freguesia != "") {
 
         let dados = await fetchDataPorFreguesia(freguesia);
-
-        var div = document.getElementById("escondidinho");
-
-        var txt = "<div class='row'>";
-        txt += "<div class='col-md-12'>";
-        txt += "<div class='card'>";
-        txt += "<div class='card-header'> <h4> Resultados";
-        txt += "</h4> </div>";
-        txt += '<div class="row">';
-        txt += '<table>'
-        txt += '<thead>'
-        txt += '<tr>'
-        txt += '<th> Nome </th>'
-        txt += '<th> Ver </th>'
-        txt += '<th> Ver no Mapa </th>'
-        txt += '</tr>'
-        txt += '</thead>'
-        txt += '<tbody>'
-        for (var j in dados) {
-            txt += '<tr>'
-            txt += '<td>' + dados[j].nome + '</td>'
-            txt += '<td><button onclick=verMapa(' + dados[j].id_sitio + ')></td>'
-            txt += '</tr>'
-        }
-        txt += '</tbody>'
-        txt += '</table>'
-        txt += '</div>';
-
-
-        div.innerHTML = txt;
+        console.log('freg')
+        renderTable(dados);
     }
     else if (nome != "" && freguesia == "") {
 
         let dados = await fetchDataPorNome(nome);
-
-        var div = document.getElementById("escondidinho");
-
-        var txt = "<div class='row'>";
-        txt += "<div class='col-md-12'>";
-        txt += "<div class='card'>";
-        txt += "<div class='card-header'> <h4> Resultados";
-        txt += "</h4> </div>";
-        txt += '<div class="row">';
-        txt += '<table>'
-        txt += '<thead>'
-        txt += '<tr>'
-        txt += '<th> Nome </th>'
-        txt += '<th> Ver </th>'
-        txt += '<th> Ver no Mapa </th>'
-        txt += '</tr>'
-        txt += '</thead>'
-        txt += '<tbody>'
-        for (var j in dados) {
-            txt += '<tr>'
-            txt += '<td>' + dados[j].nome + '</td>'
-            txt += '<td><button onclick=verMapa(' + dados[j].id_sitio + ')></td>'
-            txt += '</tr>'
-        }
-        txt += '</tbody>'
-        txt += '</table>'
-        txt += '</div>';
-
-
-        div.innerHTML = txt
+        console.log('nome')
+        renderTable(dados);
     }
     else if (nome != "" && freguesia != "") {
 
-        let data = [];
+        let data = {};
         let dadosNome = await fetchDataPorNome(nome);
         let dadosFreg = await fetchDataPorFreguesia(freguesia);
 
-        for (var i in dadosNome) {
-            for (var l in dadosFreg) {
-                if (dadosNome[i] == dadosFreg[l]) {
-                    data.push(dadosNome[i]);
+        console.log('ambos')
+
+        for (var i of dadosNome) {
+            for (var l of dadosFreg) {
+                if (i.id_sitio == l.id_sitio) {
+                    data.push(i);
                 }
             }
         }
-
-        var div = document.getElementById("escondidinho");
-
-        var txt = "<div class='row'>";
-        txt += "<div class='col-md-12'>";
-        txt += "<div class='card'>";
-        txt += "<div class='card-header'> <h4> Resultados";
-        txt += "</h4> </div>";
-        txt += '<div class="row">';
-        txt += '<table>'
-        txt += '<thead>'
-        txt += '<tr>'
-        txt += '<th> Nome </th>'
-        txt += '<th> Ver </th>'
-        txt += '<th> Ver no Mapa </th>'
-        txt += '</tr>'
-        txt += '</thead>'
-        txt += '<tbody>'
-        for (var j in data) {
-            txt += '<tr>'
-            txt += '<td>' + data[j].nome + '</td>'
-            txt += '<td><button onclick=verMapa(' + data[j].id_sitio + ')></td>'
-            txt += '</tr>'
-        }
-        txt += '</tbody>'
-        txt += '</table>'
-        txt += '</div>';
-
-
-        div.innerHTML = txt
+        renderTable(data);
     }
 }
