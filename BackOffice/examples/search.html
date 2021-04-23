@@ -35,7 +35,8 @@ Coded by www.creative-tim.com
     <link href="../../FrontOffice/assets/css/main.css" />
     <link href="../BackOffice/assets/demo/demo.css" />
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-   
+    <script src="../assets/demo/selectOptions.js"></script>
+    
 </head>
 
 <body class="">
@@ -163,24 +164,34 @@ Coded by www.creative-tim.com
                                             <button class="accordion col-md-11 pr-1">Contexto Geográfico</button>
                                             <div class="panel col-md-10 pr-1">
                                                 <div class='row'>
-                                                    <div class="col-md-6 pr-1">
-                                                        <div class='form-group'>
-                                                            <label>Unidade de Relevo</label>
-                                                            <div class="dropdown">
-                                                                <span>Selecionar</span>
-                                                                <div class="dropdown-content">
-                                                                    <p>Yo</p>
+                                                    <div class='row'>
+                                                        <div class="col-md-6">
+                                                            <div class='form-group'>
+                                                                <label for="relevo_geral">Relevo Geral</label>
+                                                                <select id="relevo_geral" class="form-control" placeholder="Selecionar">
+                                                                    <option> 1 </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class='form-group'>
+                                                                <label for="un_relevo">Unidade de Relevo</label>
+                                                                <div class="dropdown">
+                                                                    <select id="un_relevo" class="form-control" placeholder="Selecionar">
+                                                                    <option> 1 </option>
+                                                                    </select>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <div class='form-group'>
-                                                            <label>Unidade de Relevo</label>
-                                                            <div class="dropdown">
-                                                                <span>Selecionar</span>
-                                                                <div class="dropdown-content">
-                                                                    <p>Yo</p>
+                                                    <div class='row'>
+                                                        <div class="col-md-6">
+                                                            <div class='form-group'>
+                                                                <label for="local_implantacao">Local de Implantação</label>
+                                                                <div class="dropdown">
+                                                                    <select id="local_implantacao"class="form-control" placeholder="Selecionar">
+                                                                    <option> 1 </option>
+                                                                    </select>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -243,9 +254,9 @@ Coded by www.creative-tim.com
     <script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
     <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
     <script src="../assets/demo/demo.js"></script>
-    <script src="../assets/demo/simpleSearch.js"></script>
-    <script src="../assets/demo/advSearch.js"></script>
+    <script src="../assets/demo/search.js"></script>
     <script src="../assets/demo/animations.js"></script>
+    
     <script>
         $(document).ready(function() {
             demo.initMap();

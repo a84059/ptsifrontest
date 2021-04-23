@@ -11,7 +11,7 @@ function fetchDataPorFreguesia(freguesia) {
         return data;
     }).catch((error) => { return data })
 }
-
+ 
 function fetchDataPorNome(nome) {
     var data = {}
     return fetch('https://ptsibackend.herokuapp.com/sitioPorNome/' + nome, {
@@ -48,11 +48,11 @@ function renderTable(data) {
                     </div>
                     <div class="row">
                         <div class="col-md-11 tab">
-                            <table class="tab">
+                            <table class="tab" style="margin-bottom: 10px">
                                 <thead>
                                     <tr>
                                         <th> Nome </th>
-                                        <th> Ver </th>
+                                        <th> Ver Mais </th>
                                     </tr>
                                 </thead>
                                 <tbody>`
@@ -61,7 +61,7 @@ function renderTable(data) {
             txt +=
                 `<tr>
                 <td>${result.nome}</td>
-                <td><button onclick=verMapa(${result.id_sitio})></td>
+                <td><button class='btn btn-primary btn-round' onclick=verMapa(${result.id_sitio})>Ver</td>
             </tr>`
         }
     }
@@ -87,29 +87,20 @@ async function simpleSearch() {
 
     if (nome == "" && freguesia == "") {
         alert("Pelo menos um dos campos da pesquisa simples tem de estar preenchido.");
-        console.log('1')
         return false;
     }
     else if (nome == "" && freguesia != "") {
-
         let dados = await fetchDataPorFreguesia(freguesia);
-        console.log('freg')
         renderTable(dados);
     }
     else if (nome != "" && freguesia == "") {
-
         let dados = await fetchDataPorNome(nome);
-        console.log('nome')
         renderTable(dados);
     }
     else if (nome != "" && freguesia != "") {
-
         let data = {};
         let dadosNome = await fetchDataPorNome(nome);
         let dadosFreg = await fetchDataPorFreguesia(freguesia);
-
-        console.log('ambos')
-
         for (var i of dadosNome) {
             for (var l of dadosFreg) {
                 if (i.id_sitio == l.id_sitio) {
