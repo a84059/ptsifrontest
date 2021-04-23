@@ -33,9 +33,9 @@ Coded by www.creative-tim.com
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet" />
     <link href="../../FrontOffice/assets/css/main.css" />
+    <link href="../BackOffice/assets/demo/demo.css" />
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <style>
-    </style>
+   
 </head>
 
 <body class="">
@@ -127,7 +127,73 @@ Coded by www.creative-tim.com
                                     <h4>Advanced Search</h4>
                                 </div>
                                 <div class="card-body ">
-                                    <div></div>
+                                    <form id="advSearchForm">
+                                        <div class='row'>
+                                            <button class="accordion col-md-11 pr-1">Informação Geral</button>
+                                            <div class="panel col-md-10 pr-1">
+                                                <div class='row'>
+                                                    <div class="col-md-6 pr-1">
+                                                        <div class='form-group'>
+                                                            <label>Nome</label>
+                                                            <input id='nome' type="text" class="form-control" placeholder="Nome">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 ">
+                                                        <div class='form-group'>
+                                                            <label>Freguesia</label>
+                                                            <input id='freguesia' type="text" class="form-control" placeholder="Freguesia">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Imagens</label>
+                                                            <input type="checkbox">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label>Modelos 3D</label>
+                                                            <input type="checkbox">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="accordion col-md-11 pr-1">Contexto Geográfico</button>
+                                            <div class="panel col-md-10 pr-1">
+                                                <div class='row'>
+                                                    <div class="col-md-6 pr-1">
+                                                        <div class='form-group'>
+                                                            <label>Unidade de Relevo</label>
+                                                            <div class="dropdown">
+                                                                <span>Selecionar</span>
+                                                                <div class="dropdown-content">
+                                                                    <p>Yo</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 ">
+                                                        <div class='form-group'>
+                                                            <label>Unidade de Relevo</label>
+                                                            <div class="dropdown">
+                                                                <span>Selecionar</span>
+                                                                <div class="dropdown-content">
+                                                                    <p>Yo</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <button class="accordion col-md-11 pr-1">Contexto Geológico</button>
+                                            <div class="panel col-md-10 pr-1">
+                                                <p>Lorem ipsum...</p>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -177,7 +243,9 @@ Coded by www.creative-tim.com
     <script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
     <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
     <script src="../assets/demo/demo.js"></script>
-    <script src="../assets/demo/search.js"></script>
+    <script src="../assets/demo/simpleSearch.js"></script>
+    <script src="../assets/demo/advSearch.js"></script>
+    <script src="../assets/demo/animations.js"></script>
     <script>
         $(document).ready(function() {
             demo.initMap();
@@ -191,6 +259,11 @@ Coded by www.creative-tim.com
     </script>
     <script>
         $("#simpleSearchForm").submit(function(e) {
+            e.preventDefault();
+        });
+    </script>
+    <script>
+        $("#advSearchForm").submit(function(e) {
             e.preventDefault();
         });
     </script>
