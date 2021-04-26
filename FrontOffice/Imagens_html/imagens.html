@@ -24,6 +24,8 @@
 	<link rel="manifest" href="manifest.json">
 	<link rel="apple-touch-icon" href="../images/icons/icon-192x192.png">
 	<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	<script defer src="script.js"></script>
+ 	 <link rel="stylesheet" href="styles.css">
 </head>
 
 
@@ -97,6 +99,7 @@
                         </div>
                 </div>
         </section>
+
         <!-- Footer -->
         <footer class="site-footer">
 		<div class="container">
@@ -136,7 +139,35 @@
 	<script src="../assets/js/carousel.js"></script>
 	<script src="../assets/js/imageHandler.js"></script>
     <script src="../assets/js/imagens.js"></script>
+ 
 
+<style>
+
+
+#lightbox {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .8);
+  display: none;
+}
+
+#lightbox.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  padding: 4px;
+  background-color: black;
+  border: 2px solid white;
+}
+</style>
 
 </body>
 
