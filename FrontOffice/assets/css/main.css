@@ -3638,11 +3638,12 @@ body.is-menu-visible #menu {
 	-webkit-transition: background-color 0.2s ease;
 	-ms-transition: background-color 0.2s ease;
 	transition: background-color 0.2s ease;
-	background-color: rgba(46, 56, 66, 1);
+/*	background-color: rgba(46, 56, 66, 1); */
 	height: 5em;
 	left: 0;
 	line-height: 3em;
-	position: fixed;
+/*	position: fixed; */
+	position:absolute;
 	top: 0;
 	width: 100%;
 	z-index: 10000;
@@ -3691,7 +3692,10 @@ body.is-menu-visible #menu {
 	line-height: inherit;
 	position: absolute;
 	right: 0;
-	top: 0;
+	top: 20%;
+	margin-top:35px;
+/*	width:100%; */
+	
 
 }
 
@@ -3700,9 +3704,14 @@ body.is-menu-visible #menu {
 	margin: 0;
 	padding: 0;
 	white-space: nowrap;
+	float: right;
 }
 
 #header nav>ul .mobile-item {
+	display: none;
+}
+
+#header nav>ul .botaoLogin {
 	display: none;
 }
 
@@ -3726,7 +3735,7 @@ body.is-menu-visible #menu {
 #header nav>ul>li>ul {
 	position: absolute;
 	top: 55%;
-	background-color: rgba(46, 56, 66, 1);
+/*	background-color: rgba(46, 56, 66, 1); */
 	/* left: 0; */
 	display: block;
 	width: 250px;
@@ -3792,20 +3801,35 @@ body.is-menu-visible #menu {
 
 @media screen and (max-width: 900px) {
 	
+	#header {
+		position: fixed;
+		background-color: #2E3842;
+		height: 4em;
+	}
+	
+	#header nav {
+		top:0;
+		margin-top: 0;
+	}
+	
+	#header nav>ul .btn_login {
+		float: inherit;
+		margin-top: 10%
+	}
 	
 	#header .btn {
 		display: block;
 	}
 
 	#header .btn.menu-btn {
-		margin-top: -40%;
+		margin-top: 35%;
 	}
 
 	#header nav>ul {
 		position: fixed;
 		height: 100vh;
 		width: 100%;
-		max-width: 200px;
+		max-width: 65%;
 		background: #2e3842;
 		display: block;
 		flex-direction: column;
@@ -3876,6 +3900,10 @@ body.is-menu-visible #menu {
 		padding-left: 20px;
 		cursor: pointer;
 		transition: all 0.3s ease;
+	}
+	
+	#header nav>ul .botaoLogin {
+		display: block;
 	}
 
 	#header nav>ul .mobile-item:hover {
@@ -4637,10 +4665,11 @@ body.is-mobile.landing #footer {
 
 .btn_login {
 	/*border: 0.8px solid black;*/
+	margin-top:0.4%;
 	border-radius: 6px;
-	background-color: transparent;
+	background-color: #2E3842;
 	color: #fff;
-	padding: 0 1.5em;
+	padding: 0 3em;
 	font-size: 0.8em;
 	letter-spacing: 0.225em;
 	cursor: pointer;

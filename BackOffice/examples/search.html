@@ -36,7 +36,7 @@ Coded by www.creative-tim.com
     <link href="../BackOffice/assets/demo/demo.css" />
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="../assets/demo/selectOptions.js"></script>
-    
+
 </head>
 
 <body class="">
@@ -189,7 +189,7 @@ Coded by www.creative-tim.com
                                                             <div class='form-group'>
                                                                 <label for="local_implantacao">Local de Implantação</label>
                                                                 <div class="dropdown">
-                                                                    <select id="local_implantacao"class="form-control" placeholder="Selecionar">
+                                                                    <select id="local_implantacao" class="form-control" placeholder="Selecionar">
                                                                     <option> 1 </option>
                                                                     </select>
                                                                 </div>
@@ -201,7 +201,31 @@ Coded by www.creative-tim.com
 
                                             <button class="accordion col-md-11 pr-1">Contexto Geológico</button>
                                             <div class="panel col-md-10 pr-1">
-                                                <p>Lorem ipsum...</p>
+                                                <div class='row'>
+                                                    <div class='row'>
+                                                        <div class="col-md-6">
+                                                            <div class='form-group'>
+                                                                <label for="relevo_geral">Substrato Geológico</label>
+                                                                <select id="substrato_geol" class="form-control" placeholder="Selecionar">
+                                                                    <option> 1 </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class='form-group'>
+                                                                <label for="un_relevo">Material</label>
+                                                                <select id="material" class="form-control" placeholder="Selecionar">
+                                                                    <option> 1 </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="update ml-auto mr-auto">
+                                                <button onclick="advSearch()" class="btn btn-primary btn-round">Pesquisar</button>
                                             </div>
                                         </div>
                                     </form>
@@ -210,7 +234,13 @@ Coded by www.creative-tim.com
                         </div>
                     </div>
                 </div>
-
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <button class="btn btn-primary btn-round">Descarregar resultados</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="content2" id="escondidinho"></div>
@@ -256,7 +286,7 @@ Coded by www.creative-tim.com
     <script src="../assets/demo/demo.js"></script>
     <script src="../assets/demo/search.js"></script>
     <script src="../assets/demo/animations.js"></script>
-    
+
     <script>
         $(document).ready(function() {
             demo.initMap();

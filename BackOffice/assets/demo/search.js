@@ -98,7 +98,7 @@ async function simpleSearch() {
         renderTable(dados);
     }
     else if (nome != "" && freguesia != "") {
-        let data = {};
+        let data = [];
         let dadosNome = await fetchDataPorNome(nome);
         let dadosFreg = await fetchDataPorFreguesia(freguesia);
         for (var i of dadosNome) {
@@ -110,4 +110,8 @@ async function simpleSearch() {
         }
         renderTable(data);
     }
+}
+
+async function advSearch() {
+    console.log('Pesquisa Avançada')
 }
