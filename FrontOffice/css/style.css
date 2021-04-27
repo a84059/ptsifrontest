@@ -168,7 +168,7 @@ input:-moz-placeholder { /* Firefox 18- */
 	line-height: inherit;
 	position: absolute;
 	right: 0;
-	top: 1;
+	top: 20%;
 	border: 0;
     color: #fff;
     display: block;
@@ -205,7 +205,7 @@ input:-moz-placeholder { /* Firefox 18- */
     -ms-transition: background-color 0.2s ease;
     transition: background-color 0.2s ease;
     background: #293241;
-    height: 3em;
+    height: 5em;
     left: 0;
     line-height: 3em;
     position: fixed;

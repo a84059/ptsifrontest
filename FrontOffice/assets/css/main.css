@@ -4752,3 +4752,27 @@ background-color: #3d5a80;
 background-color: #ffffff;
 
 }
+
+/* BOTÕES GALERIA*/
+
+.botoesGaleria {
+	display: flex; 
+    justify-content: space-evenly;
+    margin-top: 5%;
+}
+
+.stopOverflowing {
+	flex-direction: column;
+	display: flex;
+}
+
+
+/* Botão home */
+
+.btnHome {
+	float:right; 
+	color: #293241; 
+	margin-top: 0.8em; 
+	margin-right: 0.8em; 
+	font-size: 0.8em;
+}
