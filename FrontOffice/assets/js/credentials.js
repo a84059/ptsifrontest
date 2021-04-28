@@ -26,7 +26,7 @@ async function requestLogin() {
         timer: 1500
       })
       sessionStorage.setItem('email', email);
-      window.setTimeout(function() { window.location.replace("BackOffice/examples/map.html") }, 1700);BackOffice/examples/map.html
+      window.setTimeout(function() { window.location.replace("index_login.html") }, 1700);index_login.html
     }
     else {
       Swal.fire({
@@ -185,3 +185,4 @@ function requestRegister() {
     })
   });
   */
+  

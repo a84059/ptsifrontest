@@ -4679,6 +4679,10 @@ body.is-mobile.landing #footer {
 	float: right;
 }
 
+.btn_login a {
+	text-decoration: none!important;
+}
+
 
 
 .divcontent {
