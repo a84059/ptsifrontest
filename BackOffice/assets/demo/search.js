@@ -26,10 +26,6 @@ function fetchDataPorNome(nome) {
     }).catch((error) => { return data })
 }
 
-function verMapa(id_sitio) {
-    console.log('verMapa')
-}
-
 function isIterable(obj) {
     if (obj == null) {
         return false;
@@ -82,8 +78,8 @@ function renderTable(data) {
 }
 
 async function simpleSearch() {
-    var nome = document.getElementById("nome").value;
-    var freguesia = document.getElementById("freguesia").value;
+    var nome = document.getElementById("nome1").value;
+    var freguesia = document.getElementById("freguesia1").value;
 
     if (nome == "" && freguesia == "") {
         alert("Pelo menos um dos campos da pesquisa simples tem de estar preenchido.");
@@ -113,5 +109,28 @@ async function simpleSearch() {
 }
 
 async function advSearch() {
-    console.log('Pesquisa Avançada')
+    var nome = document.getElementById("nome2").value;
+    var freguesia = document.getElementById("freguesia2").value;
+    var img = document.getElementById("img").checked;
+    var m3d = document.getElementById("m3d").checked;
+    var relevo_geral = document.getElementById("relevo_geral").value;
+    var un_relevo = document.getElementById("un_relevo").value;
+    var local_implantacao = document.getElementById("local_implantacao").value;
+    var substrato_geol = document.getElementById("substrato_geol").value;
+    var material = document.getElementById("material").value;
+    
+    var arrinit = [nome, freguesia, img, m3d, relevo_geral, un_relevo, local_implantacao, substrato_geol, material];
+    
+    var arrfinal = arrinit.filter(i => i != false && i != "0"); 
+    var data = {};
+    
+    for (let i of arrfinal) {
+        
+    }
+    
+    console.log(data)
+}
+
+function verMapa(id_sitio) {
+    window.location.replace("./map.html")
 }
