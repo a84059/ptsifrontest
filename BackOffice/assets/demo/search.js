@@ -128,9 +128,10 @@ async function advSearch() {
         
     }
     
-    console.log(data)
+    console.log(arrfinal)
 }
 
 function verMapa(id_sitio) {
-    window.location.replace("./map.html")
+    window.localStorage.setItem('sitio',id_sitio)
+    window.location.replace("./sitioIndividual.html");
 }

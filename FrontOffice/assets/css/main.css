@@ -3797,7 +3797,12 @@ body.is-menu-visible #menu {
 
 }
 
-
+#header .casinha{
+	top: 0;
+	margin-top: 0;
+	width:100%;
+	
+}
 
 @media screen and (max-width: 900px) {
 	
@@ -3805,6 +3810,11 @@ body.is-menu-visible #menu {
 		position: fixed;
 		background-color: #2E3842;
 		height: 4em;
+	}
+	
+	#header .background {
+		background-color: #FAF9F6;
+		height: 3em;
 	}
 	
 	#header nav {
@@ -4780,3 +4790,5 @@ background-color: #ffffff;
 	margin-right: 0.8em; 
 	font-size: 0.8em;
 }
+
+

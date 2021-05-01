@@ -386,6 +386,103 @@ demo = {
       console.log(markers.length);
     }
   },
+  
+  initMap2: function(id_sitio) {
+    let map;
+    var markers = [];
+    var sondagens_associadas;
+    var ues_associadas;
+    var infoWindow;
+
+    const rendermarkers = async() => {
+      const response = await fetch('https://ptsibackend.herokuapp.com/sitio/'+id_sitio);
+      const sitios = await response.json();
+      infoWindow = new google.maps.InfoWindow();
+
+      function addMarker(props) {
+        var marker = new google.maps.Marker({
+          position: props.coords,
+          map: map,
+          //icon:props.iconImage
+        });
+
+
+        // Check for customicon
+        if (props.iconImage) {
+          // Set icon image
+          marker.setIcon(props.iconImage);
+        }
+
+
+        // Check content
+
+        if (props.content) {
+          marker.addListener('click', function() {
+
+            infoWindow.setContent(props.content);
+            infoWindow.open(map, marker);
+          });
+        }
+      }
+
+      var email = sessionStorage.getItem('email');
+
+
+      if (email != "") {
+        for (const sitio of sitios) {
+          addMarker({
+            coords: {
+              lat: sitio.coord_X,
+              lng: sitio.coord_Y
+            },
+            id: sitio.id_sitio,
+            content: '<div id="iw-container">' + '<div class="iw-title">' + sitio.nome + '</div>' +
+              '<p id="nome_info">' + '<span>Morada: </span>' + sitio.lugar +
+              ',' + sitio.freguesia1 + ',' + sitio.freguesia2 + '</p>' +
+              '<p id="nome_info">' + '<span>Descrição: </span>' + sitio
+              .descricao + '</p>' +
+              '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.fetches(' + sitio.id_sitio + ',`' + sitio.nome +'`)" value="Ver mais"></input> </a>' + '</div>'
+          });
+        }
+      }
+      else {
+        for (const sitio of sitios) {
+
+          addMarker({
+            coords: {
+              lat: sitio.coord_X,
+              lng: sitio.coord_Y
+            },
+            id: sitio.id_sitio,
+            content: '<div id="iw-container">' + '<div class="iw-title">' + sitio.nome + '</div>' +
+              '<p id="nome_info">' + '<span>Morada: </span>' + sitio.lugar +
+              ',' + sitio.freguesia1 + ',' + sitio.freguesia2 + '</p>' +
+              '<p id="nome_info">' + '<span>Descrição: </span>' + sitio
+              .descricao + '</p>' + '</div>'
+          });
+        }
+      }
+    }
+    rendermarkers();
+    //New map
+
+    map = new google.maps.Map(document.getElementById("map2"), {
+      center: {
+        lat: 41.079879,
+        lng: -7.115524
+      },
+      zoom: 9,
+      gestureHandling: 'greedy'
+    });
+
+
+    //Loop through markers
+
+    for (var i = 0; i < markers.length; i++) {
+      addMarker(markers[i]);
+      console.log(markers.length);
+    }
+  },
 
   /*---------------------------------------------------------------------------------------*/
 
