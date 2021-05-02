@@ -9,7 +9,6 @@ window.onload = () => {
           <thead>
            <tr>
            <td>Nome</td>
-           <td>Descrição</td>
            <td>Imagens</td>
            </tr>
           </thead>
@@ -20,7 +19,6 @@ window.onload = () => {
             strHtml += `
                 <tr>
                     <td>${sitio.nome}</td>
-                     <td>${sitio.descrição}</td>
                      <td><button class="btn_vermais" id = ${sitio.id_sitio} name=btnimagens onclick="reply_click(this.id)">Ver Imagens</td>
 
                 </tr>

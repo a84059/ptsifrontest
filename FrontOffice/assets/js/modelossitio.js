@@ -13,7 +13,6 @@ window.onload = () => {
            <tr>
            <td>Ficheiro</td>
            <td>Descrição</td>
-           <td>Inventário</td>
            <td>Autor</td>
            </tr>
           </thead>
@@ -25,7 +24,6 @@ window.onload = () => {
                 <tr>
                     <td><iframe title="Termas Bracara Fase IV" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="fullscreen; autoplay; vr" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="${modelo.ficheiro}"></iframe></td>
                      <td>${modelo.descricao}</td>
-                     <td>${modelo.n_inventario}</td>
                      <td>${modelo.autor}</td>
                 </tr>
                 

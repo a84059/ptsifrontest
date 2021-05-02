@@ -13,10 +13,7 @@ window.onload = () => {
            <tr>
            <td>Imagem</td>
            <td>Descrição</td>
-           <td>Inventário</td>
            <td>Autor</td>
-           <td>Data</td>
-           <td>Objeto</td>
            </tr>
           </thead>
         `
@@ -27,10 +24,7 @@ window.onload = () => {
                 <tr>
                     <td><a href="#" class="pop"><img src="../assets/ficheiros/imagens/megathumb/${imagem.ficheiro}" width="300" height="200"></a></td>
                      <td>${imagem.descricao}</td>
-                     <td>${imagem.n_inventario}</td>
                      <td>${imagem.autor}</td>
-                     <td>${imagem.data}</td>
-                     <td>${imagem.objecto}</td>
                 </tr>
                 
             `
