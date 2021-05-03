@@ -91,6 +91,12 @@
                                     infoWindow.open(map, marker);
                                 });
                             }
+                            
+                            marker.addListener('mouseover', function() {
+                            infoWindow.setContent(props.hover);
+                            infoWindow.open(map, this);
+                                                           });
+                   
                         }
 
                         var email = sessionStorage.getItem('email');
@@ -109,7 +115,8 @@
                                         ',' + sitio.freguesia1 + ',' + sitio.freguesia2 + '</p>' +
                                         '<p id="nome_info">' + '<span>Descrição: </span>' + sitio
                                         .descricao + '</p>' +
-                                        '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.verMais(' + sitio.id_sitio + ')"  value="Ver mais"></input> </a>' + '</div>'     
+                                        '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.verMais(' + sitio.id_sitio + ')"  value="Ver mais"></input> </a>' + '</div>',     
+                                    hover: '<p>' + sitio.nome + '</p>'
                                 });
 
                                 console.log(sitio.coord_Y);
@@ -131,7 +138,8 @@
                                         '<p id="nome_info">' + '<span>Morada: </span>' + sitio.lugar +
                                         ',' + sitio.freguesia1 + ',' + sitio.freguesia2 + '</p>' +
                                         '<p id="nome_info">' + '<span>Descrição: </span>' + sitio
-                                        .descricao + '</p>' + '</div>'
+                                        .descricao + '</p>' + '</div>',
+                                    hover: '<div style="opacity:1">''<p>' + sitio.nome + '</p>' + '</div>'
                                 });
 
                                 console.log(sitio.coord_Y);

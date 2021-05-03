@@ -322,6 +322,11 @@ demo = {
             infoWindow.open(map, marker);
           });
         }
+        
+        marker.addListener('mouseover', function() {
+                            infoWindow.setContent(props.hover);
+                            infoWindow.open(map, this);
+                                                           });
       }
 
       var email = sessionStorage.getItem('email');
@@ -340,7 +345,10 @@ demo = {
               ',' + sitio.freguesia1 + ',' + sitio.freguesia2 + '</p>' +
               '<p id="nome_info">' + '<span>Descrição: </span>' + sitio
               .descricao + '</p>' +
-              '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.fetches(' + sitio.id_sitio + ',`' + sitio.nome + '`)" value="Ver mais"></input> </a>' + '</div>'
+              '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.fetches(' + sitio.id_sitio + ',`' + sitio.nome + '`)" value="Ver mais"></input> </a>' + '</div>',
+            hover: '<p>' + sitio.nome + '</p>'
+            
+            
           });
         }
       }
