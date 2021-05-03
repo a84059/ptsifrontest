@@ -17,6 +17,7 @@ window.onload = () => {
 
         var freguesia = `<option value="0"> Selecionar... </option>`
         
+        
         for (let i of resultsGeog) {
             geog_txtRelGeral += `<option value='${i.relevo_geral}'>${i.relevo_geral}</option>`
             geog_txtUnRelevo += `<option value='${i.unidade_relevo}'>${i.unidade_relevo}</option>`

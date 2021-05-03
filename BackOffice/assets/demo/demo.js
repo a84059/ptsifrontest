@@ -643,6 +643,10 @@ demo = {
         align: align
       }
     });
+  },
+  
+  initInfos: function(id_sitio) {
+    console.log('initInfos')
   }
-
+  
 };

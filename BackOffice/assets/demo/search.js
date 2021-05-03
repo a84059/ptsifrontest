@@ -1,3 +1,5 @@
+var id_sitio;
+
 function fetchDataPorFreguesia(freguesia) {
     var data = {}
     return fetch('https://ptsibackend.herokuapp.com/sitioPorFreguesia/' + freguesia, {
