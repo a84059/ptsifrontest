@@ -94,8 +94,8 @@ demo = {
     });
 
   },
-  
-  
+
+
   initChartsPages: function() {
     chartColor = "#FFFFFF";
 
@@ -340,7 +340,7 @@ demo = {
               ',' + sitio.freguesia1 + ',' + sitio.freguesia2 + '</p>' +
               '<p id="nome_info">' + '<span>Descrição: </span>' + sitio
               .descricao + '</p>' +
-              '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.fetches(' + sitio.id_sitio + ',`' + sitio.nome +'`)" value="Ver mais"></input> </a>' + '</div>'
+              '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.fetches(' + sitio.id_sitio + ',`' + sitio.nome + '`)" value="Ver mais"></input> </a>' + '</div>'
           });
         }
       }
@@ -386,7 +386,7 @@ demo = {
       console.log(markers.length);
     }
   },
-  
+
   initMap2: function(id_sitio) {
     let map;
     var markers = [];
@@ -395,7 +395,7 @@ demo = {
     var infoWindow;
 
     const rendermarkers = async() => {
-      const response = await fetch('https://ptsibackend.herokuapp.com/sitio/'+id_sitio);
+      const response = await fetch('https://ptsibackend.herokuapp.com/sitio/' + id_sitio);
       const sitios = await response.json();
       infoWindow = new google.maps.InfoWindow();
 
@@ -441,7 +441,7 @@ demo = {
               ',' + sitio.freguesia1 + ',' + sitio.freguesia2 + '</p>' +
               '<p id="nome_info">' + '<span>Descrição: </span>' + sitio
               .descricao + '</p>' +
-              '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.fetches(' + sitio.id_sitio + ',`' + sitio.nome +'`)" value="Ver mais"></input> </a>' + '</div>'
+              '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.fetches(' + sitio.id_sitio + ',`' + sitio.nome + '`)" value="Ver mais"></input> </a>' + '</div>'
           });
         }
       }
@@ -525,7 +525,7 @@ demo = {
       var response = result.json();
       geog = response;
       return geog;
-      
+
     }).catch((error) => { return geog })
   },
 
@@ -549,11 +549,23 @@ demo = {
     var geol = await (demo.fetchContextoGeol(id_sitio));
     var sondagens_associadas = await (demo.fetchSondagens(id_sitio));
     var ues_associadas = await (demo.fetchUEs(id_sitio));
-
-
     demo.verMais(geog, geol, sondagens_associadas, ues_associadas, nome);
   },
 
+  fetchMateriais: function(id_sitio) {
+    var url = 'https://ptsibackend.herokuapp.com/materiais/sitio/'
+    var materiais = {}
+    return fetch(url + id_sitio, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).then(result => {
+      var response = result.json();
+      materiais = response;
+      return materiais
+    }).catch((error) => { return materiais })
+  },
   /*---------------------------------------------------------------------------------------*/
 
   verMais: function(geog, geol, sondagens_associadas, ues_associadas, nome) {
@@ -562,12 +574,13 @@ demo = {
     var txt = "<div class='row'>";
     txt += "<div class='col-md-12'>";
     txt += "<div class='card'>";
-    txt += "<div class='card-header'> <h3> " + nome ;
+    txt += "<div class='card-header'> <h3> " + nome;
     txt += "</h3> </div>";
     txt += "<div class='card-body'>"
     if (geog.status == 404) {
       txt += "<p>Contexto geográfico: --- </p>";
-    } else {
+    }
+    else {
       txt += " Contexto geográfico: </p>";
       txt += "</br>"
       txt += "Relevo Geral: " + geog[0].relevo_geral;
@@ -577,10 +590,11 @@ demo = {
       txt += "Local de Implantação: " + geog[0].local_implantacao;
       txt += "</br>"
     }
-    
+
     if (geol.status == 404) {
       txt += "<p>Contexto geológico: ---<br /></p>";
-    } else {
+    }
+    else {
       txt += "</br>";
       txt += "<p> Contexto geológico: </p>";
       txt += "</br>"
@@ -622,7 +636,7 @@ demo = {
     txt += "</div>";
     txt += "</div>";
     txt += "</div>";
-    
+
     x.innerHTML = txt;
 
     x.style.display = 'block';
@@ -644,9 +658,19 @@ demo = {
       }
     });
   },
-  
-  initInfos: function(id_sitio) {
-    console.log('initInfos')
+
+  initInfos: async function(id_sitio) {
+    var materiais = await demo.fetchMateriais(id_sitio);
+
+    var txt = `
+    <div class='row'>
+        <div class='col-md-6'>
+          <p>Nº de Inventário: ${materiais[0].n_inventario}</p>
+        </div>
+    </div>
+    `;
+
+    document.getElementById('infoBody').innerHTML = txt;
   }
-  
+
 };
