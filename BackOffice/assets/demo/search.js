@@ -113,24 +113,37 @@ async function simpleSearch() {
 async function advSearch() {
     var nome = document.getElementById("nome2").value;
     var freguesia = document.getElementById("freguesia2").value;
-    var img = document.getElementById("img").checked;
-    var m3d = document.getElementById("m3d").checked;
     var relevo_geral = document.getElementById("relevo_geral").value;
     var un_relevo = document.getElementById("un_relevo").value;
     var local_implantacao = document.getElementById("local_implantacao").value;
     var substrato_geol = document.getElementById("substrato_geol").value;
     var material = document.getElementById("material").value;
     
-    var arrinit = [nome, freguesia, img, m3d, relevo_geral, un_relevo, local_implantacao, substrato_geol, material];
+    var nome_val, freguesia_val, img_val, m3d_val, relevo_geral_val, un_relevo_val, local_implantacao_val, substrato_geol_val, material_val;
     
-    var arrfinal = arrinit.filter(i => i != false && i != "0"); 
-    var data = {};
-    
-    for (let i of arrfinal) {
-        
+    var resp;
+    if(nome != 0){
+        resp = await fetch('https://ptsibackend.herokuapp.com/sitioPorNome/' + nome)
+    }
+    if(freguesia != 0){
+        resp = await fetch('https://ptsibackend.herokuapp.com/sitioPorFreguesia/' + freguesia)
+    }
+    if(relevo_geral != 0){
+        resp = await fetch('https://ptsibackend.herokuapp.com/sitioPorNome/' + nome)
+    }
+    if(un_relevo != 0){
+        resp = await fetch('https://ptsibackend.herokuapp.com/sitioPorNome/' + nome)
+    }
+    if(local_implantacao != 0){
+        resp = await fetch('https://ptsibackend.herokuapp.com/sitioPorNome/' + nome)
+    }
+    if(substrato_geol != 0){
+        resp = await fetch('https://ptsibackend.herokuapp.com/sitioPorNome/' + nome)
+    }
+    if(material != 0){
+        resp = await fetch('https://ptsibackend.herokuapp.com/sitioPorNome/' + nome)
     }
     
-    console.log(arrfinal)
 }
 
 function verMapa(id_sitio) {

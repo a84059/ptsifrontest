@@ -322,11 +322,11 @@ demo = {
             infoWindow.open(map, marker);
           });
         }
-        
+
         marker.addListener('mouseover', function() {
-                            infoWindow.setContent(props.hover);
-                            infoWindow.open(map, this);
-                                                           });
+          infoWindow.setContent(props.hover);
+          infoWindow.open(map, this);
+        });
       }
 
       var email = sessionStorage.getItem('email');
@@ -347,8 +347,8 @@ demo = {
               .descricao + '</p>' +
               '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.fetches(' + sitio.id_sitio + ',`' + sitio.nome + '`)" value="Ver mais"></input> </a>' + '</div>',
             hover: '<p>' + sitio.nome + '</p>'
-            
-            
+
+
           });
         }
       }
@@ -560,20 +560,6 @@ demo = {
     demo.verMais(geog, geol, sondagens_associadas, ues_associadas, nome);
   },
 
-  fetchMateriais: function(id_sitio) {
-    var url = 'https://ptsibackend.herokuapp.com/materiais/sitio/'
-    var materiais = {}
-    return fetch(url + id_sitio, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    }).then(result => {
-      var response = result.json();
-      materiais = response;
-      return materiais
-    }).catch((error) => { return materiais })
-  },
   /*---------------------------------------------------------------------------------------*/
 
   verMais: function(geog, geol, sondagens_associadas, ues_associadas, nome) {
@@ -667,17 +653,87 @@ demo = {
     });
   },
 
+  fetchMateriais: function(id_sitio) {
+    var url = 'https://ptsibackend.herokuapp.com/materiais/sitio/'
+    var materiais = {}
+    return fetch(url + id_sitio, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).then(result => {
+      var response = result.json();
+      materiais = response;
+      return materiais
+    }).catch((error) => { return materiais })
+  },
+  
+  fetchSondagem: function(id_sondagem) {
+    var url = 'https://ptsibackend.herokuapp.com/sondagem/'
+    var sondagem = {}
+    return fetch(url + id_sondagem, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).then(result => {
+      var response = result.json();
+      sondagem = response;
+      return sondagem
+    }).catch((error) => { return sondagem })
+  },
+  
+  fetchRocha: function(id_material) {
+    var url = 'https://ptsibackend.herokuapp.com/materiais/rocha/'
+    var rocha = {}
+    return fetch(url + id_material, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).then(result => {
+      var response = result.json();
+      rocha = response;
+      return rocha
+    }).catch((error) => { return rocha })
+  },
+  
   initInfos: async function(id_sitio) {
     var materiais = await demo.fetchMateriais(id_sitio);
+    
+    var txt=``;
 
-    var txt = `
-    <div class='row'>
-        <div class='col-md-6'>
-          <p>Nº de Inventário: ${materiais[0].n_inventario}</p>
-        </div>
-    </div>
-    `;
-
+    for (var i in materiais) {
+      var sondagem = await demo.fetchSondagem(materiais[i].id_sondagem)
+      var materialEspecifico;
+      if(materiais[i].tipo == "Pedra") {
+        materialEspecifico = await demo.fetchRocha(materiais[i].id_material);
+      }
+      txt += `<div class='row'>
+                <div class='col-md-12'>
+                  <p class='p-material'><b>Nº de Inventário:</b> ${materiais[i].n_inventario}</p>
+                  <div class='row'>
+                    <div class='col-md-6'>
+                      <p><b>Sondagem:</b> ${sondagem[0].designacao}</p>
+                      <br>
+                      <p><b>UE: </b></p>
+                      <p>Coordenada X: ${materiais[i].coordenada_x}</p>
+                      <p>Coordenada Y: ${materiais[i].coordenada_y}</p>
+                      <p>Cota: ${materiais[i].coordenada_z}</p>
+                      <br>
+                      <p><b>Conservação:</b> ${materialEspecifico[0].conservacao}</p>
+                      <br>
+                      <p><b>Comprimento: </b>${materialEspecifico[0].comprimento}</p>
+                      <p><b>Largura: </b>${materialEspecifico[0].largura}</p>
+                      <p><b>Espessura: </b>${materialEspecifico[0].espessura}</p>
+                      <br>
+                    </div>
+                    <div class='col-md-6'>
+                    </div>
+                  </div>
+                </div>
+              </div>`
+    }
     document.getElementById('infoBody').innerHTML = txt;
   }
 
