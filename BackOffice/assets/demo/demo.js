@@ -304,6 +304,7 @@ demo = {
           map: map,
           //icon:props.iconImage
         });
+        var isMouseOver = false;
 
 
         // Check for customicon
@@ -320,13 +321,20 @@ demo = {
 
             infoWindow.setContent(props.content);
             infoWindow.open(map, marker);
+            isMouseOver=false;
           });
         }
 
         marker.addListener('mouseover', function() {
           infoWindow.setContent(props.hover);
           infoWindow.open(map, this);
+          isMouseOver = true;
         });
+        if(isMouseOver){
+           marker.addListener('mouseout', function() {
+              infoWindow.close();
+          });
+        }
       }
 
       var email = sessionStorage.getItem('email');
@@ -345,7 +353,7 @@ demo = {
               ',' + sitio.freguesia1 + ',' + sitio.freguesia2 + '</p>' +
               '<p id="nome_info">' + '<span>Descrição: </span>' + sitio
               .descricao + '</p>' +
-              '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.fetches(' + sitio.id_sitio + ',`' + sitio.nome + '`)" value="Ver mais"></input> </a>' + '</div>',
+              '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.verMais(' + sitio.id_sitio + ')" value="Ver mais"></input> </a>' + '</div>',
             hover: '<h5 style="text-align: center">' + sitio.nome + '</h5>'
 
 
@@ -449,7 +457,7 @@ demo = {
               ',' + sitio.freguesia1 + ',' + sitio.freguesia2 + '</p>' +
               '<p id="nome_info">' + '<span>Descrição: </span>' + sitio
               .descricao + '</p>' +
-              '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.fetches(' + sitio.id_sitio + ',`' + sitio.nome + '`)" value="Ver mais"></input> </a>' + '</div>'
+              '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.verMais(' + sitio.id_sitio + ')" value="Ver mais"></input> </a>' + '</div>'
           });
         }
       }
@@ -562,78 +570,9 @@ demo = {
 
   /*---------------------------------------------------------------------------------------*/
 
-  verMais: function(geog, geol, sondagens_associadas, ues_associadas, nome) {
-    var x = document.getElementById("escondido");
-    //x.addEventListener("click", fetches);
-    var txt = "<div class='row'>";
-    txt += "<div class='col-md-12'>";
-    txt += "<div class='card'>";
-    txt += "<div class='card-header'> <h3> " + nome;
-    txt += "</h3> </div>";
-    txt += "<div class='card-body'>"
-    if (geog.status == 404) {
-      txt += "<p>Contexto geográfico: --- </p>";
-    }
-    else {
-      txt += " Contexto geográfico: </p>";
-      txt += "</br>"
-      txt += "Relevo Geral: " + geog[0].relevo_geral;
-      txt += "</br>"
-      txt += "Unidade de Relevo: " + geog[0].unidade_relevo;
-      txt += "</br>"
-      txt += "Local de Implantação: " + geog[0].local_implantacao;
-      txt += "</br>"
-    }
-
-    if (geol.status == 404) {
-      txt += "<p>Contexto geológico: ---<br /></p>";
-    }
-    else {
-      txt += "</br>";
-      txt += "<p> Contexto geológico: </p>";
-      txt += "</br>"
-      txt += "Substrato Geológico: " + geol[0].substrato_geol;
-    }
-    txt += '<div class="inner">'
-    txt += '<br />'
-    if (sondagens_associadas.status == 404) {
-      txt += '<p>Sondagens associadas: --- </p>'
-    }
-    else {
-      var len = sondagens_associadas.length;
-      txt += '<p>Sondagens associadas: ';
-      for (let j = 0; j < len - 1; j++) {
-        txt += sondagens_associadas[j].designacao + ', ';
-      }
-
-      txt += sondagens_associadas[len - 1].designacao;
-      txt += '</p>';
-    }
-    txt += '<div class="dropdown">'
-    if (ues_associadas.status == 404) {
-      txt += '<button class="dropbtn"> Nenhuma UE</button>'
-    }
-    else {
-      txt += '<button  class="dropbtn" onclick="showDropdown()"> Selecione uma UE...</button>'
-      txt += '<div id="drop" class="dropdown-content">'
-      for (let i in ues_associadas) {
-
-        txt += '<a style="cursor:pointer" onclick="verMais2(' + ues_associadas[i].id_ue + ')">' + ues_associadas[i].identificacao + '</a>'
-
-        txt += '<a onclick="verMais2(' + ues_associadas[i].id_ue + ')">' + ues_associadas[i].identificacao + '</a>'
-
-      }
-    }
-    txt += '</div>'
-    txt += '</div>'
-    txt += "</div>";
-    txt += "</div>";
-    txt += "</div>";
-    txt += "</div>";
-
-    x.innerHTML = txt;
-
-    x.style.display = 'block';
+  verMais: function(id_sitio) {
+    window.localStorage.setItem('sitio', id_sitio)
+    window.location.replace("./sitioIndividual.html");
   },
 
   showNotification: function(from, align) {
@@ -667,7 +606,7 @@ demo = {
       return materiais
     }).catch((error) => { return materiais })
   },
-  
+
   fetchMaterial: function(id_material) {
     var url = 'https://ptsibackend.herokuapp.com/materiais/'
     var material = {}
@@ -713,6 +652,36 @@ demo = {
     }).catch((error) => { return rocha })
   },
 
+  fetchImagens: function(id_material) {
+    var url = 'https://ptsibackend.herokuapp.com/imagens/material/'
+    var imagens = {}
+    return fetch(url + id_material, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).then(result => {
+      var response = imagens.json();
+      imagens = response;
+      return imagens
+    }).catch((error) => { return imagens })
+  },
+  
+  fetchMotivos: function(id_material) {
+    var url = `https://ptsibackend.herokuapp.com/materiais/rocha_motivo/material/${id_material}`
+    var motivos = {}
+    return fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).then(result => {
+      var response = motivos.json();
+      motivos = response;
+      return motivos
+    }).catch((error) => { return motivos })
+  },
+
   initInfos: async function(id_sitio) {
     var materiais = await demo.fetchMateriais(id_sitio);
 
@@ -734,38 +703,100 @@ demo = {
         <td style="text-align:center">${materialEspecifico[0].largura}</td>
         <td style="text-align:center">${materialEspecifico[0].espessura}</td>
         <td style="text-align:center">
-          <button class='btn btn-primary btn-round' onclick="demo.verMaisInfos('${materiais[i].id_material},${materialEspecifico}')">Ver</button>
+          <button class='btn btn-primary btn-round' onclick="demo.verMaisInfos(
+          '${materiais[i].id_material}',
+          '${materialEspecifico[0].morfologia_sup}',
+          '${materialEspecifico[0].asp_sup}',
+          '${materialEspecifico[0].termo}',
+          '${materialEspecifico[0].tipologia}',
+          '${materialEspecifico[0].litologia}',
+          '${materialEspecifico[0].forma}',
+          '${materialEspecifico[0].fissuras}',
+          '${materialEspecifico[0].n_faces}',
+          '${materialEspecifico[0].remontagem}'
+          )">Ver</button>
         </td>
       </tr>
       `
     }
     document.getElementById('infoBody').innerHTML = txt;
   },
-
-  verMaisInfos: async function(id_material, tipo) {
-    var txtDesc = ``;
-    var txtMotivos = ``;
-    var materialEspecifico
-    
-    if (tipo == "Pedra") {
-        materialEspecifico = await demo.fetchRocha(id_material);
+  
+  isIterable: function(obj) {
+    if (obj == null) {
+        return false;
     }
-    
-    console.log(materialEspecifico)
-    
+    return typeof obj[Symbol.iterator] === 'function';
+  },
+
+  verMaisInfos: async function(id_material, morf_sup, asp_sup, termo, tipo, lito, forma, fissuras, faces, remont) {
+    const responseImg = await fetch(`https://ptsibackend.herokuapp.com/imagens/material/${id_material}`)
+    const imagens = await responseImg.json()
+
+    const responseMotivos = await fetch(`https://ptsibackend.herokuapp.com/materiais/rocha_motivo/material/${id_material}`)
+    const motivos = await responseMotivos.json();
+
+    var txtDesc = ``;
+    var txtMotivos1 = ``;
+    var txtMotivos2 = ``;
+
     txtDesc = `
+    <div class='row'>
       <div class='col-md-6'>
-        <p class='card-text'><b>Morfologia da superfície: </b>${materialEspecifico.morfologia_sup}</p>
+        <p class='card-text'><b>Morfologia da superfície: </b>${morf_sup}</p>
+        <p class='card-text'><b>Aspeto da superfície: </b>${asp_sup}</p>
+        <p class='card-text'><b>Termo de alteração: </b>${termo}</p>
         <br>
-        <p class='card-text'><b>Aspeto da superfície: </b>${materialEspecifico.asp_sup}</p>
+        <p class='card-text'><b>Topologia: </b>${tipo}</p>
+        <p class='card-text'><b>Litologia: </b>${lito}</p>
         <br>
-        <p class='card-text'><b>Termo de alteração: </b>${materialEspecifico.termo}</p>
-        <br>
+        <p class='card-text'><b>Forma: </b>${forma}</p>
+        <p class='card-text'><b>Integridade da peça: </b>${fissuras}</p>
+        <p class='card-text'><b>PLACAS - nº de faces: </b>${faces}</p>
+        <p class='card-text'><b>Remontagem: </b>${remont}</p>
       </div>
+      <div class='col-md-6'>`
+    for (var i of imagens) {
+      txtDesc += `<img src="../../FrontOffice/assets/ficheiros/imagens/thumb/${i.ficheiro}" width="300" height="200" alt="Card image cap">`
+    }
+    txtDesc += `
+    </div>
+    </div>`
+    if (demo.isIterable(motivos)) {
+      for (var k of motivos) {
+        txtMotivos1 += `
+      <tr>
+        <td style="text-align:center">${k.n_inventario_mot}</td>
+        <td style="text-align:center">${k.conservacao}</td>
+        <td style="text-align:center">${k.fase}</td>
+        <td style="text-align:center">${k.patine}</td>
+        <td style="text-align:center">${k.tecnica}</td>
+        <td style="text-align:center">${k.tecnica_variante}</td>
+        <td style="text-align:center">${k.observacoes}</td>
+        <td style="text-align:center">${k.motivo_figura}</td>
+      </tr>
     `
-    txtMotivos = `
-      
+        txtMotivos2 += `
+      <tr>
+        <td style="text-align:center">${k.unidade_figurativa}</td>
+        <td style="text-align:center">${k.local_painel}</td>
+        <td style="text-align:center">${k.grupo}</td>
+        <td style="text-align:center">${k.tipo}</td>
+        <td style="text-align:center">${k.sub_tipo}</td>
+        <td style="text-align:center">${k.largura}</td>
+        <td style="text-align:center">${k.altura}</td>
+        <td style="text-align:center">${k.profundidade}</td>
+      </tr>
     `
+      }
+    } else {
+      txtMotivos1 += `Não existem motivos associados a este material`
+      txtMotivos2 += `Não existem motivos associados a este material`
+    }
+
+    document.getElementById('descricao').innerHTML = txtDesc;
+    document.getElementById('motivoBody1').innerHTML = txtMotivos1;
+    document.getElementById('motivoBody2').innerHTML = txtMotivos2;
     document.getElementById('cardInfos').style.display = "block";
   }
 };

@@ -111,47 +111,72 @@
                                         <a class="nav-link active" href="#descricao" role="tab" aria-controls="descricao" aria-selected="true">Descrição</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#motivos" role="tab" aria-controls="imagens" aria-selected="false">Imagens</a>
+                                        <a class="nav-link" href="#motivos" role="tab" aria-controls="motivos" aria-selected="false">Motivos</a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="card-body">
-                                <div class="tab-pane active" id="descricao" role="tabpanel">
-                                    
-                                </div>
+                                <div class="tab-content mt-3">
+                                    <div class="tab-pane active" id="descricao" role="tabpanel" aria-labelledby="descricao-tab">
 
-                                <div class="tab-pane" id="motivos" role="tabpanel" aria-labelledby="history-tab">
-                                    
+                                    </div>
+
+                                    <div class="tab-pane" id="motivos" role="tabpanel" aria-labelledby="motivos-tab">
+                                        <table class="tab" style="margin-bottom: 10px">
+                                            <thead>
+                                                <th style="text-align:center">Nº de Inventário</th>
+                                                <th style="text-align:center">Cronologia</th>
+                                                <th style="text-align:center">Conservação</th>
+                                                <th style="text-align:center">Patine</th>
+                                                <th style="text-align:center">Técnica</th>
+                                                <th style="text-align:center">Técnica Variante</th>
+                                                <th style="text-align:center">Técnica (Observações)</th>
+                                                <th style="text-align:center">Figura Completa</th>
+                                            </thead>
+                                            <tbody id='motivoBody1'></tbody>
+                                        </table>
+                                        <table class="tab" style="margin-bottom: 10px">
+                                            <thead>
+                                                <th style="text-align:center">Unidade Figurativa</th>
+                                                <th style="text-align:center">Localização do painel</th>
+                                                <th style="text-align:center">Grupo</th>
+                                                <th style="text-align:center">Tipo</th>
+                                                <th style="text-align:center">Sub Tipo</th>
+                                                <th style="text-align:center">Largura</th>
+                                                <th style="text-align:center">Altura</th>
+                                                <th style="text-align:center">Profundidade</th>
+                                            </thead>
+                                            <tbody id='motivoBody2'></tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="content2" id="escondidinho"></div>
+        <div class="content2" id="escondidinho"></div>
 
-            <footer class="footer footer-black  footer-white ">
-                <div class="container-fluid">
-                    <div class="row">
-                        <nav class="footer-nav">
-                            <ul>
-                                <li><a href="https://www.creative-tim.com" target="_blank">Creative Tim</a></li>
-                                <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
-                                <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
-                            </ul>
-                        </nav>
-                        <div class="credits ml-auto">
-                            <span class="copyright">
-                © <script>
-                  document.write(new Date().getFullYear())
-                </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
-              </span>
-                        </div>
+        <footer class="footer footer-black  footer-white">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8 col-sm-6 col-xs-12">
+                        <p class="copyright-text">technos &copy; 2021
+                            <!--	<a href="#">technos</a>. -->
+                        </p>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <img src="../../FrontOffice/images/uminho_arq.png" width="15%" style="margin-right: 40px">
+                        <img src="../../FrontOffice/images/fct.png" width="25%" style="margin-right: 40px">
+                        <img src="../../FrontOffice/images/lab2pt.png" width="10%">
                     </div>
                 </div>
-            </footer>
-        </div>
+            </div>
+        </footer>
+    </div>
 
     </div>
 
@@ -184,7 +209,7 @@
         }
     </script>
     <script>
-        $('#info-list a').on('click', function(e) {
+        $('#infos-list a').on('click', function(e) {
             e.preventDefault()
             $(this).tab('show')
         })
