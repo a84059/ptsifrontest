@@ -346,7 +346,7 @@ demo = {
               '<p id="nome_info">' + '<span>Descrição: </span>' + sitio
               .descricao + '</p>' +
               '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.fetches(' + sitio.id_sitio + ',`' + sitio.nome + '`)" value="Ver mais"></input> </a>' + '</div>',
-            hover: '<p>' + sitio.nome + '</p>'
+            hover: '<h5 style="text-align: center">' + sitio.nome + '</h5>'
 
 
           });
@@ -668,6 +668,21 @@ demo = {
     }).catch((error) => { return materiais })
   },
   
+  fetchMaterial: function(id_material) {
+    var url = 'https://ptsibackend.herokuapp.com/materiais/'
+    var material = {}
+    return fetch(url + id_material, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).then(result => {
+      var response = result.json();
+      material = response;
+      return material
+    }).catch((error) => { return material })
+  },
+
   fetchSondagem: function(id_sondagem) {
     var url = 'https://ptsibackend.herokuapp.com/sondagem/'
     var sondagem = {}
@@ -682,7 +697,7 @@ demo = {
       return sondagem
     }).catch((error) => { return sondagem })
   },
-  
+
   fetchRocha: function(id_material) {
     var url = 'https://ptsibackend.herokuapp.com/materiais/rocha/'
     var rocha = {}
@@ -697,44 +712,60 @@ demo = {
       return rocha
     }).catch((error) => { return rocha })
   },
-  
+
   initInfos: async function(id_sitio) {
     var materiais = await demo.fetchMateriais(id_sitio);
-    
-    var txt=``;
+
+    var txt = ``;
 
     for (var i in materiais) {
       var sondagem = await demo.fetchSondagem(materiais[i].id_sondagem)
       var materialEspecifico;
-      if(materiais[i].tipo == "Pedra") {
+      if (materiais[i].tipo == "Pedra") {
         materialEspecifico = await demo.fetchRocha(materiais[i].id_material);
       }
-      txt += `<div class='row'>
-                <div class='col-md-12'>
-                  <p class='p-material'><b>Nº de Inventário:</b> ${materiais[i].n_inventario}</p>
-                  <div class='row'>
-                    <div class='col-md-6'>
-                      <p><b>Sondagem:</b> ${sondagem[0].designacao}</p>
-                      <br>
-                      <p><b>UE: </b></p>
-                      <p>Coordenada X: ${materiais[i].coordenada_x}</p>
-                      <p>Coordenada Y: ${materiais[i].coordenada_y}</p>
-                      <p>Cota: ${materiais[i].coordenada_z}</p>
-                      <br>
-                      <p><b>Conservação:</b> ${materialEspecifico[0].conservacao}</p>
-                      <br>
-                      <p><b>Comprimento: </b>${materialEspecifico[0].comprimento}</p>
-                      <p><b>Largura: </b>${materialEspecifico[0].largura}</p>
-                      <p><b>Espessura: </b>${materialEspecifico[0].espessura}</p>
-                      <br>
-                    </div>
-                    <div class='col-md-6'>
-                    </div>
-                  </div>
-                </div>
-              </div>`
+      txt += `
+      <tr>
+        <td style="text-align:center">${materiais[i].n_inventario}</td>
+        <td style="text-align:center">${sondagem[0].designacao}</td>
+        <td style="text-align:center">X: ${materiais[i].coordenada_x}, Y: ${materiais[i].coordenada_y}, Cota: ${materiais[i].coordenada_z}</td>
+        <td style="text-align:center">${materialEspecifico[0].conservacao}</td>
+        <td style="text-align:center">${materialEspecifico[0].comprimento}</td>
+        <td style="text-align:center">${materialEspecifico[0].largura}</td>
+        <td style="text-align:center">${materialEspecifico[0].espessura}</td>
+        <td style="text-align:center">
+          <button class='btn btn-primary btn-round' onclick="demo.verMaisInfos('${materiais[i].id_material},${materialEspecifico}')">Ver</button>
+        </td>
+      </tr>
+      `
     }
     document.getElementById('infoBody').innerHTML = txt;
-  }
+  },
 
+  verMaisInfos: async function(id_material, tipo) {
+    var txtDesc = ``;
+    var txtMotivos = ``;
+    var materialEspecifico
+    
+    if (tipo == "Pedra") {
+        materialEspecifico = await demo.fetchRocha(id_material);
+    }
+    
+    console.log(materialEspecifico)
+    
+    txtDesc = `
+      <div class='col-md-6'>
+        <p class='card-text'><b>Morfologia da superfície: </b>${materialEspecifico.morfologia_sup}</p>
+        <br>
+        <p class='card-text'><b>Aspeto da superfície: </b>${materialEspecifico.asp_sup}</p>
+        <br>
+        <p class='card-text'><b>Termo de alteração: </b>${materialEspecifico.termo}</p>
+        <br>
+      </div>
+    `
+    txtMotivos = `
+      
+    `
+    document.getElementById('cardInfos').style.display = "block";
+  }
 };

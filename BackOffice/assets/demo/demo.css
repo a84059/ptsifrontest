@@ -201,6 +201,7 @@ body {
 	color: white;
 	margin: 1px;
 	border-radius: 2px 2px 0 0; /* In accordance with the rounding of the default infowindow corners. */
+	
  }
 
  #iw-container .btn_vermais {

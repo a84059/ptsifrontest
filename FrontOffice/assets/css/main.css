@@ -2828,6 +2828,7 @@ button:disabled,
 .spotlight .image img {
 	border-radius: 0;
 	width: 100%;
+		height: 80%;
 }
 
 .spotlight .content {
@@ -2894,7 +2895,7 @@ button:disabled,
 	}
 
 	.spotlight .content {
-		width: 55%;
+		width: 85%;
 		background-color: #FAF9F6;
 		color: #293241;
 	}
@@ -4708,16 +4709,17 @@ body.is-mobile.landing #footer {
 	background: rgba(46, 56, 66, 0.85);
 }
 
-#iw-container  .iw-title {
+ #iw-container  .iw-title {
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 15px;
 	font-weight: 400;
 	padding: 10px;
-	background-color: #3d5a80;
+	background-color: #3d5a80; 
 	color: white;
 	margin: 1px;
-	border-radius: 2px 2px 0 0; /* In accordance with the rounding of the default infowindow corners. */
- }
+	border-radius: 2px 2px 0 0; 
+    
+}
 
  #iw-container .btn_vermais {
   margin:0 auto;
@@ -4757,7 +4759,7 @@ background-color: #3d5a80;
 
 #iw-container p, span{
 	color: rgba(46, 56, 66, 1); 
-}
+} 
 /* GALERIA */
 
 

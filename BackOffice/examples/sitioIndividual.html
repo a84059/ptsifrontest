@@ -83,10 +83,46 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="card-header">
-                                <h4 id='nomedositio'>Informação sobre o sítio</h4>
+                                <h4>Informação sobre os materiais</h4>
                             </div>
-                            <div id='infoBody' class="card-body">
-                                
+                            <div class="card-body">
+                                <table class="tab" style="margin-bottom: 10px">
+                                    <thead>
+                                        <th style="text-align:center">Nº de Inventário</th>
+                                        <th style="text-align:center">Sondagem</th>
+                                        <th style="text-align:center">UE</th>
+                                        <th style="text-align:center">Conservação</th>
+                                        <th style="text-align:center">Comprimento</th>
+                                        <th style="text-align:center">Largura</th>
+                                        <th style="text-align:center">Espessura</th>
+                                        <th style="text-align:center">Ver Mais</th>
+                                    </thead>
+                                    <tbody id='infoBody'>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card" id="cardInfos" style="display:none">
+                            <div class="card-header">
+                                <h4>Mais Informações</h4>
+                                <ul class="nav nav-tabs card-header-tabs" id="infos-list" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#descricao" role="tab" aria-controls="descricao" aria-selected="true">Descrição</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#motivos" role="tab" aria-controls="imagens" aria-selected="false">Imagens</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-pane active" id="descricao" role="tabpanel">
+                                    
+                                </div>
+
+                                <div class="tab-pane" id="motivos" role="tabpanel" aria-labelledby="history-tab">
+                                    
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -146,6 +182,12 @@
         function showDropdown() {
             document.getElementById("drop").classList.toggle("show");
         }
+    </script>
+    <script>
+        $('#info-list a').on('click', function(e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
     </script>
 </body>
 
