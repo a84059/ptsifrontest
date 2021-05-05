@@ -318,42 +318,45 @@ demo = {
 
         if (props.content) {
           marker.addListener('click', function() {
-
+            isMouseOver = false;
+            console.log(isMouseOver);
             infoWindow.setContent(props.content);
             infoWindow.open(map, marker);
-            isMouseOver=false;
+
           });
         }
 
         marker.addListener('mouseover', function() {
+          isMouseOver = true;
+          console.log(isMouseOver);
           infoWindow.setContent(props.hover);
           infoWindow.open(map, this);
-          isMouseOver = true;
         });
-        if(isMouseOver){
-           marker.addListener('mouseout', function() {
-              infoWindow.close();
-          });
-        }
+        marker.addListener('mouseout', function() {
+          if (isMouseOver) {
+            infoWindow.close();
+          }
+        });
       }
 
       var email = sessionStorage.getItem('email');
 
-
       if (email != "") {
         for (const sitio of sitios) {
+          var imagens = await fetch(`https://ptsibackend.herokuapp.com/imagens/sitio/${sitio.id_sitio}`)
+          var imgjson = await imagens.json()
+          var imagem = imgjson[0].ficheiro;
+
           addMarker({
             coords: {
               lat: sitio.coord_X,
               lng: sitio.coord_Y
             },
             id: sitio.id_sitio,
-            content: '<div id="iw-container">' + '<div class="iw-title">' + sitio.nome + '</div>' +
-              '<p id="nome_info">' + '<span>Morada: </span>' + sitio.lugar +
-              ',' + sitio.freguesia1 + ',' + sitio.freguesia2 + '</p>' +
-              '<p id="nome_info">' + '<span>Descrição: </span>' + sitio
-              .descricao + '</p>' +
-              '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.verMais(' + sitio.id_sitio + ')" value="Ver mais"></input> </a>' + '</div>',
+            content: '<div id="iw-container">' +
+              "<div style='text-align:center; overflow-x: hidden;'><img src='../../FrontOffice/assets/ficheiros/imagens/thumb/" + imagem + "'></div><br/><div style='text-align:center'><b><h5>" + sitio.nome + "</h5></b><br/>" +
+              '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.verMais(' + sitio.id_sitio + ')" value="Ficha de Sítio"></input> </a>' +
+              '</div></div>',
             hover: '<h5 style="text-align: center">' + sitio.nome + '</h5>'
 
 
@@ -666,7 +669,7 @@ demo = {
       return imagens
     }).catch((error) => { return imagens })
   },
-  
+
   fetchMotivos: function(id_material) {
     var url = `https://ptsibackend.herokuapp.com/materiais/rocha_motivo/material/${id_material}`
     var motivos = {}
@@ -721,10 +724,10 @@ demo = {
     }
     document.getElementById('infoBody').innerHTML = txt;
   },
-  
+
   isIterable: function(obj) {
     if (obj == null) {
-        return false;
+      return false;
     }
     return typeof obj[Symbol.iterator] === 'function';
   },
@@ -789,7 +792,8 @@ demo = {
       </tr>
     `
       }
-    } else {
+    }
+    else {
       txtMotivos1 += `Não existem motivos associados a este material`
       txtMotivos2 += `Não existem motivos associados a este material`
     }

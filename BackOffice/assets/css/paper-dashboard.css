@@ -2859,6 +2859,15 @@ License - nucleoapp.com/license/
   overflow: hidden;
   margin: 0 auto; }
 
+.rowMap {
+    display: -ms-flexbox;
+    display: flex;
+    height:100%;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;}
+
 .table .img-row {
   max-width: 60px;
   width: 60px; }
@@ -3360,6 +3369,28 @@ License - nucleoapp.com/license/
 .perfect-scrollbar-on .main-panel {
   height: 100%;
   max-height: 100%; }
+  
+  .main-panel2 {
+  position: relative;
+  height: 100%;
+  float: right;
+  width: calc(100% - 260px);
+  background-color: #f4f3ef;
+  transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1); }
+  .main-panel2 > .content {
+    padding: 10px 10px 10px 10px;
+    height:80%;
+    min-height: calc(100vh - px);
+    margin-top: 60px; }
+  .main-panel2 > .content2 {
+    padding: 10px 10px 10px 10px;
+    min-height: calc(100vh - px);
+    margin-top: 60px;
+  }
+  .main-panel2 > .navbar {
+    margin-bottom: 0; }
+  .main-panel2 .header {
+    margin-bottom: 50px; }
 
 .panel-header {
   height: 260px;
@@ -3710,6 +3741,90 @@ License - nucleoapp.com/license/
       padding-left: 5px;
       padding-right: 5px; }
     .card.card-plain img {
+      border-radius: 12px; }
+  
+  .card2 {
+  border-radius: 12px;
+  height: 100%;
+  box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
+  background-color: #FFFFFF;
+  color: #252422;
+  margin-bottom: 20px;
+  position: relative;
+  border: 0 none;
+  transition: transform 300ms cubic-bezier(0.34, 2, 0.6, 1), box-shadow 200ms ease; }
+  .card2 .card-body {
+    padding: 15px 15px 10px 15px;
+    height: 100%;}
+    .card .card-body.table-full-width {
+      padding-left: 0;
+      padding-right: 0; }
+  .card2 .card-header {
+    padding: 15px 15px 0;
+    border: 0; }
+    .card2 .card-header:not([data-background-color]) {
+      background-color: transparent; }
+    .card2 .card-header .card-title {
+      margin-top: 10px; }
+  .card2 .map {
+    border-radius: 3px; 
+    height: 94%;
+  }
+    .card2 .map.map-big {
+      height: 500px; }
+  .card2[data-background-color="orange"] {
+    background-color: #51cbce; }
+    .card2[data-background-color="orange"] .card-header {
+      background-color: #51cbce; }
+    .card2[data-background-color="orange"] .card-footer .stats {
+      color: #FFFFFF; }
+  .card2[data-background-color="red"] {
+    background-color: #ef8157; }
+  .card2[data-background-color="yellow"] {
+    background-color: #fbc658; }
+  .card2[data-background-color="blue"] {
+    background-color: #51bcda; }
+  .card2[data-background-color="green"] {
+    background-color: #6bd098; }
+  .card2 .image {
+    overflow: hidden;
+    height: 200px;
+    position: relative; }
+  .card2 .avatar {
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-bottom: 15px; }
+  .card2 .numbers {
+    font-size: 2em; }
+  .card2 .big-title {
+    font-size: 12px;
+    text-align: center;
+    font-weight: 500;
+    padding-bottom: 15px; }
+  .card2 label {
+    font-size: 0.8571em;
+    margin-bottom: 5px;
+    color: #9A9A9A; }
+  .card2 .card-footer {
+    background-color: transparent;
+    border: 0; }
+    .card2 .card-footer .stats i {
+      margin-right: 5px;
+      position: relative;
+      top: 0px;
+      color: #66615B; }
+    .card2 .card-footer .btn {
+      margin: 0; }
+  .card2.card-plain {
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0; }
+    .card2.card-plain .card-body {
+      padding-left: 5px;
+      padding-right: 5px; }
+    .card2.card-plain img {
       border-radius: 12px; }
 
 .card-plain {
