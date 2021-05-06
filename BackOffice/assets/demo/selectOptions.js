@@ -19,14 +19,14 @@ window.onload = () => {
         
         
         for (let i of resultsGeog) {
-            geog_txtRelGeral += `<option value='${i.relevo_geral}'>${i.relevo_geral}</option>`
-            geog_txtUnRelevo += `<option value='${i.unidade_relevo}'>${i.unidade_relevo}</option>`
-            geog_txtLocImpl += `<option value='${i.local_implantacao}'>${i.local_implantacao}</option>`
+            geog_txtRelGeral += `<option value='${i.id_sitio}'>${i.relevo_geral}</option>`
+            geog_txtUnRelevo += `<option value='${i.id_sitio}'>${i.unidade_relevo}</option>`
+            geog_txtLocImpl += `<option value='${i.id_sitio}'>${i.local_implantacao}</option>`
         }
         
         for (let j of resultsGeol) {
-            geol_substrato += `<option value='${j.substrato_geol}'>${j.substrato_geol}</option>`
-            geol_material += `<option value='${j.material}'>${j.material}</option>`
+            geol_substrato += `<option value='${j.id_sitio}'>${j.substrato_geol}</option>`
+            geol_material += `<option value='${j.id_sitio}'>${j.material}</option>`
         }
         
         

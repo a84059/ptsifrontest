@@ -436,11 +436,13 @@ demo = {
         // Check content
 
         if (props.content) {
+          
           marker.addListener('click', function() {
 
             infoWindow.setContent(props.content);
             infoWindow.open(map, marker);
           });
+          
         }
       }
 
@@ -455,12 +457,8 @@ demo = {
               lng: sitio.coord_Y
             },
             id: sitio.id_sitio,
-            content: '<div id="iw-container">' + '<div class="iw-title">' + sitio.nome + '</div>' +
-              '<p id="nome_info">' + '<span>Morada: </span>' + sitio.lugar +
-              ',' + sitio.freguesia1 + ',' + sitio.freguesia2 + '</p>' +
-              '<p id="nome_info">' + '<span>Descrição: </span>' + sitio
-              .descricao + '</p>' +
-              '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.verMais(' + sitio.id_sitio + ')" value="Ver mais"></input> </a>' + '</div>'
+            content: '<h5 style="text-align: center">' + sitio.nome + '</h5>'
+            
           });
         }
       }
@@ -473,11 +471,7 @@ demo = {
               lng: sitio.coord_Y
             },
             id: sitio.id_sitio,
-            content: '<div id="iw-container">' + '<div class="iw-title">' + sitio.nome + '</div>' +
-              '<p id="nome_info">' + '<span>Morada: </span>' + sitio.lugar +
-              ',' + sitio.freguesia1 + ',' + sitio.freguesia2 + '</p>' +
-              '<p id="nome_info">' + '<span>Descrição: </span>' + sitio
-              .descricao + '</p>' + '</div>'
+            content:'<h5 style="text-align: center">' + sitio.nome + '</h5>'
           });
         }
       }
