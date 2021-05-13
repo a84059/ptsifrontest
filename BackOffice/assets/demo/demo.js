@@ -354,8 +354,15 @@ demo = {
             },
             id: sitio.id_sitio,
             content: '<div id="iw-container">' +
-              "<div style='text-align:center; overflow-x: hidden;'><img src='../../FrontOffice/assets/ficheiros/imagens/thumb/" + imagem + "'></div><br/><div style='text-align:center'><b><h5>" + sitio.nome + "</h5></b><br/>" +
-              '<a href=#escondido id="a_vermais"> <input type="button" class="btn_vermais" onclick="demo.verMais(' + sitio.id_sitio + ')" value="Ficha de Sítio"></input> </a>' +
+              "<div style='text-align:center; overflow-x: hidden;'>" +
+              "<img src='../../FrontOffice/assets/ficheiros/imagens/thumb/" + imagem + "'>" +
+              "</div>" +
+              "<br/><div style='text-align:center'>" +
+              "<b><h5>" + sitio.nome + "</h5></b><br/></div>" +
+              '<div class="btn-group" style="text-align:center"><input type="button" class="btn_vermais2" onclick="demo.downloadPDF(' + sitio.id_sitio + ')" value="Ficha de sítio"></input>' +
+              '<a href=#escondido id="a_vermais">' +
+              '<input type="button" class="btn_vermais" onclick="demo.verMais(' + sitio.id_sitio + ')" value="Ver mais"></input> ' +
+              '</a>' +
               '</div></div>',
             hover: '<h5 style="text-align: center">' + sitio.nome + '</h5>'
 
@@ -436,13 +443,13 @@ demo = {
         // Check content
 
         if (props.content) {
-          
+
           marker.addListener('click', function() {
 
             infoWindow.setContent(props.content);
             infoWindow.open(map, marker);
           });
-          
+
         }
       }
 
@@ -458,7 +465,7 @@ demo = {
             },
             id: sitio.id_sitio,
             content: '<h5 style="text-align: center">' + sitio.nome + '</h5>'
-            
+
           });
         }
       }
@@ -471,7 +478,7 @@ demo = {
               lng: sitio.coord_Y
             },
             id: sitio.id_sitio,
-            content:'<h5 style="text-align: center">' + sitio.nome + '</h5>'
+            content: '<h5 style="text-align: center">' + sitio.nome + '</h5>'
           });
         }
       }
@@ -678,7 +685,7 @@ demo = {
       return motivos
     }).catch((error) => { return motivos })
   },
-
+  
   initInfos: async function(id_sitio) {
     var materiais = await demo.fetchMateriais(id_sitio);
 
@@ -796,5 +803,10 @@ demo = {
     document.getElementById('motivoBody1').innerHTML = txtMotivos1;
     document.getElementById('motivoBody2').innerHTML = txtMotivos2;
     document.getElementById('cardInfos').style.display = "block";
+  },
+
+  downloadPDF: async function(id_sitio) {
+    window.localStorage.setItem('sitio', id_sitio)
+    window.location.replace(`./sitioPDF.html`)
   }
 };

@@ -9,6 +9,8 @@
     }
 }
 
+
+
 .sidebar,
 .off-canvas-sidebar{
     position: fixed;
@@ -292,13 +294,16 @@
         }
     }
 }
-
+.footer-technos
+    position: relative;
+    float: right;
+    width: $sidebar-width;
+    @include transition (0.50s, cubic-bezier(0.685, 0.0473, 0.346, 1));
 
 .main-panel{
     position: relative;
     float: right;
     width: $sidebar-width;
-    background-color: #f4f3ef;;
 
 
     @include transition (0.50s, cubic-bezier(0.685, 0.0473, 0.346, 1));
@@ -307,6 +312,7 @@
         padding: 0 30px 30px;
         min-height: calc(100vh - 123px);
         margin-top: 93px;
+        
     }
 
     > .navbar{

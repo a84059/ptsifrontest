@@ -95,19 +95,19 @@ async function simpleSearch() {
     var nome = document.getElementById("nome1").value;
     var freguesia = document.getElementById("freguesia1").value;
 
-    if (nome == "" && freguesia == "") {
+    if (nome == "" && freguesia == 0) {
         alert("Pelo menos um dos campos da pesquisa simples tem de estar preenchido.");
         return false;
     }
-    else if (nome == "" && freguesia != "") {
+    else if (nome == "" && freguesia != 0) {
         let dados = await fetchDataPorFreguesia(freguesia);
         renderTable(dados);
     }
-    else if (nome != "" && freguesia == "") {
+    else if (nome != "" && freguesia == 0) {
         let dados = await fetchDataPorNome(nome);
         renderTable(dados);
     }
-    else if (nome != "" && freguesia != "") {
+    else if (nome != "" && freguesia != 0) {
         let data = [];
         let dadosNome = await fetchDataPorNome(nome);
         let dadosFreg = await fetchDataPorFreguesia(freguesia);
@@ -118,7 +118,12 @@ async function simpleSearch() {
                 }
             }
         }
-        renderTable(data);
+        if(data.length == 0) {
+            alert("Não existem sítios correspondentes à pesquisa")
+            return false;
+        } else {
+            renderTable(data);
+        }
     }
 }
 

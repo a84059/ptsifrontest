@@ -1,7 +1,13 @@
+
 body {
   overflow-y: scroll; /* Show vertical scrollbar */
   overflow-x: hidden; /* Show horizontal scrollbar */
 }
+
+footer{
+  position: relative;
+}
+
 .tim-row {
   margin-bottom: 20px;
 }
@@ -204,8 +210,26 @@ body {
 	
  }
 
+ #iw-container .btn_vermais2 {
+  margin:5px;
+  margin-left: 25px;
+  margin-bottom: 5px;
+  display:block;
+  border:0.16em solid rgba(255,255,255,0);
+border-radius:2em;
+box-sizing: border-box;
+text-decoration:none;
+font-family:'Roboto',sans-serif;
+font-weight:300;
+color:#FFFFFF;
+text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+text-align:center;
+transition: all 0.2s;
+background-color: #3d5a80;
+ }
  #iw-container .btn_vermais {
-  margin:0 auto;
+  margin:5px;
+  margin-bottom: 5px;
   display:block;
   border:0.16em solid rgba(255,255,255,0);
 border-radius:2em;
