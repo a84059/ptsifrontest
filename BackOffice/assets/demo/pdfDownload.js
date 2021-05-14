@@ -42,75 +42,186 @@ function fetchRelaPerCultural(id_sitio) {
         return rela;
     }).catch((error) => { return rela })
 }
+
+
+function fetchImagens(id_sitio) {
+    var url = `https://ptsibackend.herokuapp.com/imagens/sitio/${id_sitio}`
+    var img = {}
+    return fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    }).then(result => {
+        var response = result.json();
+        img = response;
+        return img;
+    }).catch((error) => { return img })
+}
+
+function fetchRelaBiblio(id_sitio) {
+    var url = `https://ptsibackend.herokuapp.com/bibliografiaIDSitio/${id_sitio}`
+    var rela = {}
+    return fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    }).then(result => {
+        var response = result.json();
+        rela = response;
+        return rela;
+    }).catch((error) => { return rela })
+}
+
+function fetchBibliografia(id_bibliografia) {
+    var url = `https://ptsibackend.herokuapp.com/bibliografia/${id_bibliografia}`
+    var bib = {}
+    return fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    }).then(result => {
+        var response = result.json();
+        bib = response;
+        return bib;
+    }).catch((error) => { return bib })
+}
+
 window.onload = () => {
-    const renderTable = async() => {
+    const renderInfo = async() => {
         var id_sitio = window.localStorage.getItem('sitio');
-        var txt = ``;
-        var txt2 = ``;
-        var txt3 = ``;
-        var txt4 = ``;
-        var txt5 = ``;
-        var txt6 = ``;
-        var txt7 = ``;
-        var txt8 = ``;
-        var txt9 = ``;
-        var txt10 = ``;
-        var txt11 = ``;
+        var txtNome = ``;
+        var txtToponimo = ``;
+        var txtDesc = ``;
+        var txtInterpretacao = ``;
+        var txtClassificacao = ``;
+        var txtCodClassificacao = ``;
+        var txtConcelho = ``;
+        var txtFreguesia = ``;
+        var txtCoordenadas = ``;
+        var txtAcessos = ``;
+        var txtTipoAcesso = ``;
+        var txtTipologia = `<b>Tipologia: </b>`;
+        var txtPerCultural = `<b>Período Cultural: </b>`;
 
         const resp = await fetchSitio(id_sitio);
         var sitio = resp[0];
-        for (var key in sitio) { if (sitio[key] == "NULL") sitio[key] = '' }
-        txt += `<tr><td><b>Nome</b></td><td>${sitio.nome}</td><tr>`
-        if (sitio.conservacao) txt += `<tr><td><b>Nome</b></td><td>${sitio.nome}</td><tr>`
-        if (sitio.toponimo) txt += `<tr><td><b>Toponimo</b></td><td>${sitio.toponimo}</td><tr>`
-        if (sitio.descricao) txt += `<tr><td><b>Descricao</b></td><td>${sitio.descricao}</td><tr>`
-        if (sitio.interpretacao) txt += `<tr><td><b>Interpretacao</b></td><td>${sitio.interpretacao}</td><tr>`
-        if (sitio.classificacao) txt += `<tr><td><b>Classificação</b></td><td>${sitio.classificacao}</td><tr>`
-        if (sitio.lugar) txt += `<tr><td><b>Concelho</b></td><td>${sitio.lugar}</td><tr>`
-        if (sitio.freguesia1 && sitio.freguesia2) {
-            txt += `<tr><td><b>Freguesia</b></td><td>${sitio.freguesia1}, ${sitio.freguesia2}</td><tr>`
+        for (var key in sitio) { if (sitio[key] == "NULL" || sitio[key] == '' || sitio[key] == null) sitio[key] = 'Não foram encontrados valores' }
+        txtNome += `<b>${sitio.nome}</b>`
+        txtToponimo += `<h4><b>Topónimo: </b> ${sitio.toponimo}</h4>`
+        txtDesc += `${sitio.descricao}`
+        txtInterpretacao += `<b>Interpretacao: </b> ${sitio.interpretacao}`
+        txtClassificacao += `<b>Classificação: </b>${sitio.classificacao}`
+        txtCodClassificacao += `<b>CNS: </b>${sitio.cod_classificacao}`
+        txtConcelho += `Concelho: ${sitio.lugar}`
+        if (sitio.freguesia1 != "Não encontrado" && sitio.freguesia2 != "Não encontrado") {
+            txtFreguesia += `Freguesia: ${sitio.freguesia1}, ${sitio.freguesia2}`
         }
-        else if (sitio.freguesia1 && !sitio.freguesia2) {
-            txt += `<tr><td><b>Freguesia</b></td><td>${sitio.freguesia1}</td><tr>`
+        else if (sitio.freguesia1 != "Não encontrado" && sitio.freguesia2 == "Não encontrado") {
+            txtFreguesia += `Freguesia: ${sitio.freguesia1}`
         }
-        else if (!sitio.freguesia1 && sitio.freguesia2) {
-            txt += `<tr><td><b>Freguesia</b></td><td>${sitio.freguesia2}</td><tr>`
+        else if (sitio.freguesia1 == "Não encontrado" && sitio.freguesia2 != "Não encontrado") {
+            txtFreguesia += `Freguesia: ${sitio.freguesia2}`
         }
         if (sitio.coord_X && sitio.coord_Y && sitio.Cota) {
-            txt += `<tr><td><b>Coordenadas</b></td><td>X: ${sitio.coord_X}, Y: ${sitio.coord_Y}, Cota: ${sitio.Cota}</td><tr>`
+            txtCoordenadas += `<b>Coordenadas: </b> <b>X: </b> ${sitio.coord_X}     <b>Y: </b>${sitio.coord_Y}     <b>Cota: </b> ${sitio.Cota}</td><tr>`
         }
         else if (sitio.coord_X && sitio.coord_Y && !sitio.Cota) {
-            txt += `<tr><td><b>Coordenadas</b></td><td>X: ${sitio.coord_X}, Y: ${sitio.coord_Y}</td><tr>`
+            txtCoordenadas += `<tr><td><b>Coordenadas</b></td><td>X: ${sitio.coord_X}, Y: ${sitio.coord_Y}</td><tr>`
         }
-        if (sitio.area) txt += `<tr><td><b>Área</b></td><td>${sitio.area}</td><tr>`
-        if (sitio.acessos) txt += `<tr><td><b>Acessos</b></td><td>${sitio.acessos}</td><tr>`
-        if (sitio.tipo_acesso) txt += `<tr><td><b>Tipo de acesso</b></td><td>${sitio.tipo_acesso}</td><tr>`
+        txtAcessos += `<b>Acessos: </b>${sitio.acessos}`
+        txtTipoAcesso += `<b>Tipo de acesso: </b>${sitio.tipo_acesso}`
+        var respRelaTipo = await fetchRelaTipo(id_sitio);
+        var txtTipologiaFinal = ``;
+        if (respRelaTipo.status != 404) {
+            for (var linha of respRelaTipo) {
+                txtTipologia += `${linha.tipo}; `
+            }
+            txtTipologiaFinal = txtTipologia.slice(0, -2)
+        }
+        else {
+            txtTipologiaFinal = txtTipologia + `Não encontrado.`
+        }
 
-        const resp2 = await fetchRelaTipo(id_sitio);
-        for (let i in resp2) {
-            for(var key in i){if(i[key]=="NULL") i[key]=''}
-            txt+=`<tr>`
-            if (i.tipo) txt2+=`<td>${i.tipo}</td>`
-            if (i.cronologia) txt2+=`<td>${i.cronologia}</td>`
-            txt+=`</tr>`
+
+        var respPerCultural = await fetchRelaPerCultural(id_sitio);
+        var txtPerCulturalFinal = ``;
+        if (respPerCultural.status != 404) {
+            for (var linha of respPerCultural) {
+                txtPerCultural += `${linha.periodo}; `
+            }
+            txtPerCulturalFinal = txtPerCultural.slice(0, -2)
         }
-        
-        document.getElementById('sitioTableBody1').innerHTML = txt;
-        document.getElementById('sitioTableBody2').innerHTML = txt2;
-        //document.getElementById('sitioTableBody3').innerHTML = txt3;
-        //document.getElementById('sitioTableBody4').innerHTML = txt4;
-        //document.getElementById('sitioTableBody5').innerHTML = txt5;
-        //document.getElementById('sitioTableBody6').innerHTML = txt6;
-        //document.getElementById('sitioTableBody7').innerHTML = txt7;
-        //document.getElementById('sitioTableBody8').innerHTML = txt8;
-        //document.getElementById('sitioTableBody9').innerHTML = txt9;
-        //document.getElementById('sitioTableBody10').innerHTML = txt10;
-        //document.getElementById('sitioTableBody11').innerHTML = txt11;
+        else {
+            txtPerCulturalFinal = txtPerCultural + `Não encontrado.`
+        }
+
+        var respImagens = await fetchImagens(id_sitio);
+        var txtImagens = ``;
+        if (respImagens.status != 404) {
+            for (var linha of respImagens) {
+                if (linha.objecto == 'Sítio') {
+                    txtImagens += `
+                        <div class="img-with-text">
+                            <img src="../../FrontOffice/assets/ficheiros/imagens/thumb/${linha.ficheiro}" width="300" height="200" alt="img">
+                            <p>${linha.descricao}</p>
+                        </div>
+                    `;
+                }
+            }
+        }
+        else {
+            txtImagens += `Não foram encontradas imagens.`
+        }
+
+        var txtBibliografia = ``;
+        var respRelaBiblio = await fetchRelaBiblio(id_sitio);
+        if (respRelaBiblio.status != 404) {
+            for (var rela of respRelaBiblio) {
+                var respBiblio = await fetchBibliografia(rela.id_bibliografia)
+                var bibliografia = respBiblio[0]
+                if (bibliografia != undefined) {
+                    for (var key in bibliografia) { if (bibliografia[key] == "NULL" || bibliografia[key] == '' || bibliografia[key] == null) bibliografia[key] = 'Indefinido' }
+                    txtBibliografia += `<p><b>${bibliografia.autor}</b> (${bibliografia.ano}): <i>${bibliografia.titulo}</i>, ${bibliografia.serieColecao}, ${bibliografia.editora}, p.${rela.paginas} </p>`
+                }
+                else {
+                    txtBibliografia += `<p>p.${rela.paginas} </p>`
+                }
+            }
+        }
+        else {
+            txtBibliografia += `<p>Não foi encontrada nenhuma referência</p>`
+        }
+
+
+        document.getElementById('nome').innerHTML = txtNome;
+        document.getElementById('toponimo').innerHTML = txtToponimo;
+        document.getElementById('descricao').innerHTML = txtDesc;
+        document.getElementById('interpretacao').innerHTML = txtInterpretacao
+        document.getElementById('classificacao').innerHTML = txtClassificacao;
+        document.getElementById('cod_classificacao').innerHTML = txtCodClassificacao;
+        document.getElementById('concelho').innerHTML = txtConcelho;
+        document.getElementById('freguesia').innerHTML = txtFreguesia;
+        document.getElementById('coordenadas').innerHTML = txtCoordenadas;
+        document.getElementById('acessos').innerHTML = txtAcessos;
+        document.getElementById('tipo_acesso').innerHTML = txtTipoAcesso;
+        document.getElementById('tipologia').innerHTML = txtTipologiaFinal;
+        document.getElementById('percultural').innerHTML = txtPerCulturalFinal;
+        document.getElementById('imagens').innerHTML = txtImagens;
+        document.getElementById('todo').innerHTML += txtBibliografia;
     }
 
-    renderTable();
+    renderInfo();
 }
 
 setTimeout(function() {
-    //window.print();
+    var opt = {
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' }
+    };
+    html2pdf()
+        .set(opt)
+        .from(document.body)
+        .save('Sítio.pdf');
 }, 1500);

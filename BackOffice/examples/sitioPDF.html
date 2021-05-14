@@ -11,86 +11,48 @@
     <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
     <link href="../assets/demo/demo.css" rel="stylesheet" />
     <link href="../../FrontOffice/assets/css/main.css" />
-    <link href="../BackOffice/assets/demo/demo.css" />
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
 
-    <title id='title'>Sitio</title>
+    <title id='title'>Sítio</title>
 </head>
 
 <body>
-    <div class='container'>
+    <div class='container-fluid' id='todo'>
         <div class='row'>
-            <div class='col-md-10'>
-                <div class='card'>
-                    <!--Infos-->
-                    <div class='card-header'>
-                        <h3>Ficha do Sítio</h3>
-                    </div>
-                    <div class='card-body'>
-                        <table class='table table-bordered'>
-                            <tbody id='sitioTableBody1'></tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class='card'>
-                    <!--Tipologia-->
-                    <div class='card-header'>
-                        <h3>Topologia</h3>
-                    </div>
-                    <div class='card-body'>
-                        <table class='table table-bordered'>
-                            <thead>
-                                <tr>
-                                    <th>Tipo</th>
-                                    <th>Cronologia</th>
-                                </tr>
-                            </thead>
-                            <tbody id='sitioTableBody2'></tbody>
-                        </table>
-                    </div>
-                </div>
-                        <!--Período Cultural-->
-                        <table class='table table-bordered'>
-                            <tbody id='sitioTableBody3'></tbody>
-                        </table>
-                        <!--Intervenções-->
-                        <table class='table table-bordered'>
-                            <tbody id='sitioTableBody4'></tbody>
-                        </table>
-                        <!--Contexto Geog-->
-                        <table class='table table-bordered'>
-                            <tbody id='sitioTableBody5'></tbody>
-                        </table>
-                        <!--Contexto Geol-->
-                        <table class='table table-bordered'>
-                            <tbody id='sitioTableBody6'></tbody>
-                        </table>
-                        <!--Hidrografia-->
-                        <table class='table table-bordered'>
-                            <tbody id='sitioTableBody7'></tbody>
-                        </table>
-                        <!--Uso de solo-->
-                        <table class='table table-bordered'>
-                            <tbody id='sitioTableBody8'></tbody>
-                        </table>
-                        <!--Uso de solo antigo-->
-                        <table class='table table-bordered'>
-                            <tbody id='sitioTableBody9'></tbody>
-                        </table>
-                        <!--Imagens-->
-                        <table class='table table-bordered'>
-                            <tbody id='sitioTableBody10'></tbody>
-                        </table>
-                        <!--Bibliografia-->
-                        <table class='table table-bordered'>
-                            <tbody id='sitioTableBody11'></tbody>
-                        </table>
-                    </div>
-                </div>
+            <div class='col-md-8' style="background-color:#C6BCA4;border-style: solid;border-color:#FFFFFF;border-size:1px">
+                <h4 id='nome'></h4>
+            </div>
+            <div class='col-md-4' style="background-color:#C6BCA4;border-style: solid;border-color:#FFFFFF;border-size:1px">
+                <div class='align-middle' id='toponimo'></div>
             </div>
         </div>
+        <p id='descricao'></p>
+        <p id='interpretacao'></p>
+        <div class='row'>
+            <div class='col-md-6'>
+                <p id='classificacao'></p>
+            </div>
+            <div class='col-md-6'>
+                <p id='cod_classificacao'></p>
+            </div>
+        </div>
+        <p id='concelho'></p>
+        <p id='freguesia'></p>
+        <p id='coordenadas'></p>
+        <p id='acessos'></p>
+        <p id='tipo_acesso'></p>
+        <p id='tipologia'></p>
+        <p id='percultural'></p>
+        <div class='container' style='text-align:center'>
+            <div class='row' id='imagens'></div>
+        </div>
+        <div class='col-md-2' style="background-color:#F5D0A9;border-style: solid;border-color:#FFFFFF;border-size:1px">
+            <h6 class='align-middle'><b>Bibliografia</b></h6>
+        </div>
+        <div id='biblio' class='container'></div>
     </div>
+
 
     <script src="../assets/js/core/jquery.min.js"></script>
     <script src="../assets/js/core/popper.min.js"></script>
