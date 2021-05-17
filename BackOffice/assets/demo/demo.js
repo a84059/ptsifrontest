@@ -339,9 +339,7 @@ demo = {
         });
       }
 
-      var email = sessionStorage.getItem('email');
-
-      if (email != "") {
+      
         for (const sitio of sitios) {
           var imagens = await fetch(`https://ptsibackend.herokuapp.com/imagens/sitio/${sitio.id_sitio}`)
           var imgjson = await imagens.json()
@@ -369,27 +367,6 @@ demo = {
 
           });
         }
-      }
-      else {
-        for (const sitio of sitios) {
-
-          addMarker({
-            coords: {
-              lat: sitio.coord_X,
-              lng: sitio.coord_Y
-            },
-            id: sitio.id_sitio,
-            content: '<div id="iw-container">' + '<div class="iw-title">' + sitio.nome + '</div>' +
-              '<p id="nome_info">' + '<span>Morada: </span>' + sitio.lugar +
-              ',' + sitio.freguesia1 + ',' + sitio.freguesia2 + '</p>' +
-              '<p id="nome_info">' + '<span>Descrição: </span>' + sitio
-              .descricao + '</p>' + '</div>'
-          });
-
-          console.log(sitio.coord_Y);
-          //console.log(markers.length);
-        }
-      }
     }
     rendermarkers();
     //New map
