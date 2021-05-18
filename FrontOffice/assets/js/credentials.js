@@ -82,9 +82,9 @@ function requestRegister() {
     if (result.status == 200) {
       Swal.fire({
         icon: 'success',
-        title: 'Registo efetuado com sucesso!',
+        title: 'Registo efetuado com sucesso! Aceda ao seu email e confirme o registo',
         showConfirmButton: false,
-        timer: 1500
+        timer: 3000
       })
       sessionStorage.setItem('email', email);
       window.setTimeout(function() { window.location.replace("login.html") }, 1700);
