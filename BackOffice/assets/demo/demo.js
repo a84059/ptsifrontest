@@ -784,6 +784,6 @@ demo = {
 
   downloadPDF: async function(id_sitio) {
     window.localStorage.setItem('sitio', id_sitio)
-    window.location.replace(`./sitioPDF.html`)
+    window.open(`./sitioPDF.html`)
   }
 };

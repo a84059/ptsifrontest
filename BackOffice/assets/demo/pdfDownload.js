@@ -225,3 +225,8 @@ setTimeout(function() {
         .from(document.body)
         .save('Sítio.pdf');
 }, 1500);
+
+setTimeout(function() {
+    window.close()
+}, 2300);
+
