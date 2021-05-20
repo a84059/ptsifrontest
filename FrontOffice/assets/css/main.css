@@ -3648,8 +3648,7 @@ body.is-menu-visible #menu {
 	height: 5em;
 	left: 0;
 	line-height: 3em;
-/*	position: fixed; */
-	position:absolute; 
+	position: absolute; 
 	top: 0;
 	width: 100%;
 	z-index: 10000;
@@ -3698,8 +3697,7 @@ body.is-menu-visible #menu {
 	line-height: inherit;
 	position: absolute;
 	right: 0;
-	top: 20%;
-	margin-top:35px;
+	top: 60%;
 /*	width:100%; */
 	
 
@@ -3740,7 +3738,7 @@ body.is-menu-visible #menu {
 
 #header nav>ul>li>ul {
 	position: absolute;
-	top: 60%;
+	top: 70%;
 /*	background-color: rgba(46, 56, 66, 1); */
 	/* left: 0; */
 	display: block;
@@ -3750,7 +3748,7 @@ body.is-menu-visible #menu {
 	visibility: hidden;
 	color: #fff;
 	list-style-type: none;
-	line-height: 35px;
+	line-height: 40px;
 }
 
 #header ul li:hover ul {

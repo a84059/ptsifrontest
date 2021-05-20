@@ -26,7 +26,7 @@ async function requestLogin() {
         timer: 1500
       })
       sessionStorage.setItem('email', email);
-      window.setTimeout(function() { window.location.replace("index_login.html") }, 1700);index_login.html
+      window.setTimeout(function() { window.location.replace("index_login.html") }, 1700);
     }
     else {
       Swal.fire({
@@ -102,6 +102,43 @@ function requestRegister() {
   })
 
 
+}
+
+function requestpassword() {
+  var email = document.getElementById('your-email').value;
+
+  fetch('https://ptsibackend.herokuapp.com/recuperarpassword', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+
+    body: JSON.stringify({
+      email: email,
+    })
+  }).then(result => {
+    console.log(result)
+    if (result.status == 200) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Mude a sua password no email que recebeu!',
+        showConfirmButton: false,
+        timer: 2000
+      })
+      sessionStorage.setItem('email', email);
+      window.setTimeout(function() { window.location.replace("login.html") }, 2500);
+    }
+    else {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Algo de errado aconteceu, tente mais tarde!',
+        icon: 'error',
+        confirmButtonText: 'Close'
+      })
+      console.log("Erro!")
+    }
+    return result.json();
+  })
 }
 
 /*
