@@ -97,11 +97,11 @@
 						</ul>
 					</li>
 
-					<li class="li-normal"><a href="#">Galeria</a>
+					<li class="li-normal"><a href="#"  onclick="logineeded()">Galeria</a>
 						<ul class="rockArt">
-							<li><a href="">Imagens</a></li>
-							<li><a href="">Rock Art Map</a></li>
-							<li><a href="">Modelos 3D</a></li>
+							<li><a href="#" onclick="logineeded()">Imagens</a></li>
+							<li><a href="#" onclick="logineeded()">Rock Art Map</a></li>
+							<li><a href="#" onclick="logineeded()">Modelos 3D</a></li>
 						</ul>
 					</li>
 					<li class="li-normal"><a href="#">Recursos</a>
@@ -330,6 +330,19 @@
 	</script>
 	<script type="text/javascript">
 		sessionStorage.setItem('email', "");
+		
+		
+		function logineeded() {
+      Swal.fire({
+        icon: 'error',
+        title: 'Faça login para ter acesso!',
+        showConfirmButton: false,
+    	 timer: 1000
+      })
+
+}
+		
+		
 	</script>
 
 
