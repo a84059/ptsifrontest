@@ -82,7 +82,7 @@ function requestRegister() {
     if (result.status == 200) {
       Swal.fire({
         icon: 'success',
-        title: 'Registo efetuado com sucesso! 
+        title: 'Registo efetuado com sucesso!',
         text: 'Aceda ao seu email e confirme o registo',
         showConfirmButton: false,
         timer: 3000
