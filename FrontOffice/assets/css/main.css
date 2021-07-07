@@ -3314,8 +3314,8 @@ button:disabled,
 }
 
 .wrapper.style5 {
-	background-color: #293241;
-	color: #293241;
+	background-color: #FAF9F6;
+	color: #FAF9F6;
 }
 
 .wrapper.style5 strong,
@@ -3524,7 +3524,7 @@ button:disabled,
 	-ms-transition: opacity 0.5s ease;
 	transition: opacity 0.5s ease;
 	opacity: 1;
-	padding-top: 3em;
+	/* padding-top: 3em; */
 }
 
 #page-wrapper:before {
@@ -3697,7 +3697,7 @@ body.is-menu-visible #menu {
 	line-height: inherit;
 	position: absolute;
 	right: 0;
-	top: 80%;
+/*	top: 30%; */
 /*	width:100%; */
 	
 
@@ -3729,9 +3729,10 @@ body.is-menu-visible #menu {
 	border: 0;
 	color: #fff;
 	display: block;
-	font-size: 0.8em;
+	font-size: 0.65em;
+	font-weight: bold;
 	letter-spacing: 0.225em;
-	padding: 0 1.5em;
+	padding: 0 1em;
 	text-transform: uppercase;
 
 }
@@ -3760,7 +3761,7 @@ body.is-menu-visible #menu {
 #header nav>ul>li>ul>li>a {
 	color: #fff;
 	text-decoration: none;
-	font-size: 0.8em;
+	font-size: 0.7em;
 	border: 0!important;
 	width: 100%;
 	display: block;
@@ -4415,6 +4416,10 @@ body.is-mobile.landing #footer {
 	color: #293241;
 }
 
+.cor-icon {
+	color: #FAF9F6;
+}
+
 
 /* FOOTER */
 
@@ -4690,7 +4695,6 @@ body.is-mobile.landing #footer {
 	border-color: #ffffff;
 	font-weight: lighter;
 	margin-right: 12px;
-	float: right;
 }
 
 .btn_login a {
@@ -4797,3 +4801,16 @@ background-color: #ffffff;
 }
 
 
+.hrcolor {
+	border: 0;
+    border-bottom: solid 2px #fff;
+    margin: 3em 0;
+}
+
+.btnHomePage {
+	float:right; 
+	color: #FAF9F6; 
+	margin-top: 0.8em; 
+	margin-right: 0.8em; 
+	font-size: 0.8em;
+}

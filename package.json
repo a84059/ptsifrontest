@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/NunoReis84314/PTSI_front#readme",
   "dependencies": {
+    "bootstrap": "^5.0.2",
     "sweetalert2": "^10.16.0"
   }
 }
