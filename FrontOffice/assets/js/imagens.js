@@ -10,7 +10,6 @@ window.onload = () => {
            <tr>
            <td>Imagem</td>
            <td>Descrição</td>
-           <td>Autor</td>
            </tr>
           </thead>
         `
@@ -21,7 +20,6 @@ window.onload = () => {
                 <tr>
                     <td><img src="../assets/ficheiros/imagens/megathumb/${imagem.ficheiro}" width="300" height="200"></td>
                      <td>${imagem.descricao}</td>
-                     <td>${imagem.autor}</td>
                 </tr>
                 
             `
