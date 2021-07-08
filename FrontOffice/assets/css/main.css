@@ -2463,7 +2463,7 @@ ul.icons.major li {
 
 /* Table */
 
-.table-wrapper {
+.table-  {
 	-webkit-overflow-scrolling: touch;
 	overflow-x: auto;
 }
@@ -4813,4 +4813,10 @@ background-color: #ffffff;
 	margin-top: 0.8em; 
 	margin-right: 0.8em; 
 	font-size: 0.8em;
+}
+
+
+.wrappersecundario {
+	padding: 2em 0 2em 0;
+	
 }
