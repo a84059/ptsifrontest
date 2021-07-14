@@ -4824,3 +4824,24 @@ background-color: #ffffff;
 colorhr {
 	border-color: #293241;
 }
+
+
+.coluna {
+  width: 50%;
+  padding: 1em 2em 0 3em;
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .coluna {
+    width: 100%;
+    display: inline-block;
+    left: 0px;
+  }
+}
+
+.inner:after {
+  content: "";
+  display: table;
+  clear: both;
+}
