@@ -266,6 +266,8 @@ i {
 
 p {
 	margin: 0 0 1em 0;
+	  text-align: justify;
+  text-justify: inter-word;
 }
 
 h1,
