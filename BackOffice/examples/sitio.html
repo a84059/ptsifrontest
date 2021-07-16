@@ -22,7 +22,7 @@
     <link href="../../FrontOffice/assets/css/main.css" />
     <link href="../BackOffice/assets/demo/demo.css" />
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="../assets/demo/selectOptions.js"></script>
+    <script src="../assets/demo/selectDropDown.js"></script>
 
 </head>
 
@@ -69,22 +69,67 @@
             </div>
         </div>
         
+        <div class="main-panel">
+             <div id="nav-placeholder"></div>
+            <script>
+                $(function() {
+                    $("#nav-placeholder").load("nav.html");
+                });
+            </script>
+            
+             <div class="content">
+        
+        <div class="rowMap">
+          <div class="col-md-12" sytle="height:100%">
+            <div class="card2 " sytle="height:100%">
+              <div class="card-header ">
+                Pesquisa de sítios
+              </div>
+              <div class="card-body " sytle="height:100%">
+               <table class="table">
+                  <thead>
+                    <th>Sítio Rochas</th>
+                    <th>Distrito<br><select id="distrito" class="form-control" placeholder="Selecionar"><option>Não foi possível carregar os resultados.</option></select></th>
+                    <th>Concelho<br><select id="concelho" class="form-control" placeholder="Selecionar"><option>Não foi possível carregar os resultados.</option></select></th>
+                    <th>Freguesia<br><select id="freguesia" class="form-control" placeholder="Selecionar"><option>Não foi possível carregar os resultados.</option></select></th>
+                  </thead>
+                  <tbody id="pesquisaSitio">
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+            
+            
+            
+            </div>
+            </div>
+        
         
         
         
         
           <script src="../assets/js/core/jquery.min.js"></script>
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrlpgDFoZm0L07_NUk5aZeP-ittxX2xow&callback=initMap&libraries=&v=weekly"></script>
-  <!-- Chart JS -->
-  <script src="../assets/js/plugins/chartjs.min.js"></script>
-  <!--  Notifications Plugin    -->
-  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
-  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
-  <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-  <script src="../assets/demo/demo.js"></script>
-        </body>
+          <script src="../assets/js/core/popper.min.js"></script>
+          <script src="../assets/js/core/bootstrap.min.js"></script>
+          <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+          <!--  Google Maps Plugin    -->
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrlpgDFoZm0L07_NUk5aZeP-ittxX2xow&callback=initMap&libraries=&v=weekly"></script>
+          <!-- Chart JS -->
+          <script src="../assets/js/plugins/chartjs.min.js"></script>
+          <!--  Notifications Plugin    -->
+          <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+          <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+          <script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
+          <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+          <script src="../assets/demo/demo.js"></script>
+          <script src="../assets/demo/search.js"></script>
+          <script>
+                $(document).ready(function() {
+                    demo.initInfoSitio();
+                });
+            </script>
+</body>

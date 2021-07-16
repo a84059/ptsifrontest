@@ -702,7 +702,41 @@ demo = {
     }
     document.getElementById('infoBody').innerHTML = txt;
   },
+  
+  fetchSitios: function() {
+    var url = `https://ptsibackend.herokuapp.com/sitio`
+    var sitio = {}
+    
+    return fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).then(result => {
+      var response = sitio.json();
+      sitio = response;
+      return sitio
+    }).catch((error) => { return sitio })
+  },
+  
+  initInfoSitio: async function() {
+    const response = await fetch('https://ptsibackend.herokuapp.com/sitio')
+    const sitio = await response.json();
+    var txt = ``;
 
+    for (var i in sitio) {
+      txt += `
+      <tr>
+        <td style="text-align:center">${sitio[i].nome}</td>
+        <td></td>
+        <td></td>
+        <td style="text-align:center">${sitio[i].freguesia1}</td>
+      </tr>
+      `
+    }
+    document.getElementById('pesquisaSitio').innerHTML = txt;
+  },
+  
   isIterable: function(obj) {
     if (obj == null) {
       return false;
