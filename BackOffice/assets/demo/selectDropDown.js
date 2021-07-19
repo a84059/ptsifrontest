@@ -5,7 +5,7 @@ window.onload = () => {
         let resultsFreguesia = await responseFreguesia.json();
 
 
-        var freguesia = `<option value="0"> Selecionar... </option>`
+        var freguesia = `<option value="0">Todas</option>`
         
         for (let k of resultsFreguesia) {
             freguesia += `<option value='${k.freguesia1}'>${k.freguesia1}</option>`

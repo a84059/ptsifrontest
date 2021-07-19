@@ -91,12 +91,14 @@
                     <th>Sítio Rochas</th>
                     <th>Distrito<br><select id="distrito" class="form-control" placeholder="Selecionar"><option>Não foi possível carregar os resultados.</option></select></th>
                     <th>Concelho<br><select id="concelho" class="form-control" placeholder="Selecionar"><option>Não foi possível carregar os resultados.</option></select></th>
-                    <th>Freguesia<br><select id="freguesia" class="form-control" placeholder="Selecionar"><option>Não foi possível carregar os resultados.</option></select></th>
+                    <th>Freguesia<br><select id="freguesia" class="form-control" placeholder="Selecionar" onchange="demo.searchByFreguesia(this.value)"><option>Não foi possível carregar os resultados.</option></select></th>
                   </thead>
                   <tbody id="pesquisaSitio">
                     
                   </tbody>
                 </table>
+              </div>
+              <div class"card-body" style="height:100%" id="hidden">
               </div>
             </div>
           </div>
