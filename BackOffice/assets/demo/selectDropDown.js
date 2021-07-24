@@ -1,20 +1,118 @@
 window.onload = () => {
-    
+
     const addOptions = async() => {
-        let responseFreguesia = await fetch('https://ptsibackend.herokuapp.com/sitio');
-        let resultsFreguesia = await responseFreguesia.json();
+        let responsedistrito = await fetch('https://ptsibackend.herokuapp.com/distrito');
+        let resultsdistritos = await responsedistrito.json();
 
 
-        var freguesia = `<option value="0">Todas</option>`
-        
-        for (let k of resultsFreguesia) {
-            freguesia += `<option value='${k.freguesia1}'>${k.freguesia1}</option>`
+        var distrito = `<option value="0">Todas</option>`
+
+        for (let k of resultsdistritos) {
+            distrito += `<option value='${k.distrito}'>${k.distrito}</option>`
         }
 
-        
-        //add freguesias
-        document.getElementById("freguesia").innerHTML = freguesia;
+
+        //add distrito
+        document.getElementById("distrito").innerHTML = distrito;
     }
 
+    document.getElementById("concelho").disabled = true;
+    document.getElementById("freguesia").disabled = true;
+
     addOptions();
+
+}
+
+
+const addOptionsConcelho = async(distrito) => {
+
+    if (document.getElementById("distrito").value == 0) {
+        document.getElementById("concelho").disabled = true;
+        document.getElementById("freguesia").disabled = true;
+        document.getElementById("0").style.visibility = "visible";
+        document.getElementById("concelho").value = 0
+        document.getElementById("freguesia").value = 0
+    }
+
+    else {
+
+        document.getElementById("concelho").disabled = false;
+
+        let responseconcelho = await await fetch('https://ptsibackend.herokuapp.com/concelho/distrito', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify({
+                distrito: distrito,
+            })
+        })
+
+        let resultsconcelho = await responseconcelho.json();
+
+
+        var concelho = `<option id="0" value="0">Selecione um Distrito.</option><option value="1">Todas</option>`
+
+        for (let k of resultsconcelho) {
+            concelho += `<option value='${k.concelho}'>${k.concelho}</option>`
+        }
+
+
+        //add concelho
+        document.getElementById("concelho").innerHTML = concelho;
+        document.getElementById("0").style.display = "none";
+        document.getElementById("concelho").value = 1
+    }
+}
+
+
+
+
+
+
+const addOptionsFreguesia = async(concelho) => {
+
+    if (document.getElementById("distrito").value == 0 ) {
+        document.getElementById("concelho").disabled = true;
+        document.getElementById("freguesia").disabled = true;
+        document.getElementById("1").style.visibility = "visible";
+        document.getElementById("freguesia").value = 0
+    }
+   if (document.getElementById("concelho").value == 1 ) {
+        document.getElementById("freguesia").disabled = true;
+        document.getElementById("1").style.visibility = "visible";
+        document.getElementById("freguesia").value = 0
+    }
+    else {
+        document.getElementById("freguesia").disabled = false;
+
+        let responsefreguesia = await fetch('https://ptsibackend.herokuapp.com/freguesia/concelho', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify({
+                concelho: concelho,
+            })
+        })
+
+        let resultsfreguesia = await responsefreguesia.json();
+
+
+        var freguesia = `<option id="1" value="0">Selecione um Concelho.</option><option value="1">Todas</option>`
+
+        for (let k of resultsfreguesia) {
+            freguesia += `<option value='${k.freguesia1}' onchange="concelhodrop()">${k.freguesia1}</option>`
+        }
+
+
+        //add concelho
+        document.getElementById("freguesia").innerHTML = freguesia;
+        document.getElementById("1").style.display = "none";
+        document.getElementById("freguesia").value = 1
+
+    }
+
 }

@@ -89,9 +89,9 @@
                <table class="table">
                   <thead>
                     <th>Sítio Rochas</th>
-                    <th>Distrito<br><select id="distrito" class="form-control" placeholder="Selecionar"><option>Não foi possível carregar os resultados.</option></select></th>
-                    <th>Concelho<br><select id="concelho" class="form-control" placeholder="Selecionar"><option>Não foi possível carregar os resultados.</option></select></th>
-                    <th>Freguesia<br><select id="freguesia" class="form-control" placeholder="Selecionar" onchange="demo.searchByFreguesia(this.value)"><option>Não foi possível carregar os resultados.</option></select></th>
+                    <th>Distrito<br><select id="distrito" class="form-control" placeholder="Selecionar" onchange=addOptionsConcelho(this.value)><option>Não foi possível carregar os resultados.</option></select></th>
+                    <th>Concelho<br><select id="concelho" class="form-control" placeholder="Selecionar" onchange=addOptionsFreguesia(this.value)><option>Selecione um Distrito.</option></select></th>
+                    <th>Freguesia<br><select id="freguesia" class="form-control" placeholder="Selecionar" onchange="demo.searchByFreguesia(this.value)"><option>Selecione um Concelho.</option></select></th>
                   </thead>
                   <tbody id="pesquisaSitio">
                     
