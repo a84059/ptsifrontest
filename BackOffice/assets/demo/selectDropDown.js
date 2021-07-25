@@ -21,6 +21,26 @@ window.onload = () => {
 
     addOptions();
 
+    const initInfoSitio = async() => {
+        const response = await fetch('https://ptsibackend.herokuapp.com/sitio')
+        const sitio = await response.json();
+        var txt = ``;
+
+        for (var i in sitio) {
+            txt += `
+      <tr>
+        <td style="text-align:center">${sitio[i].nome}</td>
+          <td style="text-align:center">${sitio[i].distrito}</td>
+          <td style="text-align:center">${sitio[i].concelho}</td>
+        <td style="text-align:center">${sitio[i].freguesia1}</td>
+        <td><button style="text-align:right" class='btn btn-primary btn-round')>Ficha Sítio<td>
+      </tr>
+      `
+        }
+        document.getElementById('pesquisaSitio').innerHTML = txt;
+    }
+    initInfoSitio()
+
 }
 
 
@@ -73,13 +93,13 @@ const addOptionsConcelho = async(distrito) => {
 
 const addOptionsFreguesia = async(concelho) => {
 
-    if (document.getElementById("distrito").value == 0 ) {
+    if (document.getElementById("distrito").value == 0) {
         document.getElementById("concelho").disabled = true;
         document.getElementById("freguesia").disabled = true;
         document.getElementById("1").style.visibility = "visible";
         document.getElementById("freguesia").value = 0
     }
-   if (document.getElementById("concelho").value == 1 ) {
+    if (document.getElementById("concelho").value == 1) {
         document.getElementById("freguesia").disabled = true;
         document.getElementById("1").style.visibility = "visible";
         document.getElementById("freguesia").value = 0

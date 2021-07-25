@@ -339,34 +339,34 @@ demo = {
         });
       }
 
-      
-        for (const sitio of sitios) {
-          var imagens = await fetch(`https://ptsibackend.herokuapp.com/imagens/sitio/${sitio.id_sitio}`)
-          var imgjson = await imagens.json()
-          var imagem = imgjson[0].ficheiro;
 
-          addMarker({
-            coords: {
-              lat: sitio.coord_X,
-              lng: sitio.coord_Y
-            },
-            id: sitio.id_sitio,
-            content: '<div id="iw-container">' +
-              "<div style='text-align:center; overflow-x: hidden;'>" +
-              "<img src='../../FrontOffice/assets/ficheiros/imagens/thumb/" + imagem + "'>" +
-              "</div>" +
-              "<br/><div style='text-align:center'>" +
-              "<b><h5>" + sitio.nome + "</h5></b><br/></div>" +
-              '<div class="btn-group" style="text-align:center"><input type="button" class="btn_vermais2" onclick="demo.downloadPDF(' + sitio.id_sitio + ')" value="Ficha de sítio"></input>' +
-              '<a href=#escondido id="a_vermais">' +
-              '<input type="button" class="btn_vermais" onclick="demo.verMais(' + sitio.id_sitio + ')" value="Ver mais"></input> ' +
-              '</a>' +
-              '</div></div>',
-            hover: '<h5 style="text-align: center">' + sitio.nome + '</h5>'
+      for (const sitio of sitios) {
+        var imagens = await fetch(`https://ptsibackend.herokuapp.com/imagens/sitio/${sitio.id_sitio}`)
+        var imgjson = await imagens.json()
+        var imagem = imgjson[0].ficheiro;
+
+        addMarker({
+          coords: {
+            lat: sitio.coord_X,
+            lng: sitio.coord_Y
+          },
+          id: sitio.id_sitio,
+          content: '<div id="iw-container">' +
+            "<div style='text-align:center; overflow-x: hidden;'>" +
+            "<img src='../../FrontOffice/assets/ficheiros/imagens/thumb/" + imagem + "'>" +
+            "</div>" +
+            "<br/><div style='text-align:center'>" +
+            "<b><h5>" + sitio.nome + "</h5></b><br/></div>" +
+            '<div class="btn-group" style="text-align:center"><input type="button" class="btn_vermais2" onclick="demo.downloadPDF(' + sitio.id_sitio + ')" value="Ficha de sítio"></input>' +
+            '<a href=#escondido id="a_vermais">' +
+            '<input type="button" class="btn_vermais" onclick="demo.verMais(' + sitio.id_sitio + ')" value="Ver mais"></input> ' +
+            '</a>' +
+            '</div></div>',
+          hover: '<h5 style="text-align: center">' + sitio.nome + '</h5>'
 
 
-          });
-        }
+        });
+      }
     }
     rendermarkers();
     //New map
@@ -662,7 +662,7 @@ demo = {
       return motivos
     }).catch((error) => { return motivos })
   },
-  
+
   initInfos: async function(id_sitio) {
     var materiais = await demo.fetchMateriais(id_sitio);
 
@@ -702,35 +702,36 @@ demo = {
     }
     document.getElementById('infoBody').innerHTML = txt;
   },
-  
+
   fetchDataPorFreguesia: function(freguesia) {
     var data = {}
     return fetch('https://ptsibackend.herokuapp.com/sitioPorFreguesia/' + freguesia, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        },
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
     }).then(result => {
-        var response = result.json();
-        data = response;
-        return data;
+      var response = result.json();
+      data = response;
+      return data;
     }).catch((error) => { return data })
-  }, 
-  
+  },
+
+
   searchByFreguesia: async function(freguesia) {
-    if(freguesia == "0"){
+    if (freguesia == "1") {
       const response = await fetch('https://ptsibackend.herokuapp.com/sitio')
       const sitio = await response.json();
       var txt = ``;
-  
+
       for (var i in sitio) {
         txt += `
         <tr>
           <td style="text-align:center">${sitio[i].nome}</td>
-          <td></td>
-          <td></td>
+          <td style="text-align:center">${sitio[i].distrito}</td>
+          <td style="text-align:center">${sitio[i].concelho}</td>
           <td style="text-align:center">${sitio[i].freguesia1}</td>
-          <td><button class='btn btn-primary btn-round')>Ficha Sítio<td>
+          <td><button  style="text-align:right" class='btn btn-primary btn-round')>Ficha Sítio<td>
         </tr>
         `
       }
@@ -744,17 +745,75 @@ demo = {
       txt += `
       <tr>
         <td style="text-align:center">${response[i].nome}</td>
-        <td></td>
-        <td></td>
+          <td style="text-align:center">${response[i].distrito}</td>
+          <td style="text-align:center">${response[i].concelho}</td>
         <td style="text-align:center">${response[i].freguesia1}</td>
-        <td><button class='btn btn-primary btn-round')>Ficha Sítio<td>
+        <td><button  style="text-align:right" class='btn btn-primary btn-round')>Ficha Sítio<td>
       </tr>
       `
     }
     document.getElementById('pesquisaSitio').innerHTML = txt;
-    
+
   },
-  
+
+  fetchDataPorDistrito: function(distrito) {
+    var data = {}
+    return fetch('https://ptsibackend.herokuapp.com/sitio/distrito', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+
+      body: JSON.stringify({
+        distrito: distrito,
+      })
+    }).then(result => {
+      var response = result.json();
+      data = response;
+      return data;
+    }).catch((error) => { return data })
+  },
+
+
+  searchByDistrito: async function(distrito) {
+    if (distrito == "0") {
+      const response = await fetch('https://ptsibackend.herokuapp.com/sitio')
+      const sitio = await response.json();
+      var txt = ``;
+
+      for (var i in sitio) {
+        txt += `
+        <tr>
+          <td style="text-align:center">${sitio[i].nome}</td>
+          <td style="text-align:center">${sitio[i].distrito}</td>
+          <td style="text-align:center">${sitio[i].concelho}</td>
+          <td style="text-align:center">${sitio[i].freguesia1}</td>
+          <td><button  style="text-align:right" class='btn btn-primary btn-round')>Ficha Sítio<td>
+        </tr>
+        `
+      }
+      document.getElementById('pesquisaSitio').innerHTML = txt;
+      return;
+    }
+    const response = await demo.fetchDataPorDistrito(distrito);
+    var txt = ``;
+    console.log(response)
+    for (var i in response) {
+      txt += `
+      <tr>
+        <td style="text-align:center">${response[i].nome}</td>
+          <td style="text-align:center">${response[i].distrito}</td>
+          <td style="text-align:center">${response[i].concelho}</td>
+        <td style="text-align:center">${response[i].freguesia1}</td>
+        <td><button  style="text-align:right" class='btn btn-primary btn-round')>Ficha Sítio<td>
+      </tr>
+      `
+    }
+    document.getElementById('pesquisaSitio').innerHTML = txt;
+
+  },
+
+
   initInfoSitio: async function() {
     const response = await fetch('https://ptsibackend.herokuapp.com/sitio')
     const sitio = await response.json();
@@ -764,16 +823,16 @@ demo = {
       txt += `
       <tr>
         <td style="text-align:center">${sitio[i].nome}</td>
-        <td></td>
-        <td></td>
+          <td style="text-align:center">${sitio[i].distrito}</td>
+          <td style="text-align:center">${sitio[i].concelho}</td>
         <td style="text-align:center">${sitio[i].freguesia1}</td>
-        <td><button class='btn btn-primary btn-round')>Ficha Sítio<td>
+        <td><button style="text-align:right" class='btn btn-primary btn-round')>Ficha Sítio<td>
       </tr>
       `
     }
     document.getElementById('pesquisaSitio').innerHTML = txt;
   },
-  
+
   isIterable: function(obj) {
     if (obj == null) {
       return false;
