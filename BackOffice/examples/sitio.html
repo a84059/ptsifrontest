@@ -22,8 +22,6 @@
     <link href="../../FrontOffice/assets/css/main.css" />
     <link href="../BackOffice/assets/demo/demo.css" />
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="../assets/demo/selectDropDown.js"></script>
-
 </head>
 
 <body class="">
@@ -86,16 +84,25 @@
                                 Pesquisa de sítios
                             </div>
                             <div class="card-body " sytle="height:100%">
-                                <table class="table">
+                                <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                                     <thead>
                                         <th style="text-align:center">Sítio Rochas</th>
                                         <th>Distrito<br><select id="distrito" class="form-control" placeholder="Selecionar" onchange=addOptionsConcelho(this.value);demo.searchByDistrito(this.value)><option>Não foi possível carregar os resultados.</option></select></th>
-                                        <th>Concelho<br><select id="concelho" class="form-control" placeholder="Selecionar" onchange=addOptionsFreguesia(this.value)><option>Selecione um Distrito.</option></select></th>
+                                        <th>Concelho<br><select id="concelho" class="form-control" placeholder="Selecionar" onchange=addOptionsFreguesia(this.value);demo.searchByConcelho(this.value)><option>Selecione um Distrito.</option></select></th>
                                         <th>Freguesia<br><select id="freguesia" class="form-control" placeholder="Selecionar" onchange="demo.searchByFreguesia(this.value)"><option>Selecione um Concelho.</option></select></th>
+                                        <th style="text-align:center">PDF</th>
                                     </thead>
                                     <tbody id="pesquisaSitio">
-
                                     </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th style="text-align:center">Sítio Rocha </th>
+                                            <th style="text-align:center">Distrito</th>
+                                            <th style="text-align:center">Concelho</th>
+                                            <th style="text-align:center">Freguesia</th>
+                                            <th style="text-align:center">PDF</th>
+                                        </tr>
+                                    </tfoot>
                                 </table>
                             </div>
                             <div class "card-body" style="height:100%" id="hidden">
@@ -109,9 +116,6 @@
 
         </div>
     </div>
-
-
-
 
 
     <script src="../assets/js/core/jquery.min.js"></script>
@@ -129,10 +133,20 @@
     <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
     <script src="../assets/demo/demo.js"></script>
     <script src="../assets/demo/search.js"></script>
-    <script src="../assets/demo/tablesitio.js"></script>
-    <script>
-     /*   $(document).ready(function() {
-            demo.initInfoSitio();
+    <script src="../assets/demo/selectDropDown.js"></script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+
+  <script>
+   
+
+      /* $(document).ready(function() {
+            $('#dtBasicExample').DataTable();
+
         });*/
     </script>
 </body>

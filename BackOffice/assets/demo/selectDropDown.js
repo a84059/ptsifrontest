@@ -33,7 +33,7 @@ window.onload = () => {
           <td style="text-align:center">${sitio[i].distrito}</td>
           <td style="text-align:center">${sitio[i].concelho}</td>
         <td style="text-align:center">${sitio[i].freguesia1}</td>
-        <td><button style="text-align:right" class='btn btn-primary btn-round')>Ficha Sítio<td>
+        <td><button style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
       </tr>
       `
         }
@@ -83,6 +83,7 @@ const addOptionsConcelho = async(distrito) => {
         document.getElementById("concelho").innerHTML = concelho;
         document.getElementById("0").style.display = "none";
         document.getElementById("concelho").value = 1
+        sessionStorage.setItem("distritozona", distrito)
     }
 }
 
@@ -105,6 +106,7 @@ const addOptionsFreguesia = async(concelho) => {
         document.getElementById("freguesia").value = 0
     }
     else {
+         sessionStorage.setItem("concelhozona", concelho)
         document.getElementById("freguesia").disabled = false;
 
         let responsefreguesia = await fetch('https://ptsibackend.herokuapp.com/freguesia/concelho', {

@@ -717,47 +717,28 @@ demo = {
     }).catch((error) => { return data })
   },
 
+  fetchDataPorConcelho: function(concelho1) {
+    var data = {}
+    concelho = sessionStorage.getItem("concelhozona")
+    return fetch('https://ptsibackend.herokuapp.com/sitio/concelho', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
 
-  searchByFreguesia: async function(freguesia) {
-    if (freguesia == "1") {
-      const response = await fetch('https://ptsibackend.herokuapp.com/sitio')
-      const sitio = await response.json();
-      var txt = ``;
-
-      for (var i in sitio) {
-        txt += `
-        <tr>
-          <td style="text-align:center">${sitio[i].nome}</td>
-          <td style="text-align:center">${sitio[i].distrito}</td>
-          <td style="text-align:center">${sitio[i].concelho}</td>
-          <td style="text-align:center">${sitio[i].freguesia1}</td>
-          <td><button  style="text-align:right" class='btn btn-primary btn-round')>Ficha Sítio<td>
-        </tr>
-        `
-      }
-      document.getElementById('pesquisaSitio').innerHTML = txt;
-      return;
-    }
-    const response = await demo.fetchDataPorFreguesia(freguesia);
-    var txt = ``;
-
-    for (var i in response) {
-      txt += `
-      <tr>
-        <td style="text-align:center">${response[i].nome}</td>
-          <td style="text-align:center">${response[i].distrito}</td>
-          <td style="text-align:center">${response[i].concelho}</td>
-        <td style="text-align:center">${response[i].freguesia1}</td>
-        <td><button  style="text-align:right" class='btn btn-primary btn-round')>Ficha Sítio<td>
-      </tr>
-      `
-    }
-    document.getElementById('pesquisaSitio').innerHTML = txt;
-
+      body: JSON.stringify({
+        concelho: concelho,
+      })
+    }).then(result => {
+      var response = result.json();
+      data = response;
+      return data;
+    }).catch((error) => { return data })
   },
 
-  fetchDataPorDistrito: function(distrito) {
+  fetchDataPorDistrito: function(distrito1) {
     var data = {}
+    distrito = sessionStorage.getItem("distritozona")
     return fetch('https://ptsibackend.herokuapp.com/sitio/distrito', {
       method: 'POST',
       headers: {
@@ -775,6 +756,25 @@ demo = {
   },
 
 
+  fetchDataPorDistrito2: function(distrito) {
+    var data = {}
+    return fetch('https://ptsibackend.herokuapp.com/sitio/distrito', {
+       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+
+      body: JSON.stringify({
+        distrito: distrito,
+      })
+    }).then(result => {
+      var response = result.json();
+      data = response;
+      return data;
+    }).catch((error) => { return data })
+  },
+  
+  
   searchByDistrito: async function(distrito) {
     if (distrito == "0") {
       const response = await fetch('https://ptsibackend.herokuapp.com/sitio')
@@ -788,14 +788,14 @@ demo = {
           <td style="text-align:center">${sitio[i].distrito}</td>
           <td style="text-align:center">${sitio[i].concelho}</td>
           <td style="text-align:center">${sitio[i].freguesia1}</td>
-          <td><button  style="text-align:right" class='btn btn-primary btn-round')>Ficha Sítio<td>
+          <td><button  style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
         </tr>
         `
       }
       document.getElementById('pesquisaSitio').innerHTML = txt;
       return;
     }
-    const response = await demo.fetchDataPorDistrito(distrito);
+    const response = await demo.fetchDataPorDistrito2(distrito);
     var txt = ``;
     console.log(response)
     for (var i in response) {
@@ -805,7 +805,82 @@ demo = {
           <td style="text-align:center">${response[i].distrito}</td>
           <td style="text-align:center">${response[i].concelho}</td>
         <td style="text-align:center">${response[i].freguesia1}</td>
-        <td><button  style="text-align:right" class='btn btn-primary btn-round')>Ficha Sítio<td>
+        <td><button  style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
+      </tr>
+      `
+    }
+    document.getElementById('pesquisaSitio').innerHTML = txt;
+
+  },
+
+  searchByConcelho: async function(concelho) {
+    if (concelho == "0") {
+      const response = await demo.fetchDataPorDistrito(distrito);
+      const sitio = await response.json();
+      var txt = ``;
+
+      for (var i in sitio) {
+        txt += `
+        <tr>
+          <td style="text-align:center">${sitio[i].nome}</td>
+          <td style="text-align:center">${sitio[i].distrito}</td>
+          <td style="text-align:center">${sitio[i].concelho}</td>
+          <td style="text-align:center">${sitio[i].freguesia1}</td>
+          <td><button  style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
+        </tr>
+        `
+      }
+      document.getElementById('pesquisaSitio').innerHTML = txt;
+      return;
+    }
+    const response = await demo.fetchDataPorConcelho(concelho);
+    var txt = ``;
+    console.log(response)
+    for (var i in response) {
+      txt += `
+      <tr>
+        <td style="text-align:center">${response[i].nome}</td>
+          <td style="text-align:center">${response[i].distrito}</td>
+          <td style="text-align:center">${response[i].concelho}</td>
+        <td style="text-align:center">${response[i].freguesia1}</td>
+        <td><button  style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
+      </tr>
+      `
+    }
+    document.getElementById('pesquisaSitio').innerHTML = txt;
+
+  },
+
+  searchByFreguesia: async function(freguesia) {
+    if (freguesia == "1") {
+      const sitio = await demo.fetchDataPorConcelho(concelho);
+      var txt = ``;
+
+      for (var i in sitio) {
+        txt += `
+        <tr>
+          <td style="text-align:center">${sitio[i].nome}</td>
+          <td style="text-align:center">${sitio[i].distrito}</td>
+          <td style="text-align:center">${sitio[i].concelho}</td>
+          <td style="text-align:center">${sitio[i].freguesia1}</td>
+          <td><button  style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
+        </tr>
+        `
+      }
+      document.getElementById('pesquisaSitio').innerHTML = txt;
+      return;
+    }
+    const response = await demo.fetchDataPorFreguesia(freguesia);
+    var txt = ``;
+
+    for (var i in response) {
+      txt += `
+      <tr>
+        <td style="text-align:center">${response[i].nome}</td>
+          <td style="text-align:center">${response[i].distrito}</td>
+          <td style="text-align:center">${response[i].concelho}</td>
+        <td style="text-align:center">${response[i].freguesia1}</td>
+        <td><button style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
       </tr>
       `
     }
@@ -826,7 +901,7 @@ demo = {
           <td style="text-align:center">${sitio[i].distrito}</td>
           <td style="text-align:center">${sitio[i].concelho}</td>
         <td style="text-align:center">${sitio[i].freguesia1}</td>
-        <td><button style="text-align:right" class='btn btn-primary btn-round')>Ficha Sítio<td>
+        <td><button style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
       </tr>
       `
     }
