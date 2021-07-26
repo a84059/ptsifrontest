@@ -373,10 +373,10 @@ demo = {
 
     map = new google.maps.Map(document.getElementById("map"), {
       center: {
-        lat: 41.079879,
-        lng: -7.115524
+        lat: 41.002531,
+        lng: -7.046509 
       },
-      zoom: 9,
+      zoom: 10,
       gestureHandling: 'greedy'
 
     });

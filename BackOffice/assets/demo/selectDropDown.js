@@ -35,7 +35,7 @@ window.onload = () => {
           <td style="text-align:center">${sitio[i].distrito}</td>
           <td style="text-align:center">${sitio[i].concelho}</td>
         <td style="text-align:center">${sitio[i].freguesia1}</td>
-        <td><button style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
+        <td><a href="#footer"><button style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</button></a></td>
       </tr>
       `
       ok++;
@@ -43,6 +43,28 @@ window.onload = () => {
         document.getElementById('pesquisaSitio').innerHTML = txt;
     }
     initInfoSitio()
+    
+    
+    
+
+    
+    
+    document.getElementById("cmd")
+        .addEventListener("click", () => {
+            const invoice = this.document.getElementById("dtBasicExample");
+            console.log(invoice);
+            console.log(window);
+            var opt = {
+                margin: 1,
+                filename: 'myfile.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' }
+            };
+            html2pdf().from(invoice).set(opt).save();
+
+        })
+
 
 }
 

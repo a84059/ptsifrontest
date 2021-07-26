@@ -1,4 +1,8 @@
 
+html{
+  scroll-behavior: smooth;
+}
+
 body {
   overflow-y: scroll; /* Show vertical scrollbar */
   overflow-x: hidden; /* Show horizontal scrollbar */
