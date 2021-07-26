@@ -25,10 +25,12 @@ window.onload = () => {
         const response = await fetch('https://ptsibackend.herokuapp.com/sitio')
         const sitio = await response.json();
         var txt = ``;
+        let ok = 1;
 
         for (var i in sitio) {
             txt += `
       <tr>
+      <th style="text-align:center" scope="row">${ok}</th>
         <td style="text-align:center">${sitio[i].nome}</td>
           <td style="text-align:center">${sitio[i].distrito}</td>
           <td style="text-align:center">${sitio[i].concelho}</td>
@@ -36,6 +38,7 @@ window.onload = () => {
         <td><button style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
       </tr>
       `
+      ok++;
         }
         document.getElementById('pesquisaSitio').innerHTML = txt;
     }
@@ -58,7 +61,7 @@ const addOptionsConcelho = async(distrito) => {
 
         document.getElementById("concelho").disabled = false;
 
-        let responseconcelho = await await fetch('https://ptsibackend.herokuapp.com/concelho/distrito', {
+        let responseconcelho =  await fetch('https://ptsibackend.herokuapp.com/concelho/distrito', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

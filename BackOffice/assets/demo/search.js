@@ -49,45 +49,31 @@ function isIterable(obj) {
 
 function renderTable(data) {
     var div = document.getElementById("escondidinho");
-    var txt = `
-        <div class='row'>
-            <div class='col-md-12'>
-                <div class='card'>
-                    <div class='card-header'> 
-                        <h4> Resultados </h4> 
-                    </div>
-                    <div class="row">
-                        <div class="col-md-11 tab">
-                            <table class="tab" style="margin-bottom: 10px">
-                                <thead>
-                                    <tr>
-                                        <th> Nome </th>
-                                        <th> Ver Mais </th>
-                                    </tr>
-                                </thead>
-                                <tbody>`
+    var txt = ``;
+    let i = 1;
     if (isIterable(data)) {
         for (let result of data) {
             txt +=
                 `<tr>
-                <td>${result.nome}</td>
-                <td><button class='btn btn-primary btn-round' onclick=verMapa(${result.id_sitio})>Ver</td>
-            </tr>`
+                <th style="text-align:center" scope="row">${i}</th>
+                <td style="text-align:center">${result.nome}</td>
+                <td style="text-align:center">${result.distrito}</td>
+                <td style="text-align:center">${result.concelho}</td>
+                <td style="text-align:center">${result.freguesia1}</td>
+                <td style="text-align:center"><button class='btn btn-primary btn-round' onclick=verMapa(${result.id_sitio})>Ver</td>
+                </tr>`
+                
+                i++;
         }
+        
     }
     else {
         txt +=
             `<tr>
-                <td>Não existem resultados para apresentar.</td>
+                <td style="text-align:center" colspan="5" >Não existem resultados para apresentar.</td>
             </tr>`
     }
-    txt += `</tbody>
-            </table>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>`
+
     div.innerHTML = txt;
 }
 

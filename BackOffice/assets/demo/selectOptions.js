@@ -3,7 +3,7 @@ window.onload = () => {
     const addOptions = async() => {
         let responseGeog = await fetch('https://ptsibackend.herokuapp.com/sitioContexto');
         let responseGeol = await fetch('https://ptsibackend.herokuapp.com/sitiocontextogeol')
-        let responseFreguesia = await fetch('https://ptsibackend.herokuapp.com/sitio');
+        let responseFreguesia = await fetch('https://ptsibackend.herokuapp.com/freguesia');
         let resultsFreguesia = await responseFreguesia.json();
         let resultsGeol = await responseGeol.json();
         let resultsGeog = await responseGeog.json();

@@ -780,10 +780,11 @@ demo = {
       const response = await fetch('https://ptsibackend.herokuapp.com/sitio')
       const sitio = await response.json();
       var txt = ``;
-
+      let ok = 1;
       for (var i in sitio) {
         txt += `
         <tr>
+        <th style="text-align:center" scope="row">${ok}</th>
           <td style="text-align:center">${sitio[i].nome}</td>
           <td style="text-align:center">${sitio[i].distrito}</td>
           <td style="text-align:center">${sitio[i].concelho}</td>
@@ -791,16 +792,19 @@ demo = {
           <td><button  style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
         </tr>
         `
+        ok++
       }
       document.getElementById('pesquisaSitio').innerHTML = txt;
       return;
     }
     const response = await demo.fetchDataPorDistrito2(distrito);
     var txt = ``;
+    let ok = 1;
     console.log(response)
     for (var i in response) {
       txt += `
       <tr>
+      <th style="text-align:center" scope="row">${ok}</th>
         <td style="text-align:center">${response[i].nome}</td>
           <td style="text-align:center">${response[i].distrito}</td>
           <td style="text-align:center">${response[i].concelho}</td>
@@ -808,6 +812,7 @@ demo = {
         <td><button  style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
       </tr>
       `
+      ok++;
     }
     document.getElementById('pesquisaSitio').innerHTML = txt;
 
@@ -818,10 +823,11 @@ demo = {
       const response = await demo.fetchDataPorDistrito(distrito);
       const sitio = await response.json();
       var txt = ``;
-
+      let ok = 1;      
       for (var i in sitio) {
         txt += `
         <tr>
+        <th style="text-align:center" scope="row">${ok}</th>
           <td style="text-align:center">${sitio[i].nome}</td>
           <td style="text-align:center">${sitio[i].distrito}</td>
           <td style="text-align:center">${sitio[i].concelho}</td>
@@ -829,16 +835,19 @@ demo = {
           <td><button  style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
         </tr>
         `
+        ok++;
       }
       document.getElementById('pesquisaSitio').innerHTML = txt;
       return;
     }
     const response = await demo.fetchDataPorConcelho(concelho);
     var txt = ``;
+    let ok = 1;
     console.log(response)
     for (var i in response) {
       txt += `
       <tr>
+      <th style="text-align:center" scope="row">${ok}</th>
         <td style="text-align:center">${response[i].nome}</td>
           <td style="text-align:center">${response[i].distrito}</td>
           <td style="text-align:center">${response[i].concelho}</td>
@@ -846,6 +855,7 @@ demo = {
         <td><button  style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
       </tr>
       `
+      ok++;
     }
     document.getElementById('pesquisaSitio').innerHTML = txt;
 
@@ -855,10 +865,11 @@ demo = {
     if (freguesia == "1") {
       const sitio = await demo.fetchDataPorConcelho(concelho);
       var txt = ``;
-
+      let ok = 1;
       for (var i in sitio) {
         txt += `
         <tr>
+        <th style="text-align:center" scope="row">${ok}</th>
           <td style="text-align:center">${sitio[i].nome}</td>
           <td style="text-align:center">${sitio[i].distrito}</td>
           <td style="text-align:center">${sitio[i].concelho}</td>
@@ -872,10 +883,11 @@ demo = {
     }
     const response = await demo.fetchDataPorFreguesia(freguesia);
     var txt = ``;
-
+    let ok = 1;
     for (var i in response) {
       txt += `
       <tr>
+      <th style="text-align:center" scope="row">${ok}</th>
         <td style="text-align:center">${response[i].nome}</td>
           <td style="text-align:center">${response[i].distrito}</td>
           <td style="text-align:center">${response[i].concelho}</td>
@@ -883,6 +895,7 @@ demo = {
         <td><button style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
       </tr>
       `
+      ok++;
     }
     document.getElementById('pesquisaSitio').innerHTML = txt;
 
@@ -893,10 +906,11 @@ demo = {
     const response = await fetch('https://ptsibackend.herokuapp.com/sitio')
     const sitio = await response.json();
     var txt = ``;
-
+    let ok = 1;
     for (var i in sitio) {
       txt += `
       <tr>
+      <th style="text-align:center" scope="row">${ok}</th>
         <td style="text-align:center">${sitio[i].nome}</td>
           <td style="text-align:center">${sitio[i].distrito}</td>
           <td style="text-align:center">${sitio[i].concelho}</td>
@@ -904,6 +918,7 @@ demo = {
         <td><button style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
       </tr>
       `
+      ok++
     }
     document.getElementById('pesquisaSitio').innerHTML = txt;
   },
