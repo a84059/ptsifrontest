@@ -789,7 +789,7 @@ demo = {
           <td style="text-align:center">${sitio[i].distrito}</td>
           <td style="text-align:center">${sitio[i].concelho}</td>
           <td style="text-align:center">${sitio[i].freguesia1}</td>
-          <td><button  style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
+           <td><a href="#generatePDF" style="text-decoration: none;"><button style="margin: auto; display: block;" class='btn btn-primary btn-round' onclick=fichasitio(${sitio[i].id_sitio})>Ficha Sítio</button></a></td>
         </tr>
         `
         ok++
@@ -809,7 +809,7 @@ demo = {
           <td style="text-align:center">${response[i].distrito}</td>
           <td style="text-align:center">${response[i].concelho}</td>
         <td style="text-align:center">${response[i].freguesia1}</td>
-        <td><button  style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
+         <td><a href="#generatePDF" style="text-decoration: none;"><button style="margin: auto; display: block;" class='btn btn-primary btn-round' onclick=fichasitio(${sitio[i].id_sitio})>Ficha Sítio</button></a></td>
       </tr>
       `
       ok++;
@@ -832,7 +832,7 @@ demo = {
           <td style="text-align:center">${sitio[i].distrito}</td>
           <td style="text-align:center">${sitio[i].concelho}</td>
           <td style="text-align:center">${sitio[i].freguesia1}</td>
-          <td><button  style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
+           <td><a href="#generatePDF" style="text-decoration: none;"><button style="margin: auto; display: block;" class='btn btn-primary btn-round' onclick=fichasitio(${sitio[i].id_sitio})>Ficha Sítio</button></a></td>
         </tr>
         `
         ok++;
@@ -852,7 +852,7 @@ demo = {
           <td style="text-align:center">${response[i].distrito}</td>
           <td style="text-align:center">${response[i].concelho}</td>
         <td style="text-align:center">${response[i].freguesia1}</td>
-        <td><button  style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
+         <td><a href="#generatePDF" style="text-decoration: none;"><button style="margin: auto; display: block;" class='btn btn-primary btn-round' onclick=fichasitio(${response[i].id_sitio})>Ficha Sítio</button></a></td>
       </tr>
       `
       ok++;
@@ -874,7 +874,7 @@ demo = {
           <td style="text-align:center">${sitio[i].distrito}</td>
           <td style="text-align:center">${sitio[i].concelho}</td>
           <td style="text-align:center">${sitio[i].freguesia1}</td>
-          <td><button  style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
+           <td><a href="#generatePDF" style="text-decoration: none;"><button style="margin: auto; display: block;" class='btn btn-primary btn-round' onclick=fichasitio(${sitio[i].id_sitio})>Ficha Sítio</button></a></td>
         </tr>
         `
       }
@@ -892,7 +892,7 @@ demo = {
           <td style="text-align:center">${response[i].distrito}</td>
           <td style="text-align:center">${response[i].concelho}</td>
         <td style="text-align:center">${response[i].freguesia1}</td>
-        <td><button style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
+         <td><a href="#generatePDF" style="text-decoration: none;"><button style="margin: auto; display: block;" class='btn btn-primary btn-round' onclick=fichasitio(${response[i].id_sitio})>Ficha Sítio</button></a></td>
       </tr>
       `
       ok++;
@@ -915,7 +915,7 @@ demo = {
           <td style="text-align:center">${sitio[i].distrito}</td>
           <td style="text-align:center">${sitio[i].concelho}</td>
         <td style="text-align:center">${sitio[i].freguesia1}</td>
-        <td><button style="margin: auto; display: block;" class='btn btn-primary btn-round')>Ficha Sítio</td>
+         <td><a href="#generatePDF" style="text-decoration: none;"><button style="margin: auto; display: block;" class='btn btn-primary btn-round' onclick=fichasitio(${sitio[i].id_sitio})>Ficha Sítio</button></a></td>
       </tr>
       `
       ok++

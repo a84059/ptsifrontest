@@ -91,6 +91,9 @@ function fetchBibliografia(id_bibliografia) {
 
 
 const fichasitio = async(id_sitio) => {
+    
+    document.getElementById("fichasitio").style.display = "inline";
+    document.getElementById("generatePDF").style.display = "inline";
 
     var id_sitio = id_sitio;
     var txtNome = ``;

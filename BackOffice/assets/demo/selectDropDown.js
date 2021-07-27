@@ -1,5 +1,4 @@
 window.onload = () => {
-
     const addOptions = async() => {
         let responsedistrito = await fetch('https://ptsibackend.herokuapp.com/distrito');
         let resultsdistritos = await responsedistrito.json();
@@ -35,20 +34,16 @@ window.onload = () => {
           <td style="text-align:center">${sitio[i].distrito}</td>
           <td style="text-align:center">${sitio[i].concelho}</td>
         <td style="text-align:center">${sitio[i].freguesia1}</td>
-        <td><a href="#fichasitio" style="text-decoration: none;"><button style="margin: auto; display: block;" class='btn btn-primary btn-round' onclick=fichasitio(${sitio[i].id_sitio})>Ficha Sítio</button></a></td>
+        <td><a href="#generatePDF" style="text-decoration: none;"><button style="margin: auto; display: block;" class='btn btn-primary btn-round' onclick=fichasitio(${sitio[i].id_sitio})>Ficha Sítio</button></a></td>
       </tr>
       `
-      ok++;
+            ok++;
         }
         document.getElementById('pesquisaSitio').innerHTML = txt;
     }
     initInfoSitio()
-    
-    
-    
+    //tablesettings()
 
-    
-    
     document.getElementById("cmd")
         .addEventListener("click", () => {
             const invoice = this.document.getElementById("fichasitio");
@@ -68,6 +63,12 @@ window.onload = () => {
 
 }
 
+const tablesettings = async() => {
+  $(document).ready(function() {
+        $('#dtBasicExample').DataTable()
+
+    });
+}
 
 const addOptionsConcelho = async(distrito) => {
 
@@ -83,7 +84,7 @@ const addOptionsConcelho = async(distrito) => {
 
         document.getElementById("concelho").disabled = false;
 
-        let responseconcelho =  await fetch('https://ptsibackend.herokuapp.com/concelho/distrito', {
+        let responseconcelho = await fetch('https://ptsibackend.herokuapp.com/concelho/distrito', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -131,7 +132,7 @@ const addOptionsFreguesia = async(concelho) => {
         document.getElementById("freguesia").value = 0
     }
     else {
-         sessionStorage.setItem("concelhozona", concelho)
+        sessionStorage.setItem("concelhozona", concelho)
         document.getElementById("freguesia").disabled = false;
 
         let responsefreguesia = await fetch('https://ptsibackend.herokuapp.com/freguesia/concelho', {
