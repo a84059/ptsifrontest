@@ -357,7 +357,7 @@ demo = {
             "</div>" +
             "<br/><div style='text-align:center'>" +
             "<b><h5>" + sitio.nome + "</h5></b><br/></div>" +
-            '<div class="btn-group" style="text-align:center"><input type="button" class="btn_vermais2" onclick="demo.downloadPDF(' + sitio.id_sitio + ')" value="Ficha de sítio"></input>' +
+            '<div class="btn-group" style="text-align:center"><input type="button" class="btn_vermais2" onclick="fichasitiomap(' + sitio.id_sitio + ')" value="Ficha de sítio"></input>' +
             '<a href=#escondido id="a_vermais">' +
             '<input type="button" class="btn_vermais" onclick="demo.verMais(' + sitio.id_sitio + ')" value="Ver mais"></input> ' +
             '</a>' +

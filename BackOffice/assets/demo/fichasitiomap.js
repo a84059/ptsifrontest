@@ -90,12 +90,18 @@ function fetchBibliografia(id_bibliografia) {
 }
 
 
-const fichasitio = async(id_sitio) => {
-    
-    document.getElementById("fichasitio").style.display = "inline";
-    document.getElementById("generatePDF").style.display = "inline";
 
-    var id_sitio = id_sitio;
+window.onload = () => {
+
+    fichasitioPDF(sessionStorage.getItem("sitio_id"))
+
+
+}
+
+const fichasitioPDF = async(id_sitio) => {
+
+
+    var id_sitio = id_sitio
     var txtNome = ``;
     var txtToponimo = ``;
     var txtDesc = ``;
@@ -167,12 +173,23 @@ const fichasitio = async(id_sitio) => {
         }
     }
     document.getElementById('tipologia_sitio').innerHTML = txtTipologiaFinal;
-}
-
-
-const fichasitiomap = async(id_sitio) => {
-    
-    sessionStorage.setItem("sitio_id",id_sitio)
-    window.open(`./sitioPDF.html`);
 
 }
+
+setTimeout(function() {
+    var opt = {
+        margin: 1,
+        filename: 'myfile.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'a3', orientation: 'landscape' }
+    };
+    html2pdf()
+        .set(opt)
+        .from(document.getElementById("fichasitio"))
+        .save('Sítio.pdf');
+}, 1500);
+
+setTimeout(function() {
+    window.close()
+}, 5000);
