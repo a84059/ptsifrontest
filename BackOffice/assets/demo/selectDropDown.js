@@ -39,6 +39,11 @@ window.onload = () => {
       `
             ok++;
         }
+                   $(document).ready(function() {
+                var table = $('#dtBasicExample').DataTable({
+                    "ordering": false
+                });
+            });
         document.getElementById('pesquisaSitio').innerHTML = txt;
     }
     initInfoSitio()
@@ -64,7 +69,7 @@ window.onload = () => {
 }
 
 const tablesettings = async() => {
-  $(document).ready(function() {
+    $(document).ready(function() {
         $('#dtBasicExample').DataTable()
 
     });

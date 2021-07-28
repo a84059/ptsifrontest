@@ -374,7 +374,7 @@ demo = {
     map = new google.maps.Map(document.getElementById("map"), {
       center: {
         lat: 41.002531,
-        lng: -7.046509 
+        lng: -7.046509
       },
       zoom: 10,
       gestureHandling: 'greedy'
@@ -759,7 +759,7 @@ demo = {
   fetchDataPorDistrito2: function(distrito) {
     var data = {}
     return fetch('https://ptsibackend.herokuapp.com/sitio/distrito', {
-       method: 'POST',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -773,8 +773,8 @@ demo = {
       return data;
     }).catch((error) => { return data })
   },
-  
-  
+
+
   searchByDistrito: async function(distrito) {
     if (distrito == "0") {
       const response = await fetch('https://ptsibackend.herokuapp.com/sitio')
@@ -792,8 +792,11 @@ demo = {
            <td><a href="#generatePDF" style="text-decoration: none;"><button style="margin: auto; display: block;" class='btn btn-primary btn-round' onclick=fichasitio(${sitio[i].id_sitio})>Ficha Sítio</button></a></td>
         </tr>
         `
+
         ok++
       }
+
+
       document.getElementById('pesquisaSitio').innerHTML = txt;
       return;
     }
@@ -809,11 +812,13 @@ demo = {
           <td style="text-align:center">${response[i].distrito}</td>
           <td style="text-align:center">${response[i].concelho}</td>
         <td style="text-align:center">${response[i].freguesia1}</td>
-         <td><a href="#generatePDF" style="text-decoration: none;"><button style="margin: auto; display: block;" class='btn btn-primary btn-round' onclick=fichasitio(${sitio[i].id_sitio})>Ficha Sítio</button></a></td>
+         <td><a href="#generatePDF" style="text-decoration: none;"><button style="margin: auto; display: block;" class='btn btn-primary btn-round' onclick=fichasitio(${response[i].id_sitio})>Ficha Sítio</button></a></td>
       </tr>
       `
+
       ok++;
     }
+
     document.getElementById('pesquisaSitio').innerHTML = txt;
 
   },
@@ -823,7 +828,7 @@ demo = {
       const response = await demo.fetchDataPorDistrito(distrito);
       const sitio = await response.json();
       var txt = ``;
-      let ok = 1;      
+      let ok = 1;
       for (var i in sitio) {
         txt += `
         <tr>
@@ -835,8 +840,10 @@ demo = {
            <td><a href="#generatePDF" style="text-decoration: none;"><button style="margin: auto; display: block;" class='btn btn-primary btn-round' onclick=fichasitio(${sitio[i].id_sitio})>Ficha Sítio</button></a></td>
         </tr>
         `
+
         ok++;
       }
+
       document.getElementById('pesquisaSitio').innerHTML = txt;
       return;
     }
@@ -855,8 +862,10 @@ demo = {
          <td><a href="#generatePDF" style="text-decoration: none;"><button style="margin: auto; display: block;" class='btn btn-primary btn-round' onclick=fichasitio(${response[i].id_sitio})>Ficha Sítio</button></a></td>
       </tr>
       `
+
       ok++;
     }
+
     document.getElementById('pesquisaSitio').innerHTML = txt;
 
   },
@@ -878,6 +887,7 @@ demo = {
         </tr>
         `
       }
+
       document.getElementById('pesquisaSitio').innerHTML = txt;
       return;
     }
@@ -895,8 +905,10 @@ demo = {
          <td><a href="#generatePDF" style="text-decoration: none;"><button style="margin: auto; display: block;" class='btn btn-primary btn-round' onclick=fichasitio(${response[i].id_sitio})>Ficha Sítio</button></a></td>
       </tr>
       `
+
       ok++;
     }
+
     document.getElementById('pesquisaSitio').innerHTML = txt;
 
   },
@@ -918,8 +930,10 @@ demo = {
          <td><a href="#generatePDF" style="text-decoration: none;"><button style="margin: auto; display: block;" class='btn btn-primary btn-round' onclick=fichasitio(${sitio[i].id_sitio})>Ficha Sítio</button></a></td>
       </tr>
       `
+
       ok++
     }
+
     document.getElementById('pesquisaSitio').innerHTML = txt;
   },
 
