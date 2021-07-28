@@ -93,7 +93,7 @@ video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	/*vertical-align: baseline;*/
+	vertical-align: baseline;
 }
 
 article,
@@ -2486,6 +2486,8 @@ table tbody tr:nth-child(2n+1) {
 
 table td {
 	padding: 0.75em 0.75em;
+	color: #293241;
+	text-align: center;
 }
 
 table1 td {
@@ -2495,10 +2497,10 @@ table1 td {
 
 table th {
 	color: #fff;
-	font-size: 0.9em;
+/*	font-size: 0.9em; */
 	font-weight: 600;
 	padding: 0 0.75em 0.75em 0.75em;
-	text-align: left;
+	text-align: center;
 }
 
 table thead {
@@ -3262,7 +3264,7 @@ button:disabled,
 }
 
 .wrapper.style3 table th {
-	color: #ffffff;
+	color: #293241;
 }
 
 .wrapper.style3 table thead {
