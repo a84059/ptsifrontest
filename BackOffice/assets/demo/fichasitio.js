@@ -91,7 +91,7 @@ function fetchBibliografia(id_bibliografia) {
 
 
 const fichasitio = async(id_sitio) => {
-    
+
     document.getElementById("fichasitio").style.display = "inline";
     document.getElementById("generatePDF").style.display = "inline";
 
@@ -112,14 +112,13 @@ const fichasitio = async(id_sitio) => {
     var txtTipoAcesso = ``;
     var txtTipologia = `<b>Tipologia: </b>`;
     var txtPerCultural = `<b>Período Cultural: </b>`;
+    var txtImagem = ``;
 
     const response = await fetchSitio(id_sitio);
     const sitio = response[0];
 
-    console.log(sitio)
-
     txtNome = sitio.nome;
-    txtToponimo =" " + sitio.toponimo;
+    txtToponimo = " " + sitio.toponimo;
     txtDesc = sitio.descricao;
     txtCNS = sitio.cns;
     txtInterpretacao = sitio.interpretacao;
@@ -153,7 +152,6 @@ const fichasitio = async(id_sitio) => {
 
     var respRelaTipo = await fetchRelaTipo(id_sitio);
     const rel = respRelaTipo
-    console.log(rel)
     var txtTipologiaFinal = ``;
 
     for (var key in rel) {
@@ -169,12 +167,79 @@ const fichasitio = async(id_sitio) => {
         }
     }
     document.getElementById('tipologia_sitio').innerHTML = txtTipologiaFinal;
-}
+
+
+    var respoimagens = await fetchImagens(id_sitio);
+    const relimagens = respoimagens
+    console.log(relimagens)
+    var txtImagens = ``;
+
+    for (var imagem in relimagens) {
+
+        txtImagens += `<div class="col-md-3 pr-1">
+                  <div class="card" style="width:22rem !important;">
+                    <img class="card-img-top" style="width:22rem !important; height:15em" src="../../FrontOffice/assets/ficheiros/imagens/thumb/${relimagens[imagem].ficheiro}" alt="Card image cap">
+                  </div>
+                </div> `
+
+
+    }
+
+    document.getElementById('tipologia_sitio').innerHTML = txtTipologiaFinal;
+
+    document.getElementById('imagens_sitio').innerHTML = txtImagens;
+
+
+ 
+
+    const responseMotivos = await fetch(`https://ptsibackend.herokuapp.com/materiais/rocha_motivo/sitio/${id_sitio}`)
+    const motivos = await responseMotivos.json();
+
+    var txtDesc = ``;
+    var txtMotivos1 = ``;
+    var txtMotivos2 = ``;
+
+
+      for (var k of motivos) {
+        txtMotivos1 += `
+      <tr>
+        <td style="text-align:center">${k.n_inventario_mot}</td>
+        <td style="text-align:center">${k.conservacao}</td>
+        <td style="text-align:center">${k.fase}</td>
+        <td style="text-align:center">${k.patine}</td>
+        <td style="text-align:center">${k.tecnica}</td>
+        <td style="text-align:center">${k.tecnica_variante}</td>
+        <td style="text-align:center">${k.observacoes}</td>
+        <td style="text-align:center">${k.motivo_figura}</td>
+      </tr>
+    `
+        txtMotivos2 += `
+      <tr>
+        <td style="text-align:center">${k.unidade_figurativa}</td>
+        <td style="text-align:center">${k.local_painel}</td>
+        <td style="text-align:center">${k.grupo}</td>
+        <td style="text-align:center">${k.tipo}</td>
+        <td style="text-align:center">${k.sub_tipo}</td>
+        <td style="text-align:center">${k.largura}</td>
+        <td style="text-align:center">${k.altura}</td>
+        <td style="text-align:center">${k.profundidade}</td>
+      </tr>
+    `
+      }
+
+    document.getElementById('txtMotivos1').innerHTML = txtMotivos1;
+    document.getElementById('txtMotivos2').innerHTML = txtMotivos2;
+
+  }
+
+
+
+
 
 
 const fichasitiomap = async(id_sitio) => {
-    
-    sessionStorage.setItem("sitio_id",id_sitio)
+
+    sessionStorage.setItem("sitio_id", id_sitio)
     window.open(`./sitioPDF.html`);
 
 }

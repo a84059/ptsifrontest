@@ -39,11 +39,11 @@ window.onload = () => {
       `
             ok++;
         }
-                   $(document).ready(function() {
-                var table = $('#dtBasicExample').DataTable({
-                    "ordering": false
-                });
+        $(document).ready(function() {
+            var table = $('#dtBasicExample').DataTable({
+                "ordering": false
             });
+        });
         document.getElementById('pesquisaSitio').innerHTML = txt;
     }
     initInfoSitio()
@@ -68,12 +68,7 @@ window.onload = () => {
 
 }
 
-const tablesettings = async() => {
-    $(document).ready(function() {
-        $('#dtBasicExample').DataTable()
 
-    });
-}
 
 const addOptionsConcelho = async(distrito) => {
 
@@ -117,8 +112,6 @@ const addOptionsConcelho = async(distrito) => {
         sessionStorage.setItem("distritozona", distrito)
     }
 }
-
-
 
 
 

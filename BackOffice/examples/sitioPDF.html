@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="col-md-6 pl-1">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">CNS</label>
+                                        <label>CNS</label>
                                         <p type="text" id="cns_sitio" class="form-control" placeholder="Interpretação" value="Não foram encontrados valores">Não foram encontrados valores</p>
                                     </div>
                                 </div>
@@ -107,9 +107,9 @@
                                         <p type="text" id="concelho_sitio" class="form-control" placeholder="Interpretação" value="Não foram encontrados valores">Não foram encontrados valores</p>
                                     </div>
                                 </div>
-                                <div class="col-md-6 pr-1">
+                                <div class="col-md-6 pl-1">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Freguesia</label>
+                                        <label>Freguesia</label>
                                         <p type="text" id="freguesia_sitio" class="form-control" placeholder="Interpretação" value="Não foram encontrados valores">Não foram encontrados valores</p>
                                     </div>
                                 </div>
@@ -177,11 +177,52 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                            <h5 style="display:inline-block; margin-top:40px">Imagens do Sítio</h5>
+                            <div class="row" id="imagens_sitio">
+                            </div>
                     </div>
+                    <div class="table">
+                        <div class="col-md-12">
+                            <h5 style="display:inline-block; margin-top:40px">Motivos</h5>
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <tr>
+                                        <th style="text-align:center"> Nº de inventário </th>
+                                        <th style="text-align:center"> Cronologia</th>
+                                        <th style="text-align:center"> Conservação </th>
+                                        <th style="text-align:center"> Patine </th>
+                                        <th style="text-align:center"> Técnica </th>
+                                        <th style="text-align:center"> Técnica Variante </th>
+                                        <th style="text-align:center"> Técnica (Observações) </th>
+                                        <th style="text-align:center"> Figura Completa </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="txtMotivos1">
+                                </tbody>
+                                <thead class="text-primary">
+                                    <tr>
+                                        <th style="text-align:center;padding-top: 40px;"> Unidade Figurativa </th>
+                                        <th style="text-align:center;padding-top: 40px;"> Localização do painel</th>
+                                        <th style="text-align:center;padding-top: 40px;"> Grupo </th>
+                                        <th style="text-align:center;padding-top: 40px;"> Tipo </th>
+                                        <th style="text-align:center;padding-top: 40px;"> Sub Tipo </th>
+                                        <th style="text-align:center;padding-top: 40px;"> Largura </th>
+                                        <th style="text-align:center;padding-top: 40px;"> Altura </th>
+                                        <th style="text-align:center;padding-top: 40px;"> Profundidade </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="txtMotivos2">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
                 </div>
+                </form>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 
     <footer class="footer-technos" style="margin-top:4%" id="footer">
@@ -228,8 +269,8 @@
 
     <script>
         /* $(document).ready(function() {
-                                                  $('#dtBasicExample').DataTable();
+                                                                                  $('#dtBasicExample').DataTable();
 
-                                              });*/
+                                                                              });*/
     </script>
 </body>
