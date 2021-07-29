@@ -119,8 +119,8 @@ const fichasitio = async(id_sitio) => {
     console.log(sitio)
 
     txtNome = sitio.nome;
-    txtToponimo = sitio.toponimo;
-    txtDesc = ``;
+    txtToponimo =" " + sitio.toponimo;
+    txtDesc = sitio.descricao;
     txtCNS = sitio.cns;
     txtInterpretacao = sitio.interpretacao;
     txtClassificacao = sitio.Classificacao;
@@ -147,6 +147,8 @@ const fichasitio = async(id_sitio) => {
     document.getElementById('tipoacesso_sitio').innerHTML = txtTipoAcesso;
     document.getElementById('periodocultural_sitio').innerHTML = txtPerCultural;
     document.getElementById('bibliografia_sitio').innerHTML = txtCota;
+    document.getElementById('toponimo_sitio').innerHTML = txtToponimo;
+    document.getElementById('descricao_sitio').innerHTML = txtDesc;
 
 
     var respRelaTipo = await fetchRelaTipo(id_sitio);

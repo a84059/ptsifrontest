@@ -62,10 +62,22 @@
 
                 <div class="card card-user" id="fichasitio">
                     <div class="card-header">
-                        <h5 class="card-title" id="nome_sitio">[Inserir nome do sítio]</h5>
+                        <h3 class="card-title" id="nome_sitio">[Inserir nome do sítio]</h3>
+                        <div>
+                            <h5 style="display:inline-block">Topónimo: &nbsp;</h5>
+                            <h5 style="display:inline-block" id="toponimo_sitio"></h5>
+                        </div>
                     </div>
                     <div class="card-body">
                         <form>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Descrição</label>
+                                        <p type="text" id="descricao_sitio" class="form-control" placeholder="Descrição" value="Não foram encontrados valores">Não foram encontrados valores</p>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -216,8 +228,8 @@
 
     <script>
         /* $(document).ready(function() {
-                                          $('#dtBasicExample').DataTable();
+                                                  $('#dtBasicExample').DataTable();
 
-                                      });*/
+                                              });*/
     </script>
 </body>

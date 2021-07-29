@@ -24,8 +24,6 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
@@ -135,10 +133,21 @@
         </div>
         <div class="card card-user"  id="fichasitio" style="display:none" >
           <div class="card-header">
-            <h5 class="card-title" id="nome_sitio">[Inserir nome do sítio]</h5>
+            <h3 class="card-title" id="nome_sitio">[Inserir nome do sítio]</h3>
+            <div>
+             <h5 style="display:inline-block">Topónimo:	&nbsp;</h5><h5 style="display:inline-block" id="toponimo_sitio"></h5>
+            </div>
           </div>
           <div class="card-body">
             <form>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Descrição</label>
+                    <p type="text" id="descricao_sitio" class="form-control" placeholder="Descrição" value="Não foram encontrados valores">Não foram encontrados valores</p>
+                  </div>
+                </div>
+              </div>
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
@@ -156,7 +165,7 @@
                 </div>
                 <div class="col-md-6 pl-1">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">CNS</label>
+                    <label>CNS</label>
                     <p type="text" id="cns_sitio" class="form-control" placeholder="Interpretação" value="Não foram encontrados valores">Não foram encontrados valores</p>
                   </div>
                 </div>
@@ -168,9 +177,9 @@
                     <p type="text" id="concelho_sitio" class="form-control" placeholder="Interpretação" value="Não foram encontrados valores">Não foram encontrados valores</p>
                   </div>
                 </div>
-                <div class="col-md-6 pr-1">
+                <div class="col-md-6 pl-1">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Freguesia</label>
+                    <label>Freguesia</label>
                     <p type="text" id="freguesia_sitio" class="form-control" placeholder="Interpretação" value="Não foram encontrados valores">Não foram encontrados valores</p>
                   </div>
                 </div>
