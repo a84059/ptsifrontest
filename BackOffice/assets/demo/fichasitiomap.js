@@ -202,8 +202,23 @@ const fichasitioPDF = async(id_sitio) => {
 
 
     for (var k of motivos) {
-        txtMotivos1 += `
-      <tr>
+        txtMotivos1 +=  `
+      <h5 style="display:inline-block; margin-top:40px">Motivo ${k.n_inventario_mot}</h5>
+              <table class="table">
+                <thead class=" text-primary">
+                  <tr>
+                    <th style="text-align:center"> Nº de inventário </th>
+                    <th style="text-align:center"> Cronologia</th>
+                    <th style="text-align:center"> Conservação </th>
+                    <th style="text-align:center"> Patine </th>
+                    <th style="text-align:center"> Técnica </th>
+                    <th style="text-align:center"> Técnica Variante </th>
+                    <th style="text-align:center"> Técnica (Observações) </th>
+                    <th style="text-align:center"> Figura Completa </th>
+                  </tr>
+                </thead>
+                <tbody id="txtMotivos1">
+                 <tr>
         <td style="text-align:center">${k.n_inventario_mot}</td>
         <td style="text-align:center">${k.conservacao}</td>
         <td style="text-align:center">${k.fase}</td>
@@ -213,10 +228,21 @@ const fichasitioPDF = async(id_sitio) => {
         <td style="text-align:center">${k.observacoes}</td>
         <td style="text-align:center">${k.motivo_figura}</td>
       </tr>
-    `
-        txtMotivos2 += `
-      <tr>
-        <td style="text-align:center">${k.unidade_figurativa}</td>
+                </tbody>
+                <thead class="text-primary">
+                  <tr>
+                    <th style="text-align:center;padding-top: 40px;"> Unidade Figurativa </th>
+                    <th style="text-align:center;padding-top: 40px;"> Localização do painel</th>
+                    <th style="text-align:center;padding-top: 40px;"> Grupo </th>
+                    <th style="text-align:center;padding-top: 40px;"> Tipo </th>
+                    <th style="text-align:center;padding-top: 40px;"> Sub Tipo </th>
+                    <th style="text-align:center;padding-top: 40px;"> Largura </th>
+                    <th style="text-align:center;padding-top: 40px;"> Altura </th>
+                    <th style="text-align:center;padding-top: 40px;"> Profundidade </th>
+                  </tr>
+                </thead>
+                <tbody id="txtMotivos2">
+                        <td style="text-align:center">${k.unidade_figurativa}</td>
         <td style="text-align:center">${k.local_painel}</td>
         <td style="text-align:center">${k.grupo}</td>
         <td style="text-align:center">${k.tipo}</td>
@@ -224,12 +250,12 @@ const fichasitioPDF = async(id_sitio) => {
         <td style="text-align:center">${k.largura}</td>
         <td style="text-align:center">${k.altura}</td>
         <td style="text-align:center">${k.profundidade}</td>
-      </tr>
+                </tbody>
+              </table>
     `
     }
 
-    document.getElementById('txtMotivos1').innerHTML = txtMotivos1;
-    document.getElementById('txtMotivos2').innerHTML = txtMotivos2;
+    document.getElementById('txtmotivos').innerHTML = txtMotivos1;
 }
 
 setTimeout(function() {
