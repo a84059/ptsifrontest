@@ -197,9 +197,9 @@ const fichasitio = async(id_sitio) => {
     var txtDesc = ``;
     var txtMotivos1 = ``;
     var txtMotivos2 = ``;
+    
 
-
-      for (var k of motivos) {
+    for (var k of motivos) {
         txtMotivos1 += `
       <h6 style="display:inline-block; margin-top:40px">Motivo ${k.n_inventario_mot}</h6>
               <table class="table">
@@ -216,16 +216,16 @@ const fichasitio = async(id_sitio) => {
                   </tr>
                 </thead>
                 <tbody id="txtMotivos1">
-                 <tr>
-        <td style="text-align:center">${k.n_inventario_mot}</td>
-        <td style="text-align:center">${k.conservacao}</td>
-        <td style="text-align:center">${k.fase}</td>
-        <td style="text-align:center">${k.patine}</td>
-        <td style="text-align:center">${k.tecnica}</td>
-        <td style="text-align:center">${k.tecnica_variante}</td>
-        <td style="text-align:center">${k.observacoes}</td>
-        <td style="text-align:center">${k.motivo_figura}</td>
-      </tr>
+                  <tr>
+                    <td style="text-align:center">${k.n_inventario_mot}</td>
+                    <td style="text-align:center">${k.conservacao}</td>
+                    <td style="text-align:center">${k.fase}</td>
+                    <td style="text-align:center">${k.patine}</td>
+                    <td style="text-align:center">${k.tecnica}</td>
+                    <td style="text-align:center">${k.tecnica_variante}</td>
+                    <td style="text-align:center">${k.observacoes}</td>
+                    <td style="text-align:center">${k.motivo_figura}</td>
+                  </tr>
                 </tbody>
                 <thead class="text-primary">
                   <tr>
@@ -240,22 +240,35 @@ const fichasitio = async(id_sitio) => {
                   </tr>
                 </thead>
                 <tbody id="txtMotivos2">
-                        <td style="text-align:center">${k.unidade_figurativa}</td>
-        <td style="text-align:center">${k.local_painel}</td>
-        <td style="text-align:center">${k.grupo}</td>
-        <td style="text-align:center">${k.tipo}</td>
-        <td style="text-align:center">${k.sub_tipo}</td>
-        <td style="text-align:center">${k.largura}</td>
-        <td style="text-align:center">${k.altura}</td>
-        <td style="text-align:center">${k.profundidade}</td>
+                    <td style="text-align:center">${k.unidade_figurativa}</td>
+                    <td style="text-align:center">${k.local_painel}</td>
+                    <td style="text-align:center">${k.grupo}</td>
+                    <td style="text-align:center">${k.tipo}</td>
+                    <td style="text-align:center">${k.sub_tipo}</td>
+                    <td style="text-align:center">${k.largura}</td>
+                    <td style="text-align:center">${k.altura}</td>
+                    <td style="text-align:center">${k.profundidade}</td>
                 </tbody>
               </table>
     `
-      }
+    
+        const responseImagens = await fetch(`https://ptsibackend.herokuapp.com/imagens/material/${k.id_material}`)
+        const motivosImagens = await responseImagens.json();
+
+        for (var k of motivosImagens) {
+            console.log(k)
+           txtMotivos1 +=  `<div class="col-md-3 pr-1">
+                  <div class="card" style="width:22rem !important;">
+                    <img class="card-img-top" style="width:22rem !important; height:15em" src="../../FrontOffice/assets/ficheiros/imagens/thumb/${k.ficheiro}" alt="Card image cap">
+                  </div>
+              </div>`
+        }
+    
+    }
 
     document.getElementById('txtmotivos').innerHTML = txtMotivos1;
 
-  }
+}
 
 
 
@@ -269,4 +282,3 @@ const fichasitiomap = async(id_sitio) => {
 
 }
 
- 

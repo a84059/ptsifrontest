@@ -253,7 +253,20 @@ const fichasitioPDF = async(id_sitio) => {
                 </tbody>
               </table>
     `
+    const responseImagens = await fetch(`https://ptsibackend.herokuapp.com/imagens/material/${k.id_material}`)
+        const motivosImagens = await responseImagens.json();
+
+        for (var k of motivosImagens) {
+            console.log(k)
+           txtMotivos1 +=  `<div class="col-md-3 pr-1">
+                  <div class="card" style="width:22rem !important;">
+                    <img class="card-img-top" style="width:22rem !important; height:15em" src="../../FrontOffice/assets/ficheiros/imagens/thumb/${k.ficheiro}" alt="Card image cap">
+                  </div>
+              </div>`
+        }
+    
     }
+
 
     document.getElementById('txtmotivos').innerHTML = txtMotivos1;
 }
