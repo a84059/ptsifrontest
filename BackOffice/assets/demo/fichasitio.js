@@ -259,7 +259,7 @@ const fichasitio = async(id_sitio) => {
             console.log(k)
            txtMotivos1 +=  `<div class="col-md-3 pr-1">
                   <div class="card" style="width:22rem !important;">
-                    <img class="card-img-top" style="width:22rem !important; height:15em" src="../../FrontOffice/assets/ficheiros/imagens/thumb/${k.ficheiro}" alt="Card image cap">
+                    <img class="card-img-top" style="width:21rem !important; height:14em" src="../../FrontOffice/assets/ficheiros/imagens/thumb/${k.ficheiro}" alt="Card image cap">
                   </div>
               </div>`
         }

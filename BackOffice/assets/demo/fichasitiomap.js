@@ -260,7 +260,7 @@ const fichasitioPDF = async(id_sitio) => {
             console.log(k)
            txtMotivos1 +=  `<div class="col-md-3 pr-1">
                   <div class="card" style="width:22rem !important;">
-                    <img class="card-img-top" style="width:22rem !important; height:15em" src="../../FrontOffice/assets/ficheiros/imagens/thumb/${k.ficheiro}" alt="Card image cap">
+                     <img class="card-img-top" style="width:21rem !important; height:14em" src="../../FrontOffice/assets/ficheiros/imagens/thumb/${k.ficheiro}" alt="Card image cap">
                   </div>
               </div>`
         }
@@ -277,7 +277,8 @@ setTimeout(function() {
         filename: 'myfile.pdf',
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { scale: 2 },
-        jsPDF: { unit: 'in', format: 'a3', orientation: 'landscape' }
+        jsPDF: { unit: 'in', format: 'a3', orientation: 'landscape' },
+        pagebreak: { before: '#motivos'}
     };
     html2pdf()
         .set(opt)

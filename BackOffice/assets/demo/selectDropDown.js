@@ -56,10 +56,11 @@ window.onload = () => {
             console.log(window);
             var opt = {
                 margin: 0.5,
-                filename: 'myfile.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
+                filename: 'sitio.pdf',
+                image: { type: 'jpeg', quality: 1 },
                 html2canvas: { scale: 2 },
-                jsPDF: { unit: 'in', format: 'a3', orientation: 'landscape' }
+                jsPDF: { unit: 'in', format: 'a3', orientation: 'landscape' },
+                pagebreak: { before: '#motivos'}
             };
             html2pdf().from(invoice).set(opt).save();
 
