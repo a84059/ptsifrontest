@@ -2,7 +2,7 @@
 <html>
 
 <head>
-   	<title>Arte Rupestre</title>
+	<title>Arte Rupestre</title>
 	<link rel="icon" href="../images/cave-painting.png" type="image/png">
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -23,86 +23,31 @@
 </head>
 
 <body class="landing is-preload">
-	
+
 	<header id="head" class="alt">
 		<nav id="nav">
 
-			<a href="../../index_login.html" class="icon-block btnHome"><i class="fas fa-2x fa-home"></i></a>
-			<a href="imagens.html" class="icon-block btnHome" style="margin-right: 50px;">Ver Tudo</a>
+			<a href="../../index.html" class="icon-block btnHome"><i class="fas fa-2x fa-home"></i></a>
 
 		</nav>
 
 	</header>
 
-    <!-- Page Wrapper -->
-<!--    <div id="page-wrapper">
+	<!-- Main -->
+	<section class="wrapper style3">
+		<div class="inner">
+			<header class="major">
+				<h2 style="margin-top: 1em">Imagens</h>
+			</header>
+			<div class="table-wrapper">
+				<table id="tblimagens" class="table1">
+				</table>
+			</div>
+		</div>
+	</section>
 
-		<header id="header" class="alt">
-			<nav id="nav">
-				<input type="radio" name="slide" id="menu-btn">
-				<input type="radio" name="slide" id="cancel-btn">
-				<ul>
-
-					<label for="cancel-btn" class="btn cancel-btn"><i class="fas fa-times"></i></label>
-
-					<li class="li-normal"><a href="../../index.html">Home</a></li>
-
-					<li class="li-normal"><a href="#three" class="desktop-item">Sobre Nós</a>
-
-						<label for="showDrop" class="mobile-item">Sobre Nós</label>
-						<ul class="drop-menu">
-							<li><a href="#" id="nav">Projeto</a></li>
-							<li><a href="#" id="nav">Equipas</a></li>
-							<li><a href="#" id="nav">Grupo de Trabalho</a></li>
-							<li><a href="#" id="nav">Pesquisa do Projeto</a></li>
-						</ul>
-					</li>
-
-					<li class="li-normal"><a href="#">Arte Rupestre</a>
-						<ul>
-							<li><a href="#">O que é?</a></li>
-							<li><a href="#">Vale do Côa</a></li>
-							<li><a href="#">Idade da Pedra</a></li>
-						</ul>
-					</li>
-
-					<li class="li-normal"><a href="#galeria">Galeria</a>
-						<ul class="rockArt">
-							<li><a href="imagens.html">Imagens</a></li>
-							<li><a href="../Modelos_html/teste.html">Modelos 3D</a></li>
-						</ul>
-
-					</li>
-					<li class="li-normal"><a href="#">Recursos</a>
-						<ul class="rockArt">
-							<li><a href="#">DataRepositóriUM</a></li>
-							<li><a href="#">Publicações do Projeto</a></li>
-							<li><a href="#">Websites</a></li>
-							<li><a href="#">Downloads</a></li>
-						</ul>
-					</li>
-					<button class="btn_login"><a href="login.html" style="color: #ffffff">Log In</a></button>
-				</ul>
-
-				<label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
-			</nav>
-		</header> -->
-
-        <!-- Main -->
-        <section class="wrapper style3">
-                <div class="inner">
-                    <header class="major">
-                        <h2 style="margin-top: 1em">Imagens</h>
-                    </header>
-                        <div class="table-wrapper">
-                            <table id="tblimagens" class="table1">
-                            </table>
-                        </div>
-                </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="site-footer">
+	<!-- Footer -->
+	<footer class="site-footer">
 		<div class="container">
 			<hr>
 		</div>
@@ -123,10 +68,10 @@
 		</div>
 	</footer>
 
-    </div>
+	</div>
 
-    <!-- Scripts -->
-    <script src="../assets/js/jquery.min.js"></script>
+	<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
 	<script src="../assets/js/jquery.scrollex.min.js"></script>
 	<script src="../assets/js/jquery.scrolly.min.js"></script>
 	<script src="../assets/js/browser.min.js"></script>
@@ -139,15 +84,14 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 	<script src="../assets/js/carousel.js"></script>
 	<script src="../assets/js/imageHandler.js"></script>
-    <script src="../assets/js/sitioimagens.js"></script>
-    
-    <script type="text/javascript"> 
-      function reply_click(clicked_id)
-  {
-      sessionStorage.setItem('id_sitio', clicked_id);
-      window.location.href='imagenssitio.html';
-  }
-  </script>
+	<script src="../assets/js/sitioimagens.js"></script>
+
+	<script type="text/javascript">
+		function reply_click(clicked_id) {
+			sessionStorage.setItem('id_sitio', clicked_id);
+			window.location.href = 'imagenssitio.html';
+		}
+	</script>
 
 </body>
 

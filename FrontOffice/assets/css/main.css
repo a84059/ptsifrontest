@@ -3524,7 +3524,7 @@ button:disabled,
 		width: 100%;
 	}
 	.rTable tbody tr td:nth-child(1) {
-		width: 10%;
+		width: 30%;
 	}
 	.rTable tbody tr td:nth-child(2) {
 		width: 30%;
