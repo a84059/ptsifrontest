@@ -2,29 +2,31 @@ var id = sessionStorage.getItem('id_sitio');
 
 const urlBase1 = "https://ptsibackend.herokuapp.com/imagens/sitio/" + id;
 const urlBase2 = "https://ptsibackend.herokuapp.com/sitio/" + id
-
 //const urlBase2 = "https://ptsibackend.herokuapp.com/sitio/" + id
 
 
 window.onload = () => {
-    
-    
-    
+    // References to HTML objects   
     const nome_sitio = document.getElementById("nome_sitio")
-    
+
     // References to HTML objects   
     const tblimagens = document.getElementById("carousel")
 
     const renderimagens = async() => {
 
+        var strHtm2 = ``;
         const response2 = await fetch(`${urlBase2}`)
         const imagens2 = await response2.json()
-        console.log("ok")
+
         nome = imagens2[0].nome
         
-        strHtml2 += `Imagens - ` + nome
-    
-        nome_sitio.innerHTML = strHtml2
+        console.log(nome)
+
+        strHtm2 += `Imagens - ` + nome;
+
+        nome_sitio.innerHTML = strHtm2
+        //const response2 = await fetch(`${urlBase2}`)
+        //const imagens2 = await response2.json()
 
         // = imagens2[0].nome
         var strHtml = `	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"><div class="carousel-indicators">`;
@@ -40,25 +42,25 @@ window.onload = () => {
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 
             `;
-            i++;
-            b++;
-					
+                i++;
+                b++;
+
             }
-            else  {
+            else {
 
                 strHtml += `
             
             		<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${i}" aria-label="Slide ${b}"></button>
             
                 
-            `;  
-            i++;
-            b++;
+            `;
+                i++;
+                b++;
             }
         }
-        
+
         strHtml += `</div><div class="carousel-inner">`
-        
+
         for (const imagem of imagens) {
             if (a == 0) {
                 a++;
@@ -68,9 +70,9 @@ window.onload = () => {
 				</div>
                 
             `;
-					
+
             }
-            else  {
+            else {
 
                 strHtml += `
             
@@ -79,11 +81,11 @@ window.onload = () => {
 				</div>
             
                 
-            `;  
-            a++;
+            `;
+                a++;
             }
         }
-         strHtml += `		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" style="transform: translate(0, 340px);">
+        strHtml += `		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" style="transform: translate(0, 340px);">
     				 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     				 <span class="visually-hidden">Previous</span>
   					</button>
